@@ -71,7 +71,7 @@ const ProgramGita = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              to="/contact?subject=GITA"
+              to="/apply/gita"
               size="lg"
               variant="shimmer"
             >
@@ -275,7 +275,7 @@ const ProgramGita = () => {
         }
         description="Book your GITA session and choose your next step with absolute confidence."
         ctaText="Apply for GITA"
-        ctaHref="/contact?subject=GITA"
+        ctaHref="/apply/gita"
         showPillars={false}
       />
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, isValidElement, cloneElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Zap, Heart, Target, Check, LucideIcon } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -126,12 +126,19 @@ const GlobalCTA = ({
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-10 max-w-4xl mx-auto"
         >
-          <div className="mb-0">
+          <div className="mb-4">
             {typeof title === "string" ? (
-               <h2 className="mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 {title}
                </h2>
-            ) : title}
+            ) : (
+               isValidElement<{ className?: string }>(title) ? cloneElement(title, { 
+                 className: cn(
+                   "text-4xl md:text-5xl font-display font-bold mb-4", 
+                   title.props.className
+                 ) 
+               }) : title
+            )}
           </div>
           {description && (
             <p className="text-white/80 text-lg md:text-xl max-w-xl mx-auto">

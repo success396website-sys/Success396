@@ -5,6 +5,7 @@ import model369 from "@/assets/Model 369.mp4";
 import journey from "@/assets/Journey op 1.mp4";
 import event from "@/assets/Events Video.mp4";
 import book from "@/assets/Book.mp4";
+import success369video from "@/assets/Success 369.mp4";
 import CTAButton from "./CTAButton";
 
 interface Slide {
@@ -18,6 +19,16 @@ interface Slide {
 }
 
 const slides: Slide[] = [
+  {
+    video: success369video,
+    tag: "Success 369",
+    title: "Clarity for Individuals. Direction for Leaders. Alignment for Organisations.",
+    subtitle:
+      "Success369 helps individuals, professionals, leaders, and organisations align identity, purpose, and action—so growth feels clear, meaningful, and built to last.",
+    cta: "Explore Success369",
+    ctaSecondary: "Watch Trailer",
+    ctaHref: "/success-369",
+  },
   {
     video: model369,
     tag: "Foundation",

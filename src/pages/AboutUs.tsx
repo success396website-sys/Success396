@@ -306,28 +306,18 @@ const AboutUs = () => {
       </section>
 
       {/* Closing CTA */}
-      <section className="py-32 relative overflow-hidden bg-primary/5">
-        <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        <div className="container-custom relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="max-w-4xl mx-auto"
-          >
-            <h2 className="text-4xl md:text-7xl font-display font-bold mb-8">
-              A Movement. From India <br />
-              <span className="text-glow text-primary">to the World.</span>
-            </h2>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12">
-              Success369 is redefining what success means — and how it is built. <br />
-              It is your life. Design it. Build it. Live it.
-            </p>
-            <GlobalCTA kind="button" />
-          </motion.div>
-        </div>
-      </section>
+      <GlobalCTA
+        title={
+          <h2 className="font-display text-5xl sm:text-8xl font-bold mb-12 leading-[0.9] text-white">
+            A Movement. From India <br />
+            <span className="italic text-primary text-glow">to the World.</span>
+          </h2>
+        }
+        description="Success369 is redefining what success means — and how it is built. It is your life. Design it. Build it. Live it."
+        ctaText="Get Started"
+        ctaHref="/free-session"
+        showPillars={true}
+      />
 
       <Footer />
     </div>

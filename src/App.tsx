@@ -32,6 +32,10 @@ const TermsConditions = lazy(() => import("./pages/TermsConditions"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const Success369 = lazy(() => import("./pages/Success369"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const EventRegister = lazy(() => import("./pages/EventRegister"));
+const ProgramApply = lazy(() => import("./pages/ProgramApply"));
+const MentorApply = lazy(() => import("./pages/MentorApply"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Basic loading fallback
@@ -75,6 +79,10 @@ const App = () => (
             <Route path="/shipping-policy" element={<ShippingPolicy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
             <Route path="/terms-conditions" element={<TermsConditions />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/register/:slug" element={<EventRegister />} />
+            <Route path="/apply/mentor" element={<MentorApply />} />
+            <Route path="/apply/:program" element={<ProgramApply />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

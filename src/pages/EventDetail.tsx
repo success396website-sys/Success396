@@ -158,7 +158,7 @@ const EventDetail = () => {
               <motion.div custom={6} variants={fadeUp} className="flex flex-wrap gap-4">
                 <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                   <Link
-                    to="/contact"
+                    to={`/register/${event.slug}`}
                     className="relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
                   >
                     <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
@@ -253,7 +253,7 @@ const EventDetail = () => {
                       </p>
                       <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
                         <Link
-                          to="/contact"
+                          to={`/register/${event.slug}`}
                           className="relative w-full flex items-center justify-center gap-2 px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
                         >
                           <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />

@@ -157,7 +157,7 @@ Success369 is guided by two stewards who believe success is cultivated with clar
                     {/* Actions */}
                     <div className="flex items-center gap-4 pt-2">
                       <CTAButton 
-                        to="/contact"
+                        to="/free-session"
                         size="sm"
                         variant="primary"
                         className="uppercase tracking-wider"
@@ -197,7 +197,7 @@ Success369 is guided by two stewards who believe success is cultivated with clar
             <p className="text-muted-foreground text-lg mb-8">
               Are you an experienced leader or coach aligned with our philosophy? Join our team of stewards to guide others toward clarity and sustainable success.
             </p>
-            <CTAButton to="/contact?subject=Mentor+Application" variant="shimmer" size="lg" className="px-12">
+            <CTAButton to="/apply/mentor" variant="shimmer" size="lg" className="px-12">
               Apply to Join
             </CTAButton>
           </div>

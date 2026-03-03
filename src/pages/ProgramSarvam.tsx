@@ -71,7 +71,7 @@ const ProgramSarvam = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              to="/contact?subject=SARVAM"
+              to="/apply/sarvam"
               size="lg"
               variant="shimmer"
             >
@@ -277,7 +277,7 @@ const ProgramSarvam = () => {
         }
         description="SARVAM is by application only. Book a conversation to explore if this is the right time for your transformation."
         ctaText="Apply for SARVAM"
-        ctaHref="/contact?subject=SARVAM"
+        ctaHref="/apply/sarvam"
         showPillars={false}
       />
 

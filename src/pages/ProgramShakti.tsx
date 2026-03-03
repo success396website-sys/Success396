@@ -69,7 +69,7 @@ const ProgramShakti = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              to="/contact?subject=SHAKTI"
+              to="/apply/shakti"
               size="lg"
               variant="shimmer"
             >
@@ -267,7 +267,7 @@ const ProgramShakti = () => {
         }
         description="Book a free session to explore how SHAKTI can accelerate impact for you, your team, or your organisation."
         ctaText="Apply for SHAKTI"
-        ctaHref="/contact?subject=SHAKTI"
+        ctaHref="/apply/shakti"
         showPillars={false}
       />
 

@@ -277,7 +277,7 @@ const Programs = () => {
         }
         description="If you’re unsure where to start, begin with a conversation. Understand your context. See your options clearly. Decide with confidence."
         ctaText="Book a Session"
-        ctaHref="/contact"
+        ctaHref="/free-session"
         showPillars={false}
       />
 

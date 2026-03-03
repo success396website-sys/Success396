@@ -71,7 +71,7 @@ const ProgramMaya = () => {
 
           <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
             <CTAButton
-              to="/contact?subject=MAYA"
+              to="/apply/maya"
               size="lg"
               variant="shimmer"
             >
@@ -267,7 +267,7 @@ const ProgramMaya = () => {
         }
         description="Book your MAYA journey and begin the process of internal alignment and coherence."
         ctaText="Apply for MAYA"
-        ctaHref="/contact?subject=MAYA"
+        ctaHref="/apply/maya"
         showPillars={false}
       />
 
