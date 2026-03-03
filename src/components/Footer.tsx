@@ -24,6 +24,7 @@ const connectLinks = [
 
 const policyLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" },
+  { label: "Cookie Policy", href: "/cookie-policy" },
   { label: "Terms & Conditions", href: "/terms-conditions" },
   { label: "Refund Policy", href: "/refund-policy" },
   { label: "Shipping Policy", href: "/shipping-policy" },
@@ -42,9 +43,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden">
+    <footer className="relative overflow-hidden border-t border-border/10">
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[hsl(300_15%_10%)] to-[hsl(300_20%_8%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#110e11] to-[#0d0c0d]" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[120px]" />
 
       <div className="relative container-custom pt-20 pb-8">
@@ -59,7 +60,11 @@ const Footer = () => {
           >
             <Link to="/" className="flex items-center group mb-6">
               <div className="h-[80px] w-auto flex items-center justify-center transition-all duration-300">
-                <img src={logo} alt="Success369" className="h-full w-auto object-contain" />
+                <img 
+                  src={logo} 
+                  alt="Success369" 
+                  className="h-full w-auto object-contain invert dark:invert-0 transition-all duration-500" 
+                />
               </div>
             </Link>
             <p className="text-white/80 text-base mb-6">
@@ -129,7 +134,7 @@ const Footer = () => {
                 <li key={link.label}>
                   <Link
                     to={link.href}
-                    className="text-white/70 text-sm hover:text-primary transition-colors duration-200 inline-block relative group"
+                    className="text-white/70 text-sm transition-colors duration-200 inline-block relative group"
                   >
                     {link.label}
                     <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />

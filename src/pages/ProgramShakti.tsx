@@ -131,7 +131,7 @@ const ProgramShakti = () => {
                 style={{ marginTop: (index % 2 === 1) ? "100px" : "0px" }}
                 className="group relative"
               >
-                <span className="absolute -top-16 -right-8 font-display text-[10rem] md:text-[14rem] font-black text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.07] group-hover:-translate-y-8 group-hover:-translate-x-4">
+                <span className="absolute -top-16 -right-8 font-display text-[10rem] md:text-[14rem] font-black text-foreground/[0.05] dark:text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.08] group-hover:-translate-y-8 group-hover:-translate-x-4">
                   {card.step}
                 </span>
 

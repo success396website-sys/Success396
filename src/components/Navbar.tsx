@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, Globe, Newspaper } from "lucide-react";
+import { Menu, X, ChevronDown, Globe, Newspaper, BookOpen, Sparkles, Flame, Infinity, Layout, Info, Star, Calendar, MessageSquare } from "lucide-react";
 import logo from "@/assets/logo.png";
 import CTAButton from "@/components/CTAButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -13,23 +13,39 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const navLinks = [
-  { label: "Foundation", href: "/" },
-  { label: "Programs", href: "/programs" },
+  { label: "Foundation", hasDropdown: true },
+  { label: "Programs", hasDropdown: true },
   { label: "The Book", href: "/book" },
-  { label: "Events", href: "/events" },
-  { label: "Resources", hasDropdown: true },
+  { label: "Arena", hasDropdown: true },
   { label: "Contact", href: "/contact" },
 ];
 
-const resourceSections = [
-  { label: "Blog", description: "Insights & Articles", icon: Newspaper, href: "/blog" },
+const foundationSections = [
+  { label: "Success 369 page", description: "Clarity. Congruence. Catalysis.", icon: Star, href: "/success-369" },
+  { label: "About us Page", description: "Our story and mission", icon: Info, href: "/about-us" },
+];
+
+const programSections = [
+  { label: "Program Overview", description: "Our transformation path", icon: Layout, href: "/programs" },
+  { label: "Maya", description: "The illusion of separation", icon: Sparkles, href: "/program-maya" },
+  { label: "Gita", description: "Eternal wisdom for life", icon: BookOpen, href: "/program-gita" },
+  { label: "Sarvam", description: "Universal consciousness", icon: Infinity, href: "/program-sarvam" },
+  { label: "Shakti", description: "Inner power and energy", icon: Flame, href: "/program-shakti" },
+];
+
+const arenaSections = [
+  { label: "Events", description: "Join our live sessions", icon: Calendar, href: "/events" },
   { label: "Podcast", description: "The Audio Experience", icon: Globe, href: "/podcast" },
+  { label: "Blogs", description: "Insights & Articles", icon: Newspaper, href: "/blog" },
+  { label: "Conversation", description: "Connect with us", icon: MessageSquare, href: "/contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const [arenaOpen, setArenaOpen] = useState(false);
+  const [programsOpen, setProgramsOpen] = useState(false);
+  const [foundationOpen, setFoundationOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -41,7 +57,9 @@ const Navbar = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
-    setResourcesOpen(false);
+    setArenaOpen(false);
+    setProgramsOpen(false);
+    setFoundationOpen(false);
   }, [location.pathname]);
 
   const isActive = (href?: string) => {
@@ -50,8 +68,27 @@ const Navbar = () => {
     return location.pathname === href || location.pathname.startsWith(href + "/");
   };
 
-  const isResourcesActive = () => {
-    return location.pathname === "/blog" || location.pathname === "/podcast" || location.pathname.startsWith("/blog/");
+  const isArenaActive = () => {
+    return [
+      "/events",
+      "/podcast",
+      "/blog",
+      "/contact"
+    ].some(path => location.pathname === path || location.pathname.startsWith(path + "/"));
+  };
+
+  const isFoundationActive = () => {
+    return location.pathname === "/success-369" || location.pathname === "/about-us";
+  };
+
+  const isProgramsActive = () => {
+    return [
+      "/programs",
+      "/program-maya",
+      "/program-gita",
+      "/program-sarvam",
+      "/program-shakti",
+    ].includes(location.pathname);
   };
 
   const isDarkHeroPage = [
@@ -85,17 +122,21 @@ const Navbar = () => {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-background/95 backdrop-blur-2xl border-b border-border/50 shadow-sm"
+            ? "bg-background/95 backdrop-blur-md dark:backdrop-blur-2xl border-b border-border/50 shadow-sm"
             : isDarkHeroPage
             ? "bg-gradient-to-b from-black/60 to-transparent"
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 py-2.5">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-2.5">
           {/* Logo */}
           <Link to="/" className="flex items-center group shrink-0">
             <div className="h-[72px] flex items-center justify-center transition-all duration-300">
-              <img src={logo} alt="Success369" className="h-full object-contain" />
+              <img 
+                src={logo} 
+                alt="Success369" 
+                className="h-full object-contain dark:invert-0 invert transition-all duration-500" 
+              />
             </div>
           </Link>
 
@@ -103,7 +144,12 @@ const Navbar = () => {
           <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
               if (link.hasDropdown) {
-                const active = isResourcesActive();
+                const isPrograms = link.label === "Programs";
+                const isFoundation = link.label === "Foundation";
+                const isArena = link.label === "Arena";
+                const active = isFoundation ? isFoundationActive() : (isPrograms ? isProgramsActive() : isArenaActive());
+                const sections = isPrograms ? programSections : (isFoundation ? foundationSections : arenaSections);
+
                 return (
                   <DropdownMenu key={link.label}>
                     <DropdownMenuTrigger className="outline-none group">
@@ -121,7 +167,7 @@ const Navbar = () => {
                       align="center"
                       className="w-[240px] flex flex-col p-4 gap-1 bg-background/95 backdrop-blur-2xl border-border/50 shadow-2xl animate-in fade-in zoom-in duration-200"
                     >
-                      {resourceSections.map((subLink) => (
+                      {sections.map((subLink) => (
                         <DropdownMenuItem
                           key={subLink.label}
                           className="px-0 py-2 focus:bg-transparent group cursor-pointer"
@@ -202,7 +248,9 @@ const Navbar = () => {
           >
             <nav className="flex flex-col gap-2 pb-8">
               {navLinks.map((link, i) => {
-                const active = link.hasDropdown ? isResourcesActive() : isActive(link.href);
+                const active = link.hasDropdown 
+                  ? (link.label === "Foundation" ? isFoundationActive() : (link.label === "Programs" ? isProgramsActive() : isArenaActive()))
+                  : isActive(link.href);
 
                 return (
                   <div key={link.label}>
@@ -216,11 +264,27 @@ const Navbar = () => {
                     >
                       {link.hasDropdown ? (
                         <button
-                          onClick={() => setResourcesOpen(!resourcesOpen)}
+                          onClick={() => {
+                            if (link.label === "Programs") {
+                              setProgramsOpen(!programsOpen);
+                              setArenaOpen(false);
+                              setFoundationOpen(false);
+                            } else if (link.label === "Foundation") {
+                              setFoundationOpen(!foundationOpen);
+                              setProgramsOpen(false);
+                              setArenaOpen(false);
+                            } else if (link.label === "Arena") {
+                              setArenaOpen(!arenaOpen);
+                              setProgramsOpen(false);
+                              setFoundationOpen(false);
+                            }
+                          }}
                           className="flex items-center justify-between w-full"
                         >
                           <span>{link.label}</span>
-                          <ChevronDown className={`transition-transform duration-300 ${resourcesOpen ? "rotate-180" : ""}`} />
+                          <ChevronDown className={`transition-transform duration-300 ${
+                            (link.label === "Programs" ? programsOpen : (link.label === "Foundation" ? foundationOpen : arenaOpen)) ? "rotate-180" : ""
+                          }`} />
                         </button>
                       ) : (
                         <Link to={link.href!} className="w-full" onClick={() => setMobileOpen(false)}>
@@ -229,13 +293,13 @@ const Navbar = () => {
                       )}
                     </motion.div>
 
-                    {link.hasDropdown && resourcesOpen && (
+                    {link.hasDropdown && (link.label === "Programs" ? programsOpen : (link.label === "Foundation" ? foundationOpen : arenaOpen)) && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         className="flex flex-col gap-2 py-4 pl-4"
                       >
-                        {resourceSections.map((subLink) => (
+                        {(link.label === "Programs" ? programSections : (link.label === "Foundation" ? foundationSections : arenaSections)).map((subLink) => (
                           <Link
                             key={subLink.label}
                             to={subLink.href}
@@ -261,7 +325,7 @@ const Navbar = () => {
                 variant="shimmer"
                 className="w-full"
               >
-                Register Now
+                Join a community
               </CTAButton>
             </div>
           </motion.div>

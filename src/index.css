@@ -83,13 +83,13 @@
 
     --hero-overlay: linear-gradient(
       to top,
-      hsl(220 20% 6% / 0.95) 0%,
-      hsl(220 20% 6% / 0.6) 40%,
-      hsl(220 20% 6% / 0.2) 70%,
-      hsl(220 20% 6% / 0.05) 100%
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.7) 35%,
+      rgba(0,0,0,0.3) 65%,
+      rgba(0,0,0,0.5) 100%
     );
 
-    --slider-glow: 0 0 60px 10px hsl(324 100% 46% / 0.1);
+    --slider-glow: none;
 
     --sidebar-background: 0 0% 95%;
     --sidebar-foreground: 220 20% 10%;
@@ -135,10 +135,10 @@
 
     --hero-overlay: linear-gradient(
       to top,
-      hsl(220 20% 6% / 0.95) 0%,
-      hsl(220 20% 6% / 0.6) 40%,
-      hsl(220 20% 6% / 0.2) 70%,
-      hsl(220 20% 6% / 0.05) 100%
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.7) 35%,
+      rgba(0,0,0,0.3) 65%,
+      rgba(0,0,0,0.5) 100%
     );
 
     --slider-glow: 0 0 60px 10px hsl(324 100% 46% / 0.2);
@@ -319,8 +319,8 @@
 
   .dark .text-glow {
     text-shadow:
-      0 0 40px hsl(324 100% 46% / 0.3),
-      0 0 80px hsl(11 97% 72% / 0.1);
+      0 0 40px hsl(324 100% 46% / 0.4),
+      0 0 80px hsl(11 97% 72% / 0.2);
   }
 
   .slider-progress {

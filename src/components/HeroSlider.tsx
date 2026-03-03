@@ -150,14 +150,25 @@ const HeroSlider = () => {
               </motion.span>
 
               {/* Title */}
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                className="mb-4 sm:mb-6 text-glow text-white"
-              >
-                {slide.title}
-              </motion.h1>
+              {current === 0 ? (
+                <motion.h1
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-glow text-white leading-[1.1]"
+                >
+                  {slide.title}
+                </motion.h1>
+              ) : (
+                <motion.h2
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-glow text-white leading-[1.1]"
+                >
+                  {slide.title}
+                </motion.h2>
+              )}
 
               {/* Subtitle */}
               <motion.p

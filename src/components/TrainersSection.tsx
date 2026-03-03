@@ -74,6 +74,7 @@ Success369 is guided by two stewards who believe success is cultivated with clar
                     <img
                       src={trainer.image}
                       alt={trainer.name}
+                      loading="lazy"
                       className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                     {/* Gradient overlay */}

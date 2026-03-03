@@ -69,16 +69,16 @@ const AudioPlayer = () => {
         ref={audioRef}
         src="/meditation-music.mp3"
         loop
-        preload="auto"
+        preload="metadata"
       />
       <motion.button
         onClick={toggleMute}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className={`flex h-14 w-14 items-center justify-center rounded-full backdrop-blur-xl border-2 shadow-2xl transition-all duration-500 ${
-          isMuted 
-            ? "bg-white/10 border-white/20 text-white/50" 
-            : "bg-primary/20 border-primary text-primary shadow-primary/40 animate-pulse"
+        className={`flex h-14 w-14 items-center justify-center rounded-full backdrop-blur-xl border border-border/50 shadow-md dark:shadow-[0_10px_30px_-10px_rgba(var(--primary),0.3)] transition-all duration-500 overflow-hidden ${
+          isMuted
+            ? "bg-card text-muted-foreground hover:text-foreground hover:scale-110 active:scale-95"
+            : "bg-primary border-primary text-white shadow-sm dark:shadow-primary/40 dark:animate-pulse hover:scale-110 active:scale-95"
         }`}
         aria-label={isMuted ? "Unmute meditation music" : "Mute meditation music"}
       >

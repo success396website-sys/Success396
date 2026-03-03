@@ -51,14 +51,16 @@ const GlobalCTA = ({
       {/* Background video */}
       <div className="absolute inset-0">
         <video
-          src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
+          src="https://videos.pexels.com/video-files/3571264/3571264-hd_1920_1080_30fps.mp4"
           autoPlay
           muted
           loop
           playsInline
-          className="h-full w-full object-cover"
+          preload="metadata"
+          className="h-full w-full object-cover opacity-60 transition-opacity duration-1000"
+          onCanPlay={(e) => (e.currentTarget.className = "h-full w-full object-cover opacity-100 transition-opacity duration-1000")}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/95" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/80 to-black/95" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-accent/10" />
       </div>
 
