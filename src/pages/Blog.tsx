@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, Sparkles, Clock, Search, Check } from "lucide-react";
+import { ArrowRight, Sparkles, Clock, Search } from "lucide-react";
 import { Link } from "react-router-dom";
-import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import GlobalCTA from "@/components/GlobalCTA";
 import { blogPosts, categories, type BlogCategory } from "@/data/blog";
 import { fadeUp } from "@/lib/animations";
 
@@ -16,21 +16,6 @@ type FilterType = "All" | BlogCategory;
 const Blog = () => {
   const [filter, setFilter] = useState<FilterType>("All");
   const [search, setSearch] = useState("");
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
-
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail || !newsletterEmail.includes("@")) {
-      toast.error("Please enter a valid email address.");
-      return;
-    }
-    // Future: send to backend/email service
-    setNewsletterSubmitted(true);
-    toast.success("Welcome aboard! You'll receive our next insight soon.");
-    setNewsletterEmail("");
-  };
-
   const featured = blogPosts.find((p) => p.featured);
 
   const filtered = blogPosts.filter((p) => {
@@ -268,56 +253,13 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Newsletter CTA */}
-      <section className="relative py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-card/20 to-primary/5" />
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-primary/8 rounded-full blur-[120px]" />
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="mb-4">
-              Stay in the loop
-            </h2>
-            <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
-              Get weekly insights on leadership, clarity, and sustainable success delivered to your inbox.
-            </p>
-            {newsletterSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex items-center justify-center gap-3 text-primary font-semibold"
-              >
-                <Check size={20} />
-                <span>You're subscribed! Check your inbox soon.</span>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-                <input
-                  type="email"
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  aria-label="Email address for newsletter"
-                  className="flex-1 px-5 py-3 rounded-full bg-card/60 border border-border/40 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
-                />
-                <motion.button
-                  type="submit"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="relative px-6 py-3 rounded-full text-sm font-semibold text-primary-foreground overflow-hidden group"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary via-pink-500 to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
-                  <span className="relative">Subscribe</span>
-                </motion.button>
-              </form>
-            )}
-          </motion.div>
-        </div>
-      </section>
+      <GlobalCTA
+        kind="form"
+        title="Meaningful insights, delivered without noise."
+        description="Get weekly perspectives on clarity, congruence, and catalysis — the three pillars of lasting transformation."
+        showPillars={true}
+      />
+
 
       <Footer />
     </div>

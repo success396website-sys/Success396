@@ -24,8 +24,8 @@ const ProgramGita = () => {
       </Helmet>
       <Navbar />
 
-      {/* --- HERO SECTION (High-Conversion Style) --- */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* --- HERO SECTION --- */}
+      <section id="hero" className="relative h-screen w-full overflow-hidden bg-black">
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
           <video
@@ -33,53 +33,58 @@ const ProgramGita = () => {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover opacity-60"
+            className="h-full w-full object-cover"
           >
             <source src={gitaVideo} type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/95" />
         </div>
+        <div className="absolute inset-0 hero-overlay" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center pt-20">
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold tracking-widest uppercase mb-8 backdrop-blur-md">
-              <Sparkles size={14} />
-              Success369 – Phase 1: PAUSE
-            </span>
-          </motion.div>
+        {/* Hero content — left-aligned, bottom-anchored */}
+        <div className="absolute inset-0 flex items-end z-10">
+          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 pb-28 sm:pb-32">
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0}>
+              <span className="mb-3 sm:mb-4 inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-white backdrop-blur-md">
+                <Sparkles size={12} />
+                Success369 – Phase 1: PAUSE
+              </span>
+            </motion.div>
 
-          <motion.h1
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={1}
-            className="font-display text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.05] mb-8 tracking-tight text-white"
-          >
-            Some moments <br />
-            <span className="text-primary text-glow italic">don’t need speed.</span>
-          </motion.h1>
-
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
-            custom={2}
-            className="text-xl sm:text-2xl text-white/90 font-light max-w-3xl mx-auto mb-12 leading-relaxed"
-          >
-            They need clarity. GITA is the essential entry point for those at a decision point, designed to reveal the direction that makes sense for your next move.
-          </motion.p>
-
-          <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={3} className="flex flex-col sm:flex-row items-center justify-center gap-5">
-            <CTAButton
-              to="/apply/gita"
-              size="lg"
-              variant="shimmer"
+            <motion.h1
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={1}
+              className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]"
             >
-              Apply for GITA
-            </CTAButton>
-          </motion.div>
+              Some moments — <span className="text-primary text-glow italic">don't need speed.</span>
+            </motion.h1>
+
+            <motion.p
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={2}
+              className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-white/90 font-light"
+            >
+              They need clarity. GITA is the essential entry point for those at a decision point, designed to reveal the direction that makes sense for your next move.
+            </motion.p>
+
+            <motion.div
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={3}
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
+            >
+              <CTAButton to="/apply/gita" size="md" variant="shimmer">
+                Apply for GITA
+              </CTAButton>
+            </motion.div>
+          </div>
         </div>
       </section>
+
 
       {/* --- FOUNDATION STYLE: WHO SHOULD BEGIN? --- */}
       <section className="section bg-background relative overflow-hidden">
