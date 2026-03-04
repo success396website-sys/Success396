@@ -710,77 +710,6 @@ const Success369Page = () => {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════
-          THE FOUR JOURNEYS
-      ══════════════════════════════════════ */}
-      <section className="section relative bg-card/10 overflow-hidden">
-        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-primary/5 blur-[100px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-accent/5 blur-[100px] pointer-events-none" />
-
-        <div className="container-custom relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16 max-w-3xl mx-auto"
-          >
-            <div className="inline-flex items-center gap-3 mb-6">
-              <span className="h-[1px] w-8 bg-primary/60" />
-              <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">
-                One Architecture. Multiple Doors.
-              </p>
-              <span className="h-[1px] w-8 bg-primary/60" />
-            </div>
-            <h2>
-              The Success369{" "}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Journeys
-              </span>
-            </h2>
-            <p className="text-muted-foreground text-lg leading-relaxed">
-              GITA, MAYA, SARVAM, and SHAKTI are independent applications of the 3–6–9 Model. Each applies the architecture in a different context. None is a prerequisite for another.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {journeys.map(({ name, tagline, image, href, color }, i) => (
-              <motion.div
-                key={name}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                style={{ marginTop: i % 2 === 1 ? "48px" : "0px" }}
-                className="group relative"
-              >
-                <Link to={href} className="block">
-                  <div className="relative rounded-[2rem] overflow-hidden border border-border/30 hover:border-primary/40 transition-all duration-700 hover:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)]">
-                    <div className="relative h-72 sm:h-80 overflow-hidden">
-                      <img
-                        src={image}
-                        alt={name}
-                        className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-110 transition-all duration-1000 ease-out"
-                        loading="lazy"
-                      />
-                      <div className={`absolute inset-0 bg-gradient-to-t ${color} via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700`} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                    </div>
-
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <p className="text-primary text-xs font-bold uppercase tracking-widest mb-1">{tagline}</p>
-                      <h3 className="text-white font-display font-extrabold text-2xl mb-3 leading-tight">{name}</h3>
-                      <div className="flex items-center gap-2 text-white/60 text-xs font-medium group-hover:text-white/90 transition-colors">
-                        <span>Explore</span>
-                        <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══════════════════════════════════════
           GLOBAL CTA
@@ -793,7 +722,7 @@ const Success369Page = () => {
           </h2>
         }
         description="Most people start with a decision, a tension, a sense that something could be more aligned. That is enough. The architecture works quietly in the background."
-        ctaText="Begin with Clarity — Take a Free Session"
+        ctaText="Take a Free Session"
         ctaHref="/free-session"
         showPillars={true}
       />
