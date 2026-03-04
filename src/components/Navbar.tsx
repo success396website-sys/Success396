@@ -293,7 +293,7 @@ const Navbar = () => {
               variant="shimmer"
               className="px-5 py-2 text-[14px]"
             >
-              Join a community
+              Join our community
             </CTAButton>
           </div>
 
@@ -416,7 +416,7 @@ const Navbar = () => {
                 variant="shimmer"
                 className="w-full"
               >
-                Join a community
+                Join our community
               </CTAButton>
             </div>
           </motion.div>

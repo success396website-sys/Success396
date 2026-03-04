@@ -357,12 +357,14 @@ const Podcast = () => {
               <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
                 We're always looking for aligned leaders and visionaries to join our conversations. If you're building something that matters, we want to hear from you.
               </p>
-              <button 
+              <CTAButton 
                 onClick={() => setShowGuestForm(true)}
-                className="inline-block font-body text-[16px] font-bold px-[44px] py-[22px] rounded-[12px] no-underline cursor-pointer relative overflow-hidden group bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] text-white uppercase tracking-[0.2em] transition-all duration-500 hover:shadow-[0_0_40px_rgba(197,160,89,0.4)]"
+                size="lg"
+                variant="shimmer"
+                className="mx-auto"
               >
                 Apply to be a Guest
-              </button>
+              </CTAButton>
             </div>
             
             {/* Background Decoration */}
