@@ -63,7 +63,7 @@ const Footer = () => {
                 <img 
                   src={logo} 
                   alt="Success369" 
-                  className="h-full w-auto object-contain invert dark:invert-0 transition-all duration-500" 
+                  className="h-full w-auto object-contain transition-all duration-500" 
                 />
               </div>
             </Link>

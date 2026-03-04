@@ -18,8 +18,10 @@ import {
   MessageSquare,
 } from "lucide-react";
 import logo from "@/assets/logo.png";
+import logoLight from "@/assets/logo-light.png";
 import CTAButton from "@/components/CTAButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { useTheme } from "next-themes";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -102,7 +104,11 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const { theme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const location = useLocation();
+
+  useEffect(() => setMounted(true), []);
 
   /* Scroll listener */
   useEffect(() => {
@@ -143,6 +149,11 @@ const Navbar = () => {
     "/", "/programs", "/book", "/events", "/podcast",
     "/program-maya", "/program-gita", "/program-sarvam", "/program-shakti",
   ].includes(location.pathname);
+
+  // Condition to show the light mode logo (has dark text and colorful circle)
+  // We should use the white logo if we are in dark mode OR if we are at the top of a dark hero page
+  const isLightMode = mounted && (resolvedTheme === "light" || theme === "light");
+  const shouldUseLightLogo = isLightMode && (scrolled || !isDarkHeroPage);
 
   const navTextClass = (active: boolean) =>
     active
@@ -189,9 +200,9 @@ const Navbar = () => {
           {/* ── Logo ── */}
           <Link to="/" className="flex shrink-0 items-center">
             <img
-              src={logo}
+              src={shouldUseLightLogo ? logoLight : logo}
               alt="Success369"
-              className="h-16 w-auto object-contain dark:invert-0 invert"
+              className="h-16 w-auto object-contain transition-all duration-300"
             />
           </Link>
 
