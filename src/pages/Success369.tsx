@@ -24,12 +24,10 @@ import Footer from "@/components/Footer";
 import { fadeUp, fadeIn, scaleUp } from "@/lib/animations";
 
 // Asset imports
-import model369Video from "@/assets/Model 369.mp4";
-import success369Video from "@/assets/Success 369.mp4";
-import card1 from "@/assets/card-1.jpg";
-import card2 from "@/assets/card-2.jpg";
-import card3 from "@/assets/card-3.jpg";
-import card4 from "@/assets/card-4.jpg";
+import model369Video from "@/assets/Success 369.mp4";
+import clarityImg from "@/assets/CLARITY.JPG.jpeg";
+import congruenceImg from "@/assets/CONGRUENCE.jpg.jpeg";
+import catalysisImg from "@/assets/CATALYSIS.jpg.jpeg";
 
 /* ─────────────────────────────────────────────
    DATA
@@ -60,28 +58,28 @@ const journeys = [
   {
     name: "MAYA",
     tagline: "Congruence",
-    image: card2,
+    image: congruenceImg,
     href: "/program-maya",
     color: "from-accent/20 to-transparent",
   },
   {
     name: "GITA",
     tagline: "Clarity",
-    image: card1,
+    image: clarityImg,
     href: "/program-gita",
     color: "from-primary/20 to-transparent",
   },
   {
     name: "SARVAM",
     tagline: "Build",
-    image: card3,
+    image: congruenceImg,
     href: "/program-sarvam",
     color: "from-primary/20 to-transparent",
   },
   {
     name: "SHAKTI",
     tagline: "Momentum",
-    image: card4,
+    image: catalysisImg,
     href: "/program-shakti",
     color: "from-accent/20 to-transparent",
   },
@@ -308,7 +306,7 @@ const Success369Page = () => {
             >
               <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden">
                 <img
-                  src={card1}
+                  src={clarityImg}
                   alt="Clarity — knowing who you are"
                   className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
                   loading="lazy"
@@ -410,7 +408,7 @@ const Success369Page = () => {
             >
               <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden">
                 <img
-                  src={card2}
+                  src={congruenceImg}
                   alt="Congruence — aligning intention with behaviour"
                   className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
                   loading="lazy"
@@ -545,13 +543,11 @@ const Success369Page = () => {
               className="relative"
             >
               <div className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border border-border/30">
-                <video
-                  src={success369Video}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  className="w-full h-full object-cover"
+                <img
+                  src={catalysisImg}
+                  alt="Catalysis — turning alignment into momentum"
+                  className="w-full h-full object-cover grayscale brightness-75 hover:grayscale-0 hover:brightness-100 transition-all duration-1000"
+                  loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 <div className="absolute bottom-5 left-5">
