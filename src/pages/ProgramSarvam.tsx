@@ -11,6 +11,7 @@ import sarvamVideo from "@/assets/sarvam.mp4";
 import sarvam1 from "@/assets/Sarvam/1.png";
 import sarvam2 from "@/assets/Sarvam/2.png";
 import { fadeUp } from "@/lib/animations";
+import sarvam3 from "@/assets/website.1.jpeg";
 
 // fadeUp imported from @/lib/animations
 
@@ -261,7 +262,7 @@ const ProgramSarvam = () => {
             >
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200"
+                  src={sarvam3}
                   alt="Success Architecture"
                   className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
                 />

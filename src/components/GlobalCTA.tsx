@@ -32,7 +32,7 @@ const GlobalCTA = ({
   kind = "button",
   ctaText = "Get Started",
   ctaHref = "#",
-  variant = "shimmer",
+  variant = "primary",
   showPillars = true,
   className,
   id = "newsletter",
@@ -56,7 +56,7 @@ const GlobalCTA = ({
   ];
 
   return (
-    <section id={id} className={cn("relative section overflow-hidden bg-black", className)}>
+    <section id={id} className={cn("relative py-12 md:py-16 overflow-hidden bg-black", className)}>
       {/* Background video */}
       <div className="absolute inset-0">
         <video
@@ -99,58 +99,51 @@ const GlobalCTA = ({
       </div>
 
       <div className="relative z-10 container-custom">
-        {/* Pillar icons */}
+        {/* Pillar icons - much smaller and tighter */}
         {showPillars && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex items-center justify-center gap-6 sm:gap-8 mb-10"
+            className="flex items-center justify-center gap-4 sm:gap-6 mb-4"
           >
             {pillars.map(({ icon: PillarIcon, label }, i) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.1 + i * 0.1 }}
-                className="flex flex-col items-center gap-2"
-              >
-                <div className="h-12 w-12 sm:h-14 sm:w-14 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center backdrop-blur-sm">
-                  <PillarIcon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
+              <div key={label} className="flex flex-col items-center gap-0.5">
+                <div className="h-8 w-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center backdrop-blur-sm">
+                  <PillarIcon className="h-3.5 w-3.5 text-primary" />
                 </div>
-                <span className="text-[10px] sm:text-xs font-display uppercase tracking-widest text-primary/70">
+                <span className="text-[8px] font-display uppercase tracking-widest text-primary/60">
                   {label}
                 </span>
-              </motion.div>
+              </div>
             ))}
           </motion.div>
         )}
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-10 max-w-4xl mx-auto"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-6 max-w-2xl mx-auto"
         >
-          <div className="mb-4">
+          <div className="mb-2">
             {typeof title === "string" ? (
-               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-tight">
+               <h2 className="text-2xl md:text-3xl font-display font-bold mb-1 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-tight">
                 {title}
                </h2>
             ) : (
                isValidElement<{ className?: string }>(title) ? cloneElement(title, { 
                  className: cn(
-                   "text-4xl md:text-5xl font-display font-bold mb-4 uppercase tracking-tight", 
+                   "text-2xl md:text-3xl font-display font-bold mb-1 uppercase tracking-tight", 
                    title.props.className
                  ) 
                }) : title
             )}
           </div>
           {description && (
-            <p className="text-white/80 text-lg md:text-xl max-w-xl mx-auto">
+            <p className="text-white/60 text-sm md:text-base max-w-lg mx-auto font-light leading-snug">
               {description}
             </p>
           )}
@@ -158,106 +151,77 @@ const GlobalCTA = ({
 
         {/* CTA Content */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-xl mx-auto"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="max-w-lg mx-auto"
         >
           {kind === "form" ? (
             <AnimatePresence mode="wait">
               {!submitted ? (
-                <motion.div key="form-container" className="space-y-10">
+                <motion.div key="form-container" className="space-y-4">
                   <motion.form
                     key="form"
                     onSubmit={handleSubmit}
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    className="space-y-4"
+                    className="space-y-3"
                   >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="email" className="text-white/60 text-[10px] uppercase tracking-widest ml-1">Email Address</Label>
-                        <input
-                          id="email"
-                          type="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="Your primary email"
-                          required
-                          className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-primary/60 focus:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300"
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="whatsapp" className="text-white/60 text-[10px] uppercase tracking-widest ml-1">WhatsApp Number (optional)</Label>
-                        <input
-                          id="whatsapp"
-                          type="tel"
-                          value={whatsapp}
-                          onChange={(e) => setWhatsapp(e.target.value)}
-                          placeholder="+00 00000 00000"
-                          className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-primary/60 focus:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300"
-                        />
-                      </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email Address"
+                        required
+                        className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-primary/40 transition-all"
+                      />
+                      <input
+                        type="tel"
+                        value={whatsapp}
+                        onChange={(e) => setWhatsapp(e.target.value)}
+                        placeholder="WhatsApp (optional)"
+                        className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-lg px-4 py-2.5 text-xs text-white placeholder:text-white/30 focus:outline-none focus:border-primary/40 transition-all"
+                      />
                     </div>
                     
-                    <div className="flex items-start gap-3 pt-2">
+                    <div className="flex items-center gap-2 justify-center">
                       <Checkbox 
                         id="terms" 
                         checked={agreed}
                         onCheckedChange={(checked) => setAgreed(checked as boolean)}
-                        className="mt-1 border-white/40 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                        className="border-white/20 data-[state=checked]:bg-primary h-3.5 w-3.5"
                       />
                       <Label 
                         htmlFor="terms" 
-                        className="text-white/50 text-[11px] leading-relaxed font-normal cursor-pointer hover:text-white/70 transition-colors"
+                        className="text-white/40 text-[9px] font-normal cursor-pointer"
                       >
-                        I agree to receive communication from Success369 and accept the <Link to="/terms-conditions" className="text-primary hover:underline">Terms & Conditions</Link> and <Link to="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link>.
+                        I accept the <Link to="/terms-conditions" className="text-primary/70">Terms</Link> & <Link to="/privacy-policy" className="text-primary/70">Privacy Policy</Link>
                       </Label>
                     </div>
 
-                    <div className="pt-4">
-                      <CTAButton
-                        type="submit"
-                        disabled={!agreed || !email}
-                        variant="primary"
-                        size="lg"
-                        className="w-full rounded-xl py-6"
-                      >
-                        Subscribe
-                      </CTAButton>
-                    </div>
+                    <CTAButton
+                      type="submit"
+                      disabled={!agreed || !email}
+                      variant="primary"
+                      size="sm"
+                      className="w-full rounded-lg py-3 text-xs"
+                    >
+                      Subscribe
+                    </CTAButton>
                   </motion.form>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-6 border-t border-white/10">
-                    <div className="space-y-4">
-                      <h4 className="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Our Promise</h4>
-                      <ul className="space-y-3">
-                        {promises.map((promise, i) => (
-                          <li key={i} className="flex items-center gap-3 text-white/50 text-xs">
-                            <div className="h-1 w-1 rounded-full bg-primary/40" />
-                            {promise}
-                          </li>
-                        ))}
-                      </ul>
+                  {/* Ultra-compact Footer Row */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-3 border-t border-white/5 text-[9px]">
+                    <div className="flex gap-3">
+                      {["No spam", "No noise", "Just clarity"].map((p, i) => (
+                        <span key={i} className="text-white/30 flex items-center gap-1">
+                          <div className="w-0.5 h-0.5 rounded-full bg-primary/30" /> {p}
+                        </span>
+                      ))}
                     </div>
-
-                    <div className="space-y-4">
-                      <h4 className="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Prefer a Conversation Instead?</h4>
-                      <p className="text-white/50 text-xs leading-relaxed">
-                        If you’d rather talk than subscribe, that’s always welcome.
-                      </p>
-                      <div className="pt-2">
-                        <Link 
-                          to="/free-session" 
-                          className="inline-flex items-center gap-2 text-white hover:text-primary transition-colors text-sm font-semibold group"
-                        >
-                          Take a Free Session
-                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                        </Link>
-                      </div>
-                    </div>
+                    <Link to="/free-session" className="text-primary/80 hover:text-primary font-bold transition-colors uppercase tracking-wider flex items-center gap-1">
+                      Free Session <ArrowRight size={10} />
+                    </Link>
                   </div>
                 </motion.div>
               ) : (
@@ -291,8 +255,8 @@ const GlobalCTA = ({
                 href={ctaHref.startsWith("/") ? undefined : ctaHref}
                 to={ctaHref.startsWith("/") ? ctaHref : undefined}
                 variant={variant}
-                size="lg"
-                className="px-10"
+                size="md"
+                className="px-8"
                 icon={Icon}
               >
                 {ctaText}
