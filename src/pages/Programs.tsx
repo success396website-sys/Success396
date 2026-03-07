@@ -10,8 +10,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
-import JourneySection from "@/components/JourneySection";
 import VideoCardsSection from "@/components/VideoCardsSection";
+import FAQSection from "@/components/FAQSection";
+import ProgramComparison from "@/components/ProgramComparison";
 import journeyVideo from "@/assets/Journey op 1.mp4";
 import { fadeUp } from "@/lib/animations";
 
@@ -261,13 +262,15 @@ const Programs = () => {
         </div>
       </section>
 
-      {/* --- JOURNEY SECTION (Who It's For) --- */}
-      <JourneySection />
+      {/* --- COMPARISON TABLE --- */}
+      <ProgramComparison />
  
       {/* --- SHOWCASE SECTION (The Programs) --- */}
       <VideoCardsSection />
 
-
+      {/* --- FAQ SECTION --- */}
+      <FAQSection />
+ 
       {/* --- FINAL CONVERSION --- */}
       <GlobalCTA
         title={

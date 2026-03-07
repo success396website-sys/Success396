@@ -1,5 +1,6 @@
 import React, { useState, isValidElement, cloneElement } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 import { ArrowRight, Zap, Heart, Target, Check, LucideIcon } from "lucide-react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
@@ -38,6 +39,7 @@ const GlobalCTA = ({
   icon: Icon = ArrowRight,
 }: GlobalCTAProps) => {
   const [email, setEmail] = useState("");
+  const [whatsapp, setWhatsapp] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
@@ -45,6 +47,13 @@ const GlobalCTA = ({
     e.preventDefault();
     if (email) setSubmitted(true);
   };
+
+  const promises = [
+    "No spam",
+    "No selling without context",
+    "No constant messaging",
+    "Just clarity, shared when it’s meaningful."
+  ];
 
   return (
     <section id={id} className={cn("relative section overflow-hidden bg-black", className)}>
@@ -128,13 +137,13 @@ const GlobalCTA = ({
         >
           <div className="mb-4">
             {typeof title === "string" ? (
-               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+               <h2 className="text-4xl md:text-5xl font-display font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-tight">
                 {title}
                </h2>
             ) : (
                isValidElement<{ className?: string }>(title) ? cloneElement(title, { 
                  className: cn(
-                   "text-4xl md:text-5xl font-display font-bold mb-4", 
+                   "text-4xl md:text-5xl font-display font-bold mb-4 uppercase tracking-tight", 
                    title.props.className
                  ) 
                }) : title
@@ -153,73 +162,124 @@ const GlobalCTA = ({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-lg mx-auto"
+          className="max-w-xl mx-auto"
         >
           {kind === "form" ? (
             <AnimatePresence mode="wait">
               {!submitted ? (
-                <motion.form
-                  key="form"
-                  onSubmit={handleSubmit}
-                  initial={{ opacity: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="space-y-4"
-                >
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Enter your email"
-                      required
-                      className="flex-1 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-5 py-3.5 text-sm text-white placeholder:text-white/50 focus:outline-none focus:border-primary/60 focus:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300"
-                    />
-                    <CTAButton
-                      type="submit"
-                      disabled={!agreed}
-                      variant="primary"
-                      size="md"
-                      className="rounded-xl px-7"
-                    >
-                      Subscribe
-                    </CTAButton>
+                <motion.div key="form-container" className="space-y-10">
+                  <motion.form
+                    key="form"
+                    onSubmit={handleSubmit}
+                    initial={{ opacity: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4"
+                  >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="email" className="text-white/60 text-[10px] uppercase tracking-widest ml-1">Email Address</Label>
+                        <input
+                          id="email"
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="Your primary email"
+                          required
+                          className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-primary/60 focus:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300"
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="whatsapp" className="text-white/60 text-[10px] uppercase tracking-widest ml-1">WhatsApp Number (optional)</Label>
+                        <input
+                          id="whatsapp"
+                          type="tel"
+                          value={whatsapp}
+                          onChange={(e) => setWhatsapp(e.target.value)}
+                          placeholder="+00 00000 00000"
+                          className="w-full bg-white/5 backdrop-blur-md border border-white/10 rounded-xl px-5 py-4 text-sm text-white placeholder:text-white/30 focus:outline-none focus:border-primary/60 focus:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.3)] transition-all duration-300"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start gap-3 pt-2">
+                      <Checkbox 
+                        id="terms" 
+                        checked={agreed}
+                        onCheckedChange={(checked) => setAgreed(checked as boolean)}
+                        className="mt-1 border-white/40 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                      />
+                      <Label 
+                        htmlFor="terms" 
+                        className="text-white/50 text-[11px] leading-relaxed font-normal cursor-pointer hover:text-white/70 transition-colors"
+                      >
+                        I agree to receive communication from Success369 and accept the <Link to="/terms-conditions" className="text-primary hover:underline">Terms & Conditions</Link> and <Link to="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link>.
+                      </Label>
+                    </div>
+
+                    <div className="pt-4">
+                      <CTAButton
+                        type="submit"
+                        disabled={!agreed || !email}
+                        variant="primary"
+                        size="lg"
+                        className="w-full rounded-xl py-6"
+                      >
+                        Subscribe
+                      </CTAButton>
+                    </div>
+                  </motion.form>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-10 pt-6 border-t border-white/10">
+                    <div className="space-y-4">
+                      <h4 className="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Our Promise</h4>
+                      <ul className="space-y-3">
+                        {promises.map((promise, i) => (
+                          <li key={i} className="flex items-center gap-3 text-white/50 text-xs">
+                            <div className="h-1 w-1 rounded-full bg-primary/40" />
+                            {promise}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="text-primary text-[10px] font-bold uppercase tracking-[0.2em]">Prefer a Conversation Instead?</h4>
+                      <p className="text-white/50 text-xs leading-relaxed">
+                        If you’d rather talk than subscribe, that’s always welcome.
+                      </p>
+                      <div className="pt-2">
+                        <Link 
+                          to="/free-session" 
+                          className="inline-flex items-center gap-2 text-white hover:text-primary transition-colors text-sm font-semibold group"
+                        >
+                          Take a Free Session
+                          <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-center gap-2 pt-2">
-                    <Checkbox 
-                      id="terms" 
-                      checked={agreed}
-                      onCheckedChange={(checked) => setAgreed(checked as boolean)}
-                      className="border-white/40 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
-                    />
-                    <Label 
-                      htmlFor="terms" 
-                      className="text-white/70 text-[11px] sm:text-xs font-normal cursor-pointer hover:text-white transition-colors"
-                    >
-                      I agree to receive communication and accept Terms & Privacy Policy.
-                    </Label>
-                  </div>
-                </motion.form>
+                </motion.div>
               ) : (
                 <motion.div
                   key="success"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-center rounded-2xl bg-black/50 backdrop-blur-md border border-primary/30 p-8"
+                  className="text-center rounded-2xl bg-black/50 backdrop-blur-md border border-primary/30 p-12"
                 >
                   <motion.div
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     transition={{ type: "spring", stiffness: 200, delay: 0.1 }}
-                    className="h-14 w-14 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto mb-4"
+                    className="h-20 w-20 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center mx-auto mb-6"
                   >
-                    <Check className="h-7 w-7 text-primary" />
+                    <Check className="h-10 w-10 text-primary" />
                   </motion.div>
-                  <h3 className="mb-2 uppercase tracking-wider text-xl text-white">
+                  <h3 className="mb-3 uppercase tracking-[0.2em] text-2xl text-white font-display">
                     Welcome to the Journey
                   </h3>
-                  <p className="text-white/70 text-sm">
+                  <p className="text-white/70 text-base leading-relaxed">
                     Check your inbox — your first insight is on its way.
                   </p>
                 </motion.div>

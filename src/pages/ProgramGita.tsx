@@ -4,13 +4,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Eye, Sparkles, CheckCircle2, Clock, Globe, Users, Target, Building } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
+import FAQSection from "@/components/FAQSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import gitaVideo from "@/assets/gita.mp4";
-import card1 from "@/assets/card-1.jpg";
-import card2 from "@/assets/card-2.jpg";
-import card3 from "@/assets/card-3.jpg";
-import card4 from "@/assets/card-4.jpg";
+import gita1 from "@/assets/Gita/1.png";
+import gita2 from "@/assets/Gita/2.png";
 import { fadeUp } from "@/lib/animations";
 
 // fadeUp imported from @/lib/animations
@@ -119,13 +118,13 @@ const ProgramGita = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 items-start pb-20">
             {[
               {
-                image: card1,
+                image: gita1,
                 title: "Professionals at a Crossroads",
                 description: "Career moves, leadership shifts, or moments of uncertainty—when acting without clarity can create years of confusion.",
                 step: "01",
               },
               {
-                image: card2,
+                image: gita2,
                 title: "Capable but Unclear Leaders",
                 description: "You have the momentum, but you question the direction. GITA helps you pause and choose your next step with confidence.",
                 step: "02",
@@ -166,6 +165,45 @@ const ProgramGita = () => {
                     <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">{card.description}</p>
                   </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- WHAT YOU GAIN (Transformation) --- */}
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="mb-6">What You Gain</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Clarity comes first. Action comes after."</p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Self-Understanding", desc: "Clear understanding of who you are right now.", icon: Users },
+              { title: "Direction Clarity", desc: "Knowing which path makes sense from here.", icon: Target },
+              { title: "Confident Decisions", desc: "Confidence in your next moves.", icon: Sparkles },
+              { title: "Grounded Path", desc: "A calm way forward from here.", icon: Building }
+            ].map((gain, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
+                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="mb-3">{gain.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -233,45 +271,35 @@ const ProgramGita = () => {
         </div>
       </section>
 
-      {/* --- WHAT YOU GAIN (Transformation) --- */}
-      <section className="py-24 sm:py-32 relative overflow-hidden">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">What You Gain</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Clarity comes first. Action comes after."</p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Self-Understanding", desc: "Clear understanding of who you are right now.", icon: Users },
-              { title: "Direction Clarity", desc: "Knowing which path makes sense from here.", icon: Target },
-              { title: "Confident Decisions", desc: "Confidence in your next moves.", icon: Sparkles },
-              { title: "Grounded Path", desc: "A calm way forward from here.", icon: Building }
-            ].map((gain, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
-                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="mb-3">{gain.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <FAQSection 
+        items={[
+          {
+            question: "What is GITA?",
+            answer: "GITA is a focused 3-hour guided clarity session. It helps you understand:\n• Where you are right now\n• What truly matters to you\n• What direction makes sense next\n\nGITA does not tell you what to do. It helps you see clearly enough to decide well."
+          },
+          {
+            question: "Who is GITA for?",
+            answer: "GITA is for anyone at a decision point. It is suited for:\n• Students planning their next step\n• Graduates choosing a path\n• Early professionals unsure about direction\n• Professionals considering change\n• Homemakers planning a restart\n• Leaders facing new responsibility\n• Entrepreneurs at a crossroads\n\nFrom metros to small towns and villages — if you need clarity before taking your next step, GITA is for you. You do not need to feel stuck. You only need to want clearer direction."
+          },
+          {
+            question: "What will I gain from GITA?",
+            answer: "By the end of the session, you will have:\n• Clear understanding of your current situation\n• Simpler choices\n• Reduced doubt\n• A confident next step\n• A guiding principle for future decisions\n\nYou leave calmer and clearer."
+          },
+          {
+            question: "How does the GITA journey work?",
+            answer: "GITA is:\n• A 3-hour guided session\n• Delivered 1:1 or in a small group\n• Available online or in person\n• Led by a trained Success369 guide\n\nThe session moves step by step: Reflection → Insight → Direction. There is no pressure to act immediately. Clarity comes first."
+          },
+          {
+            question: "Why does GITA matter?",
+            answer: "Many people act too quickly — and then spend years correcting their path. GITA helps you pause before you commit. Better clarity leads to better choices. Better choices lead to steady progress. In Success369, clarity always comes before action."
+          },
+          {
+            question: "Where does GITA fit in the Success369 journeys?",
+            answer: "For many, GITA is the starting point. For some, it is enough. For others, it opens the door to deeper journeys like MAYA or SARVAM. There is no obligation to continue."
+          }
+        ]}
+      />
+      
       <GlobalCTA
         title={
           <h2 className="text-white">

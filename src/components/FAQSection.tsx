@@ -1,36 +1,98 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
+import CTAButton from "./CTAButton";
 
-const faqs = [
+interface FAQItem {
+  question: string;
+  answer: string;
+  cta?: {
+    text: string;
+    href: string;
+  };
+}
+
+interface FAQSectionProps {
+  title?: string;
+  description?: string;
+  items?: FAQItem[];
+}
+
+const defaultFaqs: FAQItem[] = [
   {
-    question: "I feel unclear about my direction ?",
+    question: "What exactly does Success369 do?",
     answer:
-      "Success369 is a holistic coaching framework that combines clarity, alignment, and strategic direction to help individuals and organisations achieve meaningful success. We work through personalised sessions tailored to your unique goals.",
+      "Success369 helps individuals, leaders, teams, and organisations build success through clarity, alignment, and sustainable action.\nWe do this through guided conversations, structured journeys, and practical frameworks that support better decisions, stronger alignment, and meaningful momentum.",
   },
   {
-    question: "I know what I want, but I’m not living it consistently ?",
+    question: "Is Success369 coaching, training, or consulting?",
     answer:
-      "It's designed for driven individuals, professionals navigating transitions, founders seeking sustainable growth, and organisations wanting to align performance with purpose.",
+      "Success369 is not traditional coaching, training, or consulting.\nIt is a guided growth ecosystem that combines clarity work, alignment, and application—depending on where you are and what you need.\nSome journeys are reflective, some are applied, and some are strategic. The format adapts to the context.",
   },
   {
-    question: " I’m ready to build long-term, sustainable success ?",
+    question: "Who are the Success369 Journeys meant for?",
     answer:
-      "Engagements vary based on your needs. Individual coaching typically runs 3–6 months, while organisational programmes can extend to 12 months for deep cultural transformation.",
+      "Success369 Journeys are designed for:\n• Individuals at life or career crossroads\n• Professionals and leaders navigating growth or transition\n• Founders and entrepreneurs building long-term value\n• Teams and organisations seeking alignment and execution\n\nEach journey is stand-alone and chosen based on readiness—not hierarchy.",
+    cta: {
+      text: "Take a Free Session",
+      href: "/free-session"
+    }
   },
   {
-    question: "I’m aligned, but need stronger execution and momentum ?",
+    question: "Do I need to follow a fixed path or complete all journeys?",
     answer:
-      "We focus on coherence over hustle. Our approach integrates clarity, balance, and long-term vision rather than quick fixes—ensuring your success is sustainable and aligned with who you are.",
+      "No.\nEach Success369 Journey is complete in itself.\nThere is no mandatory sequence and no expectation to progress from one to another.\nYou engage with what fits your current need.",
   },
   {
-    question: "I’m not sure yet — I’d like to talk it through ?",
+    question: "I’m not sure which journey is right for me. What should I do?",
     answer:
-      "Absolutely. We encourage a free discovery call so we can understand your goals, answer your questions, and determine if Success369 is the right fit for your journey.",
+      "That’s common—and expected.\nIf you’re unsure, the best place to begin is a free Success369 session.\nIt’s a calm conversation designed to help you:\n• Understand where you are\n• See what fits\n• Decide without pressure",
+    cta: {
+      text: "Take a Free Session",
+      href: "/free-session"
+    }
+  },
+  {
+    question: "What happens in a free session?",
+    answer:
+      "The free session is a guided conversation, not a sales call.\nYou can expect:\n• Thoughtful listening\n• Clarifying questions\n• A clearer view of your situation\n• Honest guidance on whether—and how—Success369 may help\n\nThere is no obligation to proceed further.",
+  },
+  {
+    question: "Is Success369 only for individuals, or also for teams and organisations?",
+    answer:
+      "Success369 works at both levels.\nThe same principles apply to:\n• Individuals\n• Leadership teams\n• Organisations and institutions\n\nJourneys and engagements are adapted to context, scale, and responsibility.",
+  },
+  {
+    question: "How is Success369 different from other success or leadership programs?",
+    answer:
+      "Most programs focus on performance, tactics, or motivation.\nSuccess369 focuses on alignment first—because sustainable success depends on clarity, coherence, and integrity.\nWe don’t push speed.\nWe help build success that lasts.",
+  },
+  {
+    question: "Is this suitable if I’m already doing well?",
+    answer:
+      "Yes.\nMany people come to Success369 not because something is wrong—but because they want to ensure their success remains meaningful, aligned, and sustainable as responsibility grows.",
+  },
+  {
+    question: "Do I need to read the book before engaging?",
+    answer:
+      "No.\nThe book and the journeys work independently and together.\nSome people read first. Others begin with a conversation.\nBoth paths are valid.",
+  },
+  {
+    question: "How do I get started?",
+    answer:
+      "The simplest way to begin is with a free session.\nIt helps you explore Success369 without pressure and decide your next step with confidence.",
+    cta: {
+      text: "Take a Free Session",
+      href: "/free-session"
+    }
   },
 ];
 
-const FAQSection = () => {
+const FAQSection = ({ 
+  title = "FREQUENTLY ASKED QUESTIONS", 
+  description = "Understand how Success369 works and how it can help your journey.",
+  items = defaultFaqs 
+}: FAQSectionProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -53,17 +115,16 @@ const FAQSection = () => {
             </p>
             <span className="h-[1px] w-8 bg-primary/60" />
           </div>
-          <h2 className="mb-8">
-         Which Journey Is Right for You?
-          </h2>
+          <h2 className="mb-8">{title}</h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
-Use the guide below to identify where you are—and which Success369 Journey fits this moment.          </p>
+            {description}
+          </p>
         </motion.div>
 
         <div className="max-w-3xl mx-auto">
           {/* Accordion */}
           <div className="space-y-4">
-            {faqs.map((faq, index) => (
+            {items.map((faq, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -120,9 +181,18 @@ Use the guide below to identify where you are—and which Success369 Journey fit
                       >
                         <div className="px-6 sm:px-8 pb-6 sm:pb-8">
                           <div className="h-px w-full bg-border/30 mb-6" />
-                          <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-light">
-                            {faq.answer}
-                          </p>
+                          <div className="space-y-6">
+                            <p className="text-muted-foreground text-base md:text-lg leading-relaxed font-light whitespace-pre-line">
+                              {faq.answer}
+                            </p>
+                            {faq.cta && (
+                              <div className="pt-2">
+                                <CTAButton to={faq.cta.href} size="sm" variant="outline">
+                                  {faq.cta.text}
+                                </CTAButton>
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </motion.div>
                     )}

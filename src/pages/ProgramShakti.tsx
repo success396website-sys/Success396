@@ -4,9 +4,12 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Sun, Sparkles, Zap, Search, Route, Users, Target, Clock, Globe, Shield } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
+import FAQSection from "@/components/FAQSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import shaktiVideo from "@/assets/shakti.mp4";
+import shakti1 from "@/assets/Shakti/1.png";
+import shakti2 from "@/assets/Shakti/2.png";
 import { fadeUp } from "@/lib/animations";
 
 // fadeUp imported from @/lib/animations
@@ -116,13 +119,13 @@ const ProgramShakti = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 items-start pb-20">
             {[
               {
-                image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
+                image: shakti1,
                 title: "Leaders & Teams in Motion",
                 description: "Leaders strengthening presence and communication, and teams seeking alignment and execution rhythm. Translating purpose into performance.",
                 step: "01",
               },
               {
-                image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=1200",
+                image: shakti2,
                 title: "Journey Integration",
                 description: "Individuals and organisations emerging from MAYA, GITA, or SARVAM who need to translate their insights into real-world capability.",
                 step: "02",
@@ -160,6 +163,45 @@ const ProgramShakti = () => {
                     <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">{card.description}</p>
                   </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- WHAT YOU GAIN --- */}
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="mb-6">What You Gain</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Movement becomes clean and confident — not forced."</p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Sharper Execution", desc: "Translate your clarity into precise action.", icon: Target },
+              { title: "Stronger Influence", desc: "Build credibility through alignment and presence.", icon: Sparkles },
+              { title: "Team Alignment", desc: "Create execution rhythm without corporate jargon.", icon: Users },
+              { title: "Usable Tools", desc: "Practical, immediately applicable activation frameworks.", icon: Shield }
+            ].map((gain, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
+                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="mb-3">{gain.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -226,45 +268,43 @@ const ProgramShakti = () => {
         </div>
       </section>
 
-      {/* --- WHAT YOU GAIN --- */}
-      <section className="py-24 sm:py-32 relative overflow-hidden">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">What You Gain</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Movement becomes clean and confident — not forced."</p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Sharper Execution", desc: "Translate your clarity into precise action.", icon: Target },
-              { title: "Stronger Influence", desc: "Build credibility through alignment and presence.", icon: Sparkles },
-              { title: "Team Alignment", desc: "Create execution rhythm without corporate jargon.", icon: Users },
-              { title: "Usable Tools", desc: "Practical, immediately applicable activation frameworks.", icon: Shield }
-            ].map((gain, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
-                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="mb-3">{gain.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <FAQSection 
+        items={[
+          {
+            question: "What Is SHAKTI?",
+            answer: "SHAKTI is a set of focused, applied activation journeys rooted in the Catalysis pillar of the Success369 model. It strengthens the specific capabilities that convert:\n• Insight into execution\n• Alignment into influence\n• Intention into outcomes\n\nSHAKTI is not about adding more effort. It is about directing energy where it matters most. In the meaning economy, momentum is not created by force—it is created by coherent activation."
+          },
+          {
+            question: "Who SHAKTI Is For",
+            answer: "SHAKTI is designed for individuals and systems that already have a degree of clarity and alignment, and are now asking: How do we move faster—without losing coherence?\n\nSHAKTI is ideal for:\n• Leaders strengthening presence, credibility, or communication\n• Teams seeking trust, alignment, and execution rhythm\n• Organisations translating purpose into performance\n• Individuals emerging from GITA, MAYA, or SARVAM\n• Institutions needing targeted capability activation\n\nSHAKTI is not a starting point. It is an accelerator."
+          },
+          {
+            question: "What You Will Experience in SHAKTI",
+            answer: "Participants in SHAKTI typically experience:\n• Sharper execution — reduced friction between intent and action\n• Stronger influence — credibility, communication, and presence\n• Aligned teams — clarity of roles, trust, and shared direction\n• Practical tools — immediately applicable in real contexts\n• Sustainable momentum — progress that compounds, not burns out\n\nSHAKTI creates movement that feels clean, confident, and grounded."
+          },
+          {
+            question: "How SHAKTI Works",
+            answer: "SHAKTI is delivered through modular activation engagements. Each SHAKTI engagement is focused on a specific capability, context-aware and applied, and designed for clarity, relevance, and action.\n\nModules can be:\n• Experienced independently\n• Combined into short activation journeys\n• Integrated within MAYA or SARVAM\n• Delivered to individuals, teams, or organisations\n\nFormats are flexible and designed around real-world constraints."
+          },
+          {
+            question: "Examples of SHAKTI Activation Areas",
+            answer: "Depending on context and need, SHAKTI may focus on areas such as:\n• Clarity-Led Communication\n• Credible Leadership Presence\n• Aligned Teams & Trust Networks\n• Authentic Personal Brand Expression\n• Purpose-Driven Performance Systems\n\nEach engagement begins with understanding where alignment already exists—and then activating it."
+          },
+          {
+            question: "Duration & Format",
+            answer: "• Duration: 3–6 hours per module (or combined engagements)\n• Format: Online or in-person\n• Delivery: Individual, team, or organisational setting\n\nSHAKTI respects time while creating real movement."
+          },
+          {
+            question: "Where SHAKTI Fits in the Success369 Journeys",
+            answer: "SHAKTI can be experienced as a standalone activation, as a bridge between journeys, as an embedded activation layer within SARVAM, or as an organisational engagement.\n\nIt does not replace the core journeys. It amplifies them."
+          },
+          {
+            question: "Activate What Is Already Aligned",
+            answer: "If clarity is present and readiness exists, SHAKTI helps you move—cleanly and confidently."
+          }
+        ]}
+      />
+      
       <GlobalCTA
         title={
           <h2 className="text-white">

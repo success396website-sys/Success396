@@ -23,7 +23,12 @@ const Index = () => {
       <TrainersSection />
       <TestimonialsSection />
       <FAQSection />
-      <GlobalCTA kind="form" />
+      <GlobalCTA 
+        kind="form" 
+        title="STAY CONNECTED" 
+        description="Stay updated with insights on clarity, alignment, and sustainable success."
+        id="newsletter"
+      />
       <Footer />
     </main>
   );

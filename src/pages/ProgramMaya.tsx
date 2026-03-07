@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Layers, Sparkles, Search, Route, Users, Target, Zap, Clock, Globe } from "lucide-react";
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
+import FAQSection from "@/components/FAQSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import mayaVideo from "@/assets/maya.mp4";
-import card3 from "@/assets/card-3.jpg";
-import card4 from "@/assets/card-4.jpg";
+import maya1 from "@/assets/Maya Imgs/1.png";
+import maya2 from "@/assets/Maya Imgs/2.png";
+import maya3 from "@/assets/1.png";
 import { fadeUp } from "@/lib/animations";
 
 // fadeUp imported from @/lib/animations
@@ -108,8 +110,7 @@ const ProgramMaya = () => {
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
             <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              What Is <br />
-              <span className="italic">Success369 MAYA?</span>
+              Who is MAYA For?
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
               For individuals who are progressing — but feel something is off. This is for inflection moments, not crisis moments.
@@ -119,13 +120,13 @@ const ProgramMaya = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-14 items-start pb-20">
             {[
               {
-                image: card3,
+                image: maya1,
                 title: "Successful but Not Settled",
                 description: "You've achieved the goals, but the satisfaction is fleeing. You experience growth without meaning and struggle to live your clarity consistently.",
                 step: "01",
               },
               {
-                image: card4,
+                image: maya2,
                 title: "Persistent Inner Friction",
                 description: "Despite outer progress, you feel a constant internal resistance. You find yourself repeating loops of overworking, overthinking, or overcommitting.",
                 step: "02",
@@ -163,6 +164,45 @@ const ProgramMaya = () => {
                     <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">{card.description}</p>
                   </div>
                 </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- WHAT YOU GAIN --- */}
+      <section className="section relative overflow-hidden">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="mb-6">What You Gain</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Progress begins to feel lighter — not forced."</p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Unseen Awareness", desc: "Recognition of hidden patterns driving your choices.", icon: Search },
+              { title: "Release", desc: "Freedom from misalignment and inherited definitions of success.", icon: Zap },
+              { title: "Inner Coherence", desc: "A deeper sense of stability and internal alignment.", icon: Layers },
+              { title: "Renewed Momentum", desc: "Focused, meaningful progress that feels sustainable.", icon: Route }
+            ].map((gain, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
+                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="mb-3">{gain.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -211,7 +251,7 @@ const ProgramMaya = () => {
             >
               <div className="relative aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl">
                 <img
-                  src="https://images.unsplash.com/photo-1499209974431-9dac3adaf471?auto=format&fit=crop&q=80&w=1200"
+                  src={maya3}
                   alt="Realignment Session"
                   className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
                 />
@@ -226,45 +266,39 @@ const ProgramMaya = () => {
         </div>
       </section>
 
-      {/* --- WHAT YOU GAIN --- */}
-      <section className="section relative overflow-hidden">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">What You Gain</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Progress begins to feel lighter — not forced."</p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Unseen Awareness", desc: "Recognition of hidden patterns driving your choices.", icon: Search },
-              { title: "Release", desc: "Freedom from misalignment and inherited definitions of success.", icon: Zap },
-              { title: "Inner Coherence", desc: "A deeper sense of stability and internal alignment.", icon: Layers },
-              { title: "Renewed Momentum", desc: "Focused, meaningful progress that feels sustainable.", icon: Route }
-            ].map((gain, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
-                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="mb-3">{gain.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      <FAQSection 
+        items={[
+          {
+            question: "What exactly is MAYA?",
+            answer: "MAYA is a 3-month guided realignment journey. It helps you see the hidden patterns influencing your choices — habits, pressures, expectations, silent definitions of success.\nWhen these remain unseen, they quietly control you. MAYA brings them to light. Once you see clearly, you choose differently."
+          },
+          {
+            question: "Who is MAYA for?",
+            answer: "MAYA is not just for senior professionals. It is for:\n• Early professionals stepping into responsibility\n• Graduates entering demanding paths\n• Homemakers ready to restart with clarity\n• Founders building from zero\n• Mid-career leaders navigating growth\n• Individuals who feel capable but unsettled\n\nFrom metros to small towns to villages. From first-generation dreamers to experienced builders. If something inside you says, “This is not fully aligned,” MAYA is for you."
+          },
+          {
+            question: "What will I experience during MAYA?",
+            answer: "You will:\n• Identify patterns driving your decisions\n• Understand what is draining your energy\n• Let go of outdated expectations\n• Align your values and daily behaviour\n• Build a clear, practical action plan\n• Implement it with structured support\n\nYou are not left with theory. You are supported until change becomes stable."
+          },
+          {
+            question: "How does the journey work?",
+            answer: "MAYA runs for 3 months. You receive:\n• Deep 1:1 guided sessions\n• Structured reflection exercises\n• Ongoing support and handholding\n• A clear realignment roadmap\n• Implementation check-ins\n\nIt follows the Success369 framework: Clarity → Congruence → Catalysis. See clearly. Align consciously. Move forward naturally."
+          },
+          {
+            question: "Why not just fix productivity or time management?",
+            answer: "Because surface fixes do not solve root misalignment. When patterns stay hidden:\nEffort increases. Satisfaction decreases. Progress feels heavy.\nWhen alignment returns:\nDecisions simplify. Energy returns. Momentum feels natural. MAYA works at the root."
+          },
+          {
+            question: "Do I get personal support?",
+            answer: "Yes. You work directly with a dedicated Success369 Coach. Not automated content. Not passive learning. Real conversation. Real structure. Real accountability."
+          },
+          {
+            question: "What happens after MAYA?",
+            answer: "You may:\n• Continue independently with clarity\n• Activate SHAKTI for execution\n• Or step into SARVAM for long-term design\n\nThere is no pressure to continue. MAYA stands complete on its own."
+          }
+        ]}
+      />
+      
       <GlobalCTA
         title={
           <h2 className="text-white">
