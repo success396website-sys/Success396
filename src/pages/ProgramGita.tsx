@@ -56,7 +56,7 @@ const ProgramGita = () => {
               custom={1}
               className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]"
             >
-              Some moments — <span className="text-primary text-glow italic">don't need speed.</span>
+              Gain <span className="text-primary text-glow italic">Clarity</span> Before You Decide
             </motion.h1>
 
             <motion.p

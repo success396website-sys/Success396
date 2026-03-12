@@ -116,7 +116,7 @@ const Book = () => {
                 variants={fadeUp}
                 className="mb-4 sm:mb-6 text-glow text-white"
               >
-                The Blueprint for <br />
+                Your Companion for <br />
                 <span className="italic text-primary text-glow font-light">Sustainable Success</span>
               </motion.h1>
 

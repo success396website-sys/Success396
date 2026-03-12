@@ -59,8 +59,7 @@ const ProgramMaya = () => {
               custom={1}
               className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]"
             >
-              Realigning{" "}
-              <span className="text-primary text-glow italic">Unseen Patterns</span>
+              Discover Your <span className="text-primary text-glow italic">True Direction</span>
             </motion.h1>
 
             <motion.p
