@@ -80,7 +80,7 @@ const ProgramShakti = () => {
               className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
             >
               <CTAButton to="/apply/shakti" size="md" variant="shimmer">
-                Apply for SHAKTI
+                Begin the SHAKTI Journey
               </CTAButton>
             </motion.div>
           </div>
@@ -312,7 +312,7 @@ const ProgramShakti = () => {
           </h2>
         }
         description="Book a free session to explore how SHAKTI can accelerate impact for you, your team, or your organisation."
-        ctaText="Apply for SHAKTI"
+        ctaText="Begin the SHAKTI Journey"
         ctaHref="/apply/shakti"
         showPillars={false}
       />

@@ -20,7 +20,7 @@ const videoCards: VideoCard[] = [
     title: "MAYA-Realigning Unseen Patterns",
     description:
       "For those who are capable and progressing, yet feel misaligned.",
-    cta: "Apply for Maya",
+    cta: "Begin the MAYA Journey",
     videoUrl: mayaVideo,
     href: "/program-maya",
   },
@@ -28,7 +28,7 @@ const videoCards: VideoCard[] = [
     title: "GITA-Clarity Before Action",
     description:
       "For moments when decisions matter and clarity is essential.",
-    cta: "Apply for GITA",
+    cta: "Begin the GITA Journey",
     videoUrl: gitaVideo,
     href: "/program-gita",
   },
@@ -36,7 +36,7 @@ const videoCards: VideoCard[] = [
     title: "SARVAM-The Architecture for Sustainable Success",
     description:
       "For those ready to commit to long-term, holistic success.",
-    cta: "Apply for SARVAM",
+    cta: "Begin the SARVAM Journey",
     videoUrl: sarvamVideo,
     href: "/program-sarvam",
   },
@@ -44,7 +44,7 @@ const videoCards: VideoCard[] = [
     title: "SHAKTI-Activating Aligned Momentum",
     description:
       "For situations where clarity and alignment already exist, but momentum is lacking.",
-    cta: "Apply for SHAKTI",
+    cta: "Begin the SHAKTI Journey",
     videoUrl: shaktiVideo,
     href: "/program-shakti",
   },

@@ -42,8 +42,8 @@ export const bookFormats = [
   {
     id: "hardcover",
     title: "Hardcover Edition",
-    price: "₹2,000",
-    amountInPaise: 200000,
+    price: "₹1,500",
+    amountInPaise: 150000,
     description: "Premium cloth-bound edition for your library. Includes digital resources.",
     icon: BookOpen,
     features: ["High-quality print", "Bonus Worksheets", "Author's Signature (Ltd)"]

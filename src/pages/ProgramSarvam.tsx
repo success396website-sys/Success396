@@ -81,7 +81,7 @@ const ProgramSarvam = () => {
               className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
             >
               <CTAButton to="/apply/sarvam" size="md" variant="shimmer">
-                Apply for SARVAM
+                Begin the SARVAM Journey
               </CTAButton>
               <CTAButton
                 to="/#newsletter"
@@ -321,7 +321,7 @@ const ProgramSarvam = () => {
           </h2>
         }
         description="SARVAM is by application only. Book a conversation to explore if this is the right time for your transformation."
-        ctaText="Apply for SARVAM"
+        ctaText="Begin the SARVAM Journey"
         ctaHref="/apply/sarvam"
         showPillars={false}
       />

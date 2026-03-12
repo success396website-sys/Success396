@@ -46,7 +46,7 @@ const subjects = [
 const contactInfo = [
   { icon: Mail, label: "Email", value: "hello@success369.com", href: "mailto:hello@success369.com" },
   { icon: Phone, label: "Phone", value: "+44 20 7946 0958", href: "tel:+442079460958" },
-  { icon: MapPin, label: "Office", value: "London, United Kingdom" },
+  { icon: MapPin, label: "Office", value: "Bangalore" },
   { icon: Clock, label: "Hours", value: "Mon – Fri, 9 AM – 6 PM GMT" },
 ];
 
@@ -451,7 +451,7 @@ const Contact = () => {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.08),transparent_70%)]" />
                 <div className="text-center relative">
                   <MapPin className="w-8 h-8 text-primary/40 mx-auto mb-2" />
-                  <p className="text-muted-foreground text-sm">London, United Kingdom</p>
+                  <p className="text-muted-foreground text-sm">Bangalore</p>
                   <p className="text-muted-foreground/50 text-xs mt-1">Map coming soon</p>
                 </div>
               </div>

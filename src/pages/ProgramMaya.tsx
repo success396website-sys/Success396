@@ -80,7 +80,7 @@ const ProgramMaya = () => {
               className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
             >
               <CTAButton to="/apply/maya" size="md" variant="shimmer">
-                Apply for MAYA
+                Begin the MAYA Journey
               </CTAButton>
             </motion.div>
           </div>
@@ -305,7 +305,7 @@ const ProgramMaya = () => {
           </h2>
         }
         description="Book your MAYA journey and begin the process of internal alignment and coherence."
-        ctaText="Apply for MAYA"
+        ctaText="Begin the MAYA Journey"
         ctaHref="/apply/maya"
         showPillars={false}
       />

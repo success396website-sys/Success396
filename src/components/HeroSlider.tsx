@@ -20,16 +20,6 @@ interface Slide {
 
 const slides: Slide[] = [
   {
-    video: success369video,
-    tag: "Success 369",
-    title: "Clarity for Individuals. Direction for Leaders. Alignment for Organisations.",
-    subtitle:
-      "Success369 helps individuals, professionals, leaders, and organisations align identity, purpose, and action—so growth feels clear, meaningful, and built to last.",
-    cta: "Explore Success369",
-    ctaSecondary: "Watch Trailer",
-    ctaHref: "/success-369",
-  },
-  {
     video: model369,
     tag: "Foundation",
     title: "Become your most aligned self to achieve your highest aspirations.",
@@ -38,6 +28,16 @@ const slides: Slide[] = [
     cta: "Take a Free Session",
     ctaSecondary: "Watch Trailer",
     ctaHref: "/free-session",
+  },
+  {
+    video: success369video,
+    tag: "Success 369",
+    title: "Clarity for Individuals. Direction for Leaders. Alignment for Organisations.",
+    subtitle:
+      "Success369 helps individuals, professionals, leaders, and organisations align identity, purpose, and action—so growth feels clear, meaningful, and built to last.",
+    cta: "Explore Success369",
+    ctaSecondary: "Watch Trailer",
+    ctaHref: "/success-369",
   },
   {
     video: journey,

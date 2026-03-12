@@ -77,7 +77,7 @@ const ProgramGita = () => {
               className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
             >
               <CTAButton to="/apply/gita" size="md" variant="shimmer">
-                Apply for GITA
+                Begin the GITA Journey
               </CTAButton>
             </motion.div>
           </div>
@@ -307,7 +307,7 @@ const ProgramGita = () => {
           </h2>
         }
         description="Book your GITA session and choose your next step with absolute confidence."
-        ctaText="Apply for GITA"
+        ctaText="Begin the GITA Journey"
         ctaHref="/apply/gita"
         showPillars={false}
       />

@@ -33,7 +33,7 @@ const programCards = [
     description: "For those progressing outwardly but feeling inner friction. Dissolve invisible cycles.",
     href: "/program-maya",
     outcome: "Coherence, focus, and grounded momentum.",
-    cta: "Explore the Unseen",
+    cta: "Begin the MAYA Journey",
     phase: "Phase 1"
   },
   {
@@ -43,7 +43,7 @@ const programCards = [
     description: "For decision points where perspective matters. Witness your direction before moving forward.",
     href: "/program-gita",
     outcome: "Clear direction and confident next steps.",
-    cta: "Begin Your Clarity",
+    cta: "Begin the GITA Journey",
     phase: "Phase 2"
   },
   {
@@ -53,7 +53,7 @@ const programCards = [
     description: "For individuals ready to build long-term value. Integrate identity, work, and legacy.",
     href: "/program-sarvam",
     outcome: "A stable success architecture that endures.",
-    cta: "Begin the Architecture",
+    cta: "Begin the SARVAM Journey",
     phase: "Phase 3"
   },
   {
@@ -63,7 +63,7 @@ const programCards = [
     description: "For leaders and teams ready to execute. Translate alignment into real-world strength.",
     href: "/program-shakti",
     outcome: "Sharper execution without losing alignment.",
-    cta: "Activate Momentum",
+    cta: "Begin the SHAKTI Journey",
     phase: "Phase 4"
   },
 ];
