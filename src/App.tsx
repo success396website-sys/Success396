@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import AudioPlayer from "./components/AudioPlayer";
 import ScrollToTop from "./components/ScrollToTop";
 import CookieConsent from "./components/CookieConsent";
 
@@ -25,6 +24,7 @@ const Events = lazy(() => import("./pages/Events"));
 const EventDetail = lazy(() => import("./pages/EventDetail"));
 const FreeSession = lazy(() => import("./pages/FreeSession"));
 const Podcast = lazy(() => import("./pages/Podcast"));
+const RoundTables = lazy(() => import("./pages/RoundTables"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
 const ShippingPolicy = lazy(() => import("./pages/ShippingPolicy"));
@@ -74,6 +74,7 @@ const App = () => (
             <Route path="/events/:slug" element={<EventDetail />} />
             <Route path="/free-session" element={<FreeSession />} />
             <Route path="/podcast" element={<Podcast />} />
+            <Route path="/round-tables" element={<RoundTables />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/shipping-policy" element={<ShippingPolicy />} />
@@ -88,7 +89,6 @@ const App = () => (
           </Routes>
         </Suspense>
         <CookieConsent />
-        <AudioPlayer />
       </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>

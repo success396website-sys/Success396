@@ -44,9 +44,9 @@ const subjects = [
 ];
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "hello@success369.com", href: "mailto:hello@success369.com" },
+  { icon: Mail, label: "Email", value: "support@success369.org", href: "mailto:support@success369.org" },
   { icon: Phone, label: "Phone", value: "+44 20 7946 0958", href: "tel:+442079460958" },
-  { icon: MapPin, label: "Office", value: "Bangalore" },
+  { icon: MapPin, label: "Corporate Office", value: "Bangalore" },
   { icon: Clock, label: "Hours", value: "Mon – Fri, 9 AM – 6 PM GMT" },
 ];
 

@@ -16,6 +16,7 @@ import {
   Star,
   Calendar,
   MessageSquare,
+  Users,
 } from "lucide-react";
 import logo from "@/assets/logo.png";
 import logoLight from "@/assets/logo-light.png";
@@ -62,9 +63,9 @@ const programSections = [
 
 const arenaSections = [
   { label: "Events", description: "Join our live sessions", icon: Calendar, href: "/events" },
-  { label: "Podcast", description: "The Audio Experience", icon: Globe, href: "/podcast" },
+  { label: "Podcasts", description: "The Audio Experience", icon: Globe, href: "/podcast" },
+  { label: "Round tables", description: "Expert discussions", icon: Users, href: "/round-tables" },
   { label: "Blogs", description: "Insights & Articles", icon: Newspaper, href: "/blog" },
-  { label: "Conversation", description: "Connect with us", icon: MessageSquare, href: "/contact" },
 ];
 
 /* Map dropdown label → its sub-links */
@@ -78,7 +79,7 @@ const dropdownMap: Record<string, typeof foundationSections> = {
 const dropdownActiveRoutes: Record<string, string[]> = {
   Foundation: ["/success-369", "/about-us"],
   Programs: ["/programs", "/program-maya", "/program-gita", "/program-sarvam", "/program-shakti"],
-  Arena: ["/events", "/podcast", "/blog"],
+  Arena: ["/events", "/podcast", "/round-tables", "/blog"],
 };
 
 /* ------------------------------------------------------------------ */
@@ -146,7 +147,7 @@ const Navbar = () => {
 
   /* Pages with a dark hero background */
   const isDarkHeroPage = [
-    "/", "/programs", "/book", "/events", "/podcast",
+    "/", "/programs", "/book", "/events", "/podcast", "/round-tables",
     "/program-maya", "/program-gita", "/program-sarvam", "/program-shakti",
   ].includes(location.pathname);
 

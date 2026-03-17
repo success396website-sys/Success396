@@ -80,29 +80,6 @@ Success369 is guided by two stewards who believe success is cultivated with clar
                     {/* Gradient overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
 
-                    {/* Stats bar at bottom of image */}
-                    <div className="absolute bottom-0 left-0 right-0 p-5">
-                      <div className="flex gap-2 sm:gap-3">
-                        {[
-                          { icon: Users, label: "Clients", value: trainer.stats.clients },
-                          { icon: Award, label: "Years", value: trainer.stats.years },
-                          { icon: BookOpen, label: "Workshops", value: trainer.stats.workshops },
-                        ].map(({ icon: Icon, label, value }) => (
-                          <div
-                            key={label}
-                            className="flex-1 rounded-xl bg-background/50 backdrop-blur-md border border-border/40 px-3 py-3 text-center"
-                          >
-                            <Icon className="h-3.5 w-3.5 text-primary mx-auto mb-1" />
-                            <p className="font-display text-sm sm:text-base font-bold text-foreground leading-none">
-                              {value}
-                            </p>
-                            <p className="text-[10px] text-muted-foreground uppercase tracking-wider mt-0.5">
-                              {label}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
 
                     {/* Decorative accent line */}
                     <div className={`absolute top-0 ${isReversed ? "right-0" : "left-0"} w-1 h-24 bg-gradient-to-b from-primary to-transparent`} />

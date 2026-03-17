@@ -55,7 +55,7 @@ const CookieConsent = () => {
                 <div>
                   <h3 className="text-xl font-display font-bold mb-2">Cookie Settings</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    We use cookies to enhance your cinematic experience, analyze site usage, and assist in our marketing efforts.
+                    We use cookies to enhance your browsing experience, analyze site usage, and assist in our marketing efforts.
                   </p>
                 </div>
                 <button 
@@ -73,9 +73,9 @@ const CookieConsent = () => {
                     variant="shimmer"
                     size="sm"
                     onClick={handleAccept}
-                    className="flex-1 justify-center py-3"
+                    className="flex-1 justify-center py-3 text-xs sm:text-sm"
                   >
-                    Accept All
+                    Accept all necessary cookies
                   </CTAButton>
                   <button
                     onClick={handleDecline}

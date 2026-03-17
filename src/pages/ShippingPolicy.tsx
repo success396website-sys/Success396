@@ -30,7 +30,7 @@ const sections = [
   },
   {
     title: "Order Tracking",
-    content: "Once your order is dispatched, you will receive a tracking number via email. You can use this to monitor your delivery status through the carrier's website. If you have any issues with tracking, please contact us at hello@success369.com.",
+    content: "Once your order is dispatched, you will receive a tracking number via email. You can use this to monitor your delivery status through the carrier's website. If you have any issues with tracking, please contact us at support@success369.org.",
   },
   {
     title: "Damaged or Lost Items",
@@ -91,7 +91,7 @@ const ShippingPolicy = () => {
             viewport={{ once: true }}
             className="text-muted-foreground/60 text-sm text-center pt-8"
           >
-            Last updated: February 2026. For questions, contact hello@success369.com.
+            Last updated: February 2026. For questions, contact support@success369.org.
           </motion.p>
         </div>
       </section>

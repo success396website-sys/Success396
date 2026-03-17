@@ -99,7 +99,7 @@ const TermsConditions = () => {
             viewport={{ once: true }}
             className="text-muted-foreground/60 text-sm text-center pt-8"
           >
-            Last updated: February 2026. For questions, contact hello@success369.com.
+            Last updated: February 2026. For questions, contact support@success369.org.
           </motion.p>
         </div>
       </section>

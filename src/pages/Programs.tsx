@@ -19,10 +19,10 @@ import { fadeUp } from "@/lib/animations";
 // fadeUp imported from @/lib/animations
 
 const pathwaySteps = [
-  { icon: Target, label: "Align", description: "Phase 1: MAYA", color: "bg-primary/20" },
-  { icon: Pause, label: "Pause", description: "Phase 2: GITA", color: "bg-primary/20" },
-  { icon: Building2, label: "Build", description: "Phase 3: SARVAM", color: "bg-primary/20" },
-  { icon: Zap, label: "Activate", description: "Phase 4: SHAKTI", color: "bg-primary/20" },
+  { icon: Target, label: "Align", description: "MAYA", color: "bg-primary/20" },
+  { icon: Pause, label: "Pause", description: "GITA", color: "bg-primary/20" },
+  { icon: Building2, label: "Build", description: "SARVAM", color: "bg-primary/20" },
+  { icon: Zap, label: "Activate", description: "SHAKTI", color: "bg-primary/20" },
 ];
 
 const programCards = [

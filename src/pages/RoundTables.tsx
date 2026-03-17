@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { Headphones, Mic, Play, ExternalLink, Youtube, Sparkles, Star, ChevronRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Play, ExternalLink, ChevronRight, Users } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar";
@@ -10,83 +9,79 @@ import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
 import model369Video from "@/assets/Model 369.mp4";
 import { fadeUp } from "@/lib/animations";
-const podcastCover1 = "https://images.unsplash.com/photo-1478737270239-2fccd27ee086?auto=format&fit=crop&q=80&w=800";
-const podcastCover2 = "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?auto=format&fit=crop&q=80&w=800";
+const rtCover1 = "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800";
+const rtCover2 = "https://images.unsplash.com/photo-1515169067868-5387aecfd5ce?auto=format&fit=crop&q=80&w=800";
 
-// fadeUp imported from @/lib/animations
-
-const podcasts = [
+const roundTables = [
   {
-    title: "The Success369 Podcast",
-    host: "with the Success369 Team",
-    image: podcastCover1,
+    title: "The Success369 Round Table",
+    host: "with Key Industry Leaders",
+    image: rtCover1,
     description:
-      "The Success369 Podcast brings together thought leaders, coaches, and visionaries to explore powerful ideas in personal growth, clarity, and sustainable success.",
+      "Our Round Tables bring together a select group of thinkers, innovators, and practitioners to debate, dissect, and map out the future of aligned success.",
     longDescription:
-      "Join us every week as we unpack transformational frameworks, share real stories of aligned growth, and challenge the conventional narratives around success. This podcast is your weekly companion for building a life of clarity, congruence, and catalysis.",
+      "Join the conversation as top minds explore transformational frameworks, share unfiltered insights, and tackle complex challenges. This is your chance to step into a room where real growth strategies are forged.",
     platforms: [
-      { label: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/success369" },
-      { label: "Spotify", href: "https://open.spotify.com/show/success369" },
-      { label: "Google Podcasts", href: "https://podcasts.google.com/feed/success369" },
-      { label: "YouTube", href: "https://youtube.com/@success369" },
+      { label: "YouTube Live", href: "https://youtube.com/@success369" },
+      { label: "LinkedIn Events", href: "https://linkedin.com/company/success369" },
+      { label: "Watch Replays", href: "https://youtube.com/@success369" },
     ],
   },
   {
-    title: "Aligned Leaders",
-    host: "with Success369 Coaches",
-    image: podcastCover2,
+    title: "Pioneers Collective",
+    host: "with Success369 Mentors",
+    image: rtCover2,
     description:
-      "Plug into the minds of leaders who are rewriting the rules of high performance at work—through alignment, not force.",
+      "Exclusive deep-dive discussions on building high-performance cultures, scaling businesses with clarity, and navigating modern transitions.",
     longDescription:
-      "Aligned Leaders explores how organisations and teams can create cultures of sustainable growth. Each episode features deep conversations with founders, executives, and coaches who lead with clarity and purpose.",
+      "The Pioneers Collective is a curated series of discussions focused on organizational alignment and purpose-driven execution. Learn from executives and founders who lead from a place of clarity.",
     platforms: [
-      { label: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/aligned-leaders" },
-      { label: "Spotify", href: "https://open.spotify.com/show/aligned-leaders" },
-      { label: "YouTube", href: "https://youtube.com/@success369" },
+      { label: "YouTube Live", href: "https://youtube.com/@success369" },
+      { label: "Watch Replays", href: "https://youtube.com/@success369" },
     ],
   },
 ];
 
-const featuredEpisodes = [
+const featuredDiscussions = [
   {
-    title: "Why Clarity Comes Before Action",
-    podcast: "The Success369 Podcast",
-    duration: "42 min",
-    description: "Exploring the GITA framework and why most people skip the most important step in their growth journey.",
+    title: "Navigating Scale with Clarity",
+    series: "The Success369 Round Table",
+    duration: "65 min",
+    description: "Founders debate the friction points of rapid growth and how the GITA framework maintains alignment.",
   },
   {
-    title: "Breaking Free from Unconscious Patterns",
-    podcast: "The Success369 Podcast",
-    duration: "38 min",
-    description: "A deep dive into MAYA and how hidden beliefs silently shape our decisions and outcomes.",
+    title: "Deconstructing Founder Burnout",
+    series: "Pioneers Collective",
+    duration: "58 min",
+    description: "An open discussion on uncovering hidden MAYA patterns in high-stress business environments.",
   },
   {
-    title: "Building Teams That Don't Burn Out",
-    podcast: "Aligned Leaders",
+    title: "The Role of Purpose in Performance",
+    series: "The Success369 Round Table",
+    duration: "75 min",
+    description: "Industry leaders share case studies on how purpose-driven teams outperform metrics-only models.",
+  },
+  {
+    title: "Building the Engine of Alignment",
+    series: "Pioneers Collective",
+    duration: "60 min",
+    description: "Practical steps to implementing the SARVAM architecture inside scaling organizations.",
+  },
+  {
+    title: "Hiring for Congruence",
+    series: "The Success369 Round Table",
+    duration: "50 min",
+    description: "Debating new models of recruitment where energetic match matters as much as skill congruence.",
+  },
+  {
+    title: "Transformation vs. Optimization",
+    series: "Pioneers Collective",
     duration: "45 min",
-    description: "How aligned leadership creates sustainable high performance without sacrificing wellbeing.",
-  },
-  {
-    title: "The Architecture of Sustainable Success",
-    podcast: "The Success369 Podcast",
-    duration: "51 min",
-    description: "Understanding the SARVAM journey and why complete transformation requires a complete architecture.",
-  },
-  {
-    title: "Purpose-Driven Performance",
-    podcast: "Aligned Leaders",
-    duration: "36 min",
-    description: "Why organisations anchored in purpose consistently outperform those driven by metrics alone.",
-  },
-  {
-    title: "From Momentum to Alignment",
-    podcast: "The Success369 Podcast",
-    duration: "40 min",
-    description: "The shift from chasing goals to building a life where success flows from who you are.",
+    description: "Why tweaking systems isn't enough, and when a complete energetic transformation is required.",
   },
 ];
 
-const Podcast = () => {
+const RoundTables = () => {
   const [showGuestForm, setShowGuestForm] = useState(false);
   const [guestForm, setGuestForm] = useState({ name: "", email: "", linkedin: "", story: "" });
 
@@ -104,8 +99,8 @@ const Podcast = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Podcast — Success369 Audio Experiences</title>
-        <meta name="description" content="Tune into the Success369 Podcast network for insights on personal growth, clarity, and sustainable success from leaders and visionaries." />
+        <title>Round Tables — Success369 Expert Discussions</title>
+        <meta name="description" content="Engage in powerful discussions with thought leaders, founders, and visionaries about alignment, clarity, and sustainable success." />
       </Helmet>
       <Navbar />
 
@@ -131,7 +126,7 @@ const Podcast = () => {
               variants={fadeUp}
               className="mb-3 sm:mb-4 inline-block rounded-full border border-white/30 bg-white/10 px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-xs font-medium uppercase tracking-[0.2em] text-white"
             >
-              Success369 Podcast Network
+              Success369 Expert Series
             </motion.div>
 
             <motion.h1
@@ -139,8 +134,8 @@ const Podcast = () => {
               variants={fadeUp}
               className="mb-4 sm:mb-6 text-glow text-white"
             >
-              Personal Growth At <br />
-              <span className="italic text-primary text-glow font-light">Your Fingertips</span>
+              Minds Unveiling <br />
+              <span className="italic text-primary text-glow font-light">Deep Realities</span>
             </motion.h1>
 
             <motion.p
@@ -148,15 +143,15 @@ const Podcast = () => {
               variants={fadeUp}
               className="mb-8 sm:mb-10 max-w-lg text-lg sm:text-xl text-white/90 font-light"
             >
-              Use Success369 Podcasts to gain clarity, build alignment, and elevate your personal and professional growth in every area of life.
+              Step into the room. Watch powerful collective discussions on alignment, building sustainable momentum, and transforming frameworks into action.
             </motion.p>
 
             <motion.div custom={3} variants={fadeUp} className="flex flex-wrap gap-4">
-              <CTAButton href="#shows" size="lg" variant="shimmer" className="px-10">
-                Explore Shows
+              <CTAButton href="#series" size="lg" variant="shimmer" className="px-10">
+                Explore The Series
               </CTAButton>
               <CTAButton href="#watch" size="lg" variant="outline" className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
-                Watch on YouTube
+                Watch Highlights
               </CTAButton>
             </motion.div>
           </motion.div>
@@ -171,11 +166,11 @@ const Podcast = () => {
             <div className="inline-flex items-center gap-3 mb-6 justify-center w-full">
               <span className="h-[1px] w-8 bg-primary/60" />
               <p className="font-display text-xs uppercase tracking-[0.4em] text-primary font-bold">
-                Watch Latest Episodes
+                Watch Latest Discussions
               </p>
               <span className="h-[1px] w-8 bg-primary/60" />
             </div>
-            <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Visual <span className="italic font-normal">Transformation.</span></h2>
+            <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Collective <span className="italic font-normal">Wisdom.</span></h2>
           </div>
 
           <motion.div 
@@ -190,7 +185,7 @@ const Podcast = () => {
               <iframe
                 className="absolute inset-0 w-full h-full"
                 src="https://www.youtube.com/embed/5lwI2eoGN6E"
-                title="Success369 Featured Episode"
+                title="Success369 Featured Round Table"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
                 allowFullScreen
@@ -215,12 +210,12 @@ const Podcast = () => {
         </div>
       </section>
 
-      {/* Podcast Shows */}
-      <section id="shows" className="section relative overflow-hidden bg-background">
+      {/* Series Info */}
+      <section id="series" className="section relative overflow-hidden bg-background">
         <div className="container-custom relative z-10">
-          {podcasts.map((podcast, idx) => (
+          {roundTables.map((rt, idx) => (
             <motion.div
-              key={podcast.title}
+              key={rt.title}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
@@ -239,8 +234,8 @@ const Podcast = () => {
                 <div className="relative group">
                   <div className="absolute -inset-3 bg-gradient-to-br from-primary/30 to-pink-400/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <img
-                    src={podcast.image}
-                    alt={podcast.title}
+                    src={rt.image}
+                    alt={rt.title}
                     className="relative w-full aspect-square rounded-2xl object-cover border border-border/30 shadow-2xl"
                   />
                 </div>
@@ -250,22 +245,22 @@ const Podcast = () => {
               <div className="relative flex-1 space-y-8 z-10">
                 <div>
                   <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-tight">
-                    {podcast.title}
+                    {rt.title}
                   </h2>
-                  <p className="text-primary text-xs font-bold uppercase tracking-[0.3em] opacity-60 italic">{podcast.host}</p>
+                  <p className="text-primary text-xs font-bold uppercase tracking-[0.3em] opacity-60 italic">{rt.host}</p>
                 </div>
 
-                <p className="text-foreground/90 leading-relaxed">{podcast.description}</p>
+                <p className="text-foreground/90 leading-relaxed">{rt.description}</p>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  {podcast.longDescription}
+                  {rt.longDescription}
                 </p>
 
                 <div>
                   <p className="text-muted-foreground text-sm font-medium mb-3">
-                    Listen here:
+                    Watch Live & On-Demand:
                   </p>
                   <div className="flex flex-wrap gap-3">
-                    {podcast.platforms.map((platform) => (
+                    {rt.platforms.map((platform) => (
                       <a
                         key={platform.label}
                         href={platform.href}
@@ -285,7 +280,7 @@ const Podcast = () => {
         </div>
       </section>
 
-      {/* Featured Episodes */}
+      {/* Featured Discussions */}
       <section className="section relative">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background" />
 
@@ -299,15 +294,15 @@ const Podcast = () => {
             className="text-center mb-12"
           >
             <h2 className="mb-4">
-              Featured Episodes
+              Featured Discussions
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              Start with these powerful conversations that capture the essence of the Success369 philosophy.
+              Start with these powerful round tables that dissect and map out the core components of aligned success.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {featuredEpisodes.map((ep, i) => (
+            {featuredDiscussions.map((ep, i) => (
               <motion.div
                 key={ep.title}
                 variants={fadeUp}
@@ -322,7 +317,7 @@ const Podcast = () => {
                     <Play size={16} className="text-primary ml-0.5" />
                   </div>
                   <div>
-                    <p className="text-xs text-primary font-medium">{ep.podcast}</p>
+                    <p className="text-xs text-primary font-medium">{ep.series}</p>
                     <p className="text-xs text-muted-foreground">{ep.duration}</p>
                   </div>
                 </div>
@@ -339,7 +334,7 @@ const Podcast = () => {
         </div>
       </section>
 
-      {/* --- JOIN AS A GUEST --- */}
+      {/* --- JOIN THE PANEL --- */}
       <section className="section relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/5 -z-10" />
         <div className="container-custom">
@@ -351,11 +346,11 @@ const Podcast = () => {
           >
             <div className="relative z-10">
               <div className="w-16 h-16 bg-primary/20 rounded-2xl flex items-center justify-center mx-auto mb-8">
-                <Mic size={32} className="text-primary" />
+                <Users size={32} className="text-primary" />
               </div>
-              <h2 className="text-foreground mb-6">Have a story worth <span className="italic text-primary">sharing?</span></h2>
+              <h2 className="text-foreground mb-6">Want a seat at <span className="italic text-primary">the table?</span></h2>
               <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
-                We're always looking for aligned leaders and visionaries to join our conversations. If you're building something that matters, we want to hear from you.
+                We continuously source aligned leaders and visionaries to join our panels. Bring your expertise to the Round Table.
               </p>
               <CTAButton 
                 onClick={() => setShowGuestForm(true)}
@@ -363,7 +358,7 @@ const Podcast = () => {
                 variant="shimmer"
                 className="mx-auto"
               >
-                Apply to be a Guest
+                Apply for the Panel
               </CTAButton>
             </div>
             
@@ -376,10 +371,10 @@ const Podcast = () => {
       <GlobalCTA
         title={
           <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4 text-white uppercase tracking-wider">
-            Never Miss <span className="text-primary italic">an Episode</span>
+            Join the <span className="text-primary italic">Discussion</span>
           </h2>
         }
-        description="Subscribe to our podcasts and get weekly insights on clarity, alignment, and sustainable success delivered straight to your ears."
+        description="Never miss an upcoming Round Table. Subscribe to be notified when we go live with new expert panels and discussions."
         ctaText="Subscribe on YouTube"
         ctaHref="https://youtube.com/@success369"
         showPillars={false}
@@ -407,9 +402,9 @@ const Podcast = () => {
               </button>
 
               <div className="mb-6">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-2">Guest Application</p>
-                <h3 className="text-foreground text-xl font-bold">Share Your Story</h3>
-                <p className="text-muted-foreground text-sm">Join us on the podcast to discuss clarity, alignment, and sustainable success.</p>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-primary font-bold mb-2">Panel Application</p>
+                <h3 className="text-foreground text-xl font-bold">Join the Round Table</h3>
+                <p className="text-muted-foreground text-sm">Join us as a panelist to discuss clarity, alignment, and sustainable success.</p>
               </div>
 
               <form onSubmit={handleGuestSubmit} className="space-y-4">
@@ -444,11 +439,11 @@ const Podcast = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 block">Why would you be a great guest? *</label>
+                  <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-1 block">What perspective do you bring? *</label>
                   <textarea
                     value={guestForm.story}
                     onChange={(e) => setGuestForm({...guestForm, story: e.target.value})}
-                    placeholder="Tell us about your journey to aligned success..."
+                    placeholder="Tell us about your area of expertise and experience..."
                     rows={4}
                     className="w-full bg-secondary/50 border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground/40 focus:outline-none focus:border-primary/50 transition-colors resize-none"
                   />
@@ -470,4 +465,4 @@ const Podcast = () => {
   );
 };
 
-export default Podcast;
+export default RoundTables;

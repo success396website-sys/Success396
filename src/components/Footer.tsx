@@ -12,6 +12,7 @@ const exploreLinks = [
   { label: "Events", href: "/events" },
   { label: "Blog", href: "/blog" },
   { label: "Podcast", href: "/podcast" },
+  { label: "Round tables", href: "/round-tables" },
 ];
 
 const connectLinks = [

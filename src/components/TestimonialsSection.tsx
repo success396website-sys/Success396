@@ -13,28 +13,28 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Participant 1",
+    name: "Rajeevettan",
     role: "Success369 journey",
     tagline: "I stopped second-guessing every decision.",
     story: "A senior professional came in feeling capable, but constantly uncertain. Every decision felt heavy. Every choice felt reversible. Through clarity work, priorities became obvious. Decisions stopped competing with each other.",
     outcome: "Confidence replaced overthinking. Action became calmer and more decisive.",
-    initials: "P1",
+    initials: "RK",
   },
   {
-    name: "Participant 2",
+    name: "SEnergy Leader",
     role: "Success369 journey",
     tagline: "We were performing — but pulling in different directions.",
     story: "A leadership team was achieving results, but something felt off. Meetings were productive, yet misalignment showed up in execution. By addressing underlying assumptions and expectations, conversations shifted. Trust improved. Direction aligned.",
     outcome: "Less friction. Clearer roles. Stronger execution as a team.",
-    initials: "P2",
+    initials: "SE",
   },
   {
-    name: "Participant 3",
+    name: "Startup Founder",
     role: "Success369 journey",
     tagline: "I realised I was chasing someone else’s definition of success.",
     story: "An entrepreneur had momentum, visibility, and growth — but no sense of fulfilment. Progress felt impressive from the outside and empty on the inside. Reframing success around identity and values changed how decisions were made.",
     outcome: "Success began to feel personal, meaningful, and sustainable.",
-    initials: "P3",
+    initials: "SF",
   },
 ];
 

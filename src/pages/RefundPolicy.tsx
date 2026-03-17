@@ -34,7 +34,7 @@ const sections = [
   },
   {
     title: "How to Request a Refund",
-    content: "To request a refund, please email hello@success369.com with your order number, name, and reason for the refund. We aim to process all refund requests within 5–10 business days. Refunds will be issued to the original payment method.",
+    content: "To request a refund, please email support@success369.org with your order number, name, and reason for the refund. We aim to process all refund requests within 5–10 business days. Refunds will be issued to the original payment method.",
   },
   {
     title: "Exceptions",
@@ -91,7 +91,7 @@ const RefundPolicy = () => {
             viewport={{ once: true }}
             className="text-muted-foreground/60 text-sm text-center pt-8"
           >
-            Last updated: February 2026. For questions, contact hello@success369.com.
+            Last updated: February 2026. For questions, contact support@success369.org.
           </motion.p>
         </div>
       </section>

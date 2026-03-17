@@ -30,7 +30,7 @@ const sections = [
   },
   {
     title: "Your Rights",
-    content: "You have the right to access, correct, or delete your personal data at any time. You may also withdraw consent for marketing communications, request data portability, or lodge a complaint with your local data protection authority. To exercise any of these rights, please contact us at hello@success369.com.",
+    content: "You have the right to access, correct, or delete your personal data at any time. You may also withdraw consent for marketing communications, request data portability, or lodge a complaint with your local data protection authority. To exercise any of these rights, please contact us at support@success369.org.",
   },
   {
     title: "Third-Party Services",
@@ -91,7 +91,7 @@ const PrivacyPolicy = () => {
             viewport={{ once: true }}
             className="text-muted-foreground/60 text-sm text-center pt-8"
           >
-            Last updated: February 2026. For questions, contact hello@success369.com.
+            Last updated: February 2026. For questions, contact support@success369.org.
           </motion.p>
         </div>
       </section>
