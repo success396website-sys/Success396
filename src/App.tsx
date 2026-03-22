@@ -22,7 +22,7 @@ const Book = lazy(() => import("./pages/Book"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Events = lazy(() => import("./pages/Events"));
 const EventDetail = lazy(() => import("./pages/EventDetail"));
-const FreeSession = lazy(() => import("./pages/FreeSession"));
+const TakeSession = lazy(() => import("./pages/TakeSession"));
 const Podcast = lazy(() => import("./pages/Podcast"));
 const RoundTables = lazy(() => import("./pages/RoundTables"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
@@ -76,7 +76,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/events" element={<Events />} />
             <Route path="/events/:slug" element={<EventDetail />} />
-            <Route path="/free-session" element={<FreeSession />} />
+            <Route path="/take-a-session" element={<TakeSession />} />
             <Route path="/podcast" element={<Podcast />} />
             <Route path="/round-tables" element={<RoundTables />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

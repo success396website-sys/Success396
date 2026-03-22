@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeUp } from "@/lib/animations";
+import { submitToFormspree } from "@/lib/form-helpers";
 
 const programDetails: Record<string, {
   name: string;
@@ -111,10 +112,15 @@ const ProgramApply = () => {
 
   const ProgramIcon = details.icon;
 
-  const onSubmit = (data: ApplyFormValues) => {
-    console.log("📋 Program Application:", { program: details.name, ...data });
-    setSubmitted(true);
-    toast.success(`Application for ${details.name} submitted! We'll review and get back to you.`);
+  const onSubmit = async (data: ApplyFormValues) => {
+    const success = await submitToFormspree({ program: details.name, ...data }, `Program Application: ${details.name}`);
+    
+    if (success) {
+      setSubmitted(true);
+      toast.success(`Application for ${details.name} submitted! We'll review and get back to you.`);
+    } else {
+      toast.error("Failed to submit application. Please try again later.");
+    }
   };
 
   return (

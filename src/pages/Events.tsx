@@ -94,28 +94,7 @@ const Events = () => {
         </div>
       </section>
 
-      {/* Stats Bar */}
-      <section className="bg-card/20 border-y border-white/5">
-        <div className="container-custom section">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12">
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-muted-foreground text-sm sm:text-base uppercase tracking-wider">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Stats Bar hidden while content is coming soon */}
 
       {/* Events Listing */}
       <section id="events" className="relative section">
@@ -135,22 +114,7 @@ const Events = () => {
               From free virtual masterclasses to life-changing in-person experiences, find the event that matches where you are on your journey.
             </p>
 
-            {/* Filter Tabs */}
-            <div className="inline-flex items-center gap-1 p-1 rounded-full bg-card/60 backdrop-blur-sm border border-border/30">
-              {filters.map((f) => (
-                <button
-                  key={f.value}
-                  onClick={() => setFilter(f.value)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    filter === f.value
-                      ? "bg-primary text-primary-foreground shadow-lg"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {f.label}
-                </button>
-              ))}
-            </div>
+            {/* Filter Tabs hidden while content is coming soon */}
           </motion.div>
 
           {/* Events Grid */}
@@ -175,61 +139,13 @@ const Events = () => {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 flex gap-2">
-                      <span className="text-[10px] font-semibold tracking-wider uppercase text-primary bg-primary/15 backdrop-blur-sm px-3 py-1 rounded-full border border-primary/20">
-                        {event.tag}
-                      </span>
-                      {event.status === "upcoming" ? (
-                        <span className="text-[10px] font-semibold tracking-wider uppercase text-emerald-400 bg-emerald-500/15 backdrop-blur-sm px-3 py-1 rounded-full border border-emerald-500/20">
-                          Upcoming
-                        </span>
-                      ) : (
-                        <span className="text-[10px] font-semibold tracking-wider uppercase text-muted-foreground bg-muted/50 backdrop-blur-sm px-3 py-1 rounded-full border border-border/30">
-                          Past
-                        </span>
-                      )}
-                    </div>
-                    <div className="absolute top-4 right-4">
-                      {event.type === "virtual" ? (
-                        <Globe size={16} className="text-foreground/60" />
-                      ) : (
-                        <Building size={16} className="text-foreground/60" />
-                      )}
-                    </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="font-display text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300">
-                      {event.title}
+                    <h3 className="font-display text-lg font-bold text-primary italic mb-0">
+                      Coming Soon
                     </h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-2">
-                      {event.description}
-                    </p>
-                    <div className="space-y-2 text-sm text-muted-foreground">
-                      <div className="flex items-center gap-2">
-                        <Calendar size={14} className="text-primary/60 shrink-0" />
-                        {event.date}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin size={14} className="text-primary/60 shrink-0" />
-                        {event.location}
-                      </div>
-                      {event.attendees && (
-                        <div className="flex items-center gap-2">
-                          <Users size={14} className="text-primary/60 shrink-0" />
-                          {event.attendees}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="mt-5 pt-4 border-t border-border/20">
-                      <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all duration-300">
-                        {event.status === "upcoming" ? "Register Now" : "View Recap"}
-                        <ArrowRight size={14} />
-                      </span>
-                    </div>
                   </div>
                 </Link>
               </motion.div>

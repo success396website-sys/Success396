@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { allEvents } from "@/data/events-list";
 import { fadeUp } from "@/lib/animations";
+import { submitToFormspree } from "@/lib/form-helpers";
 
 const registerSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -51,10 +52,15 @@ const EventRegister = () => {
     );
   }
 
-  const onSubmit = (data: RegisterFormValues) => {
-    console.log("📋 Event Registration:", { event: event.title, ...data });
-    setSubmitted(true);
-    toast.success("Registration successful! You'll receive a confirmation email shortly.");
+  const onSubmit = async (data: RegisterFormValues) => {
+    const success = await submitToFormspree({ event: event.title, ...data }, `Event Registration: ${event.title}`);
+    
+    if (success) {
+      setSubmitted(true);
+      toast.success("Registration successful! You'll receive a confirmation email shortly.");
+    } else {
+      toast.error("Failed to register. Please try again later.");
+    }
   };
 
   return (

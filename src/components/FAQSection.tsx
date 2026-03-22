@@ -35,7 +35,7 @@ const defaultFaqs: FAQItem[] = [
       "Success369 Journeys are designed for:\n• Individuals at life or career crossroads\n• Professionals and leaders navigating growth or transition\n• Founders and entrepreneurs building long-term value\n• Teams and organisations seeking alignment and execution\n\nEach journey is stand-alone and chosen based on readiness—not hierarchy.",
     cta: {
       text: "Take a Session",
-      href: "/free-session"
+      href: "/take-a-session"
     }
   },
   {
@@ -49,7 +49,7 @@ const defaultFaqs: FAQItem[] = [
       "That’s common—and expected.\nIf you’re unsure, the best place to begin is a Success369 session.\nIt’s a calm conversation designed to help you:\n• Understand where you are\n• See what fits\n• Decide without pressure",
     cta: {
       text: "Take a Session",
-      href: "/free-session"
+      href: "/take-a-session"
     }
   },
   {
@@ -83,7 +83,7 @@ const defaultFaqs: FAQItem[] = [
       "The simplest way to begin is with a session.\nIt helps you explore Success369 without pressure and decide your next step with confidence.",
     cta: {
       text: "Take a Session",
-      href: "/free-session"
+      href: "/take-a-session"
     }
   },
 ];

@@ -27,7 +27,7 @@ const slides: Slide[] = [
       "Align who you are, what you believe, and how you act—so progress feels steady, coherent, and deeply fulfilling.",
     cta: "Take a Session",
     ctaSecondary: "Watch Trailer",
-    ctaHref: "/free-session",
+    ctaHref: "/take-a-session",
   },
   {
     video: success369video,

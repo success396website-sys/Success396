@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeUp } from "@/lib/animations";
+import { submitToFormspree } from "@/lib/form-helpers";
 
 const mentorSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -35,10 +36,15 @@ const MentorApply = () => {
     defaultValues: { name: "", email: "", phone: "", expertise: "", yearsExperience: "10-15", linkedIn: "", bio: "", philosophy: "" },
   });
 
-  const onSubmit = (data: MentorFormValues) => {
-    console.log("📋 Mentor Application:", data);
-    setSubmitted(true);
-    toast.success("Mentor application submitted! Our team will review and connect with you.");
+  const onSubmit = async (data: MentorFormValues) => {
+    const success = await submitToFormspree(data, "Mentor Application: Form Submission");
+    
+    if (success) {
+      setSubmitted(true);
+      toast.success("Mentor application submitted! Our team will review and connect with you.");
+    } else {
+      toast.error("Failed to submit application. Please try again later.");
+    }
   };
 
   const values = [

@@ -345,7 +345,7 @@ const Book = () => {
         }
         description="Start with the book. Go deeper with the Journeys. Either way, the first step is clarity."
         ctaText="Take a Session"
-        ctaHref="/free-session"
+        ctaHref="/take-a-session"
         showPillars={false}
       />
 

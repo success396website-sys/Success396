@@ -315,7 +315,7 @@ const AboutUs = () => {
         }
         description="Success369 is redefining what success means — and how it is built. It is your life. Design it. Build it. Live it."
         ctaText="Get Started"
-        ctaHref="/free-session"
+        ctaHref="/take-a-session"
         showPillars={true}
       />
 

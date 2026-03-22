@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { submitToFormspree } from "@/lib/form-helpers";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be under 100 characters"),
@@ -45,9 +46,7 @@ const subjects = [
 
 const contactInfo = [
   { icon: Mail, label: "Email", value: "support@success369.org", href: "mailto:support@success369.org" },
-  { icon: Phone, label: "Phone", value: "+44 20 7946 0958", href: "tel:+442079460958" },
   { icon: MapPin, label: "Corporate Office", value: "Success369 Private Limited, KOKARYA, Business Synergy Center, \"NAGANANDA COMMERCIAL COMPLEX\", NO.07/3, 15/1, 185/2, 185/A, SECOND FLOOR, 18TH MAIN ROAD, JAYANAGAR 9TH BLOCK, BENGALURU-560041" },
-  { icon: Clock, label: "Hours", value: "Mon – Fri, 9 AM – 6 PM GMT" },
 ];
 
 const socialLinks = [
@@ -101,10 +100,16 @@ const Contact = () => {
     }
   }, [subjectParam, form]);
 
-  const onSubmit = (data: ContactFormValues) => {
-    // Future: send to backend
-    setSubmitted(true);
-    toast.success("Message sent! We'll be in touch shortly.");
+  const onSubmit = async (data: ContactFormValues) => {
+    // Send to Formspree
+    const success = await submitToFormspree(data, `Contact Form: ${data.subject}`);
+    
+    if (success) {
+      setSubmitted(true);
+      toast.success("Message sent! We'll be in touch shortly.");
+    } else {
+      toast.error("Something went wrong. Please try again later.");
+    }
   };
 
   return (

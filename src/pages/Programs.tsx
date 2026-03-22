@@ -134,7 +134,7 @@ const Programs = () => {
               <CTAButton href="#journeys-intro" size="lg" variant="shimmer" className="px-10">
                 Begin Your Journey
               </CTAButton>
-              <CTAButton to="/free-session" size="lg" variant="outline" icon={null as any} className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
+              <CTAButton to="/take-a-session" size="lg" variant="outline" icon={null as any} className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
                 Take a Session
               </CTAButton>
             </motion.div>
@@ -272,7 +272,7 @@ const Programs = () => {
         }
         description="If you’re unsure where to start, begin with a conversation. Understand your context. See your options clearly. Decide with confidence."
         ctaText="Take a Session"
-        ctaHref="/free-session"
+        ctaHref="/take-a-session"
         showPillars={false}
       />
 

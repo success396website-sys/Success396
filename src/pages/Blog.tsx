@@ -88,48 +88,26 @@ const Blog = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <Link
-                to={`/blog/${featured.slug}`}
-                className="group block rounded-2xl overflow-hidden bg-card/40 backdrop-blur-sm border border-border/30 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_60px_-15px_hsl(var(--primary)/0.15)]"
+              <div
+                className="group block rounded-2xl overflow-hidden bg-card/40 backdrop-blur-sm border border-border/30 transition-all duration-500 hover:shadow-[0_0_60px_-15px_hsl(var(--primary)/0.15)]"
               >
                 <div className="grid lg:grid-cols-2 gap-0">
                   <div className="relative h-64 lg:h-auto overflow-hidden">
                     <img
                       src={featured.image}
                       alt={featured.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-full object-cover transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/60 hidden lg:block" />
                     <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent lg:hidden" />
-                    <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-wider uppercase text-primary bg-primary/15 backdrop-blur-sm px-3 py-1 rounded-full border border-primary/20">
-                      Featured
-                    </span>
                   </div>
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
-                    <span className="text-primary text-xs font-semibold tracking-wider uppercase mb-3">
-                      {featured.category}
-                    </span>
-                    <h2 className="group-hover:text-primary transition-colors duration-300 leading-tight">
-                      {featured.title}
+                    <h2 className="leading-tight text-primary italic">
+                      Coming Soon
                     </h2>
-                    <p className="text-muted-foreground text-sm leading-relaxed mb-6 line-clamp-3">
-                      {featured.excerpt}
-                    </p>
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-6">
-                      <span>{featured.date}</span>
-                      <span className="w-1 h-1 rounded-full bg-border" />
-                      <span className="flex items-center gap-1">
-                        <Clock size={12} />
-                        {featured.readTime}
-                      </span>
-                    </div>
-                    <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all duration-300">
-                      Read Article
-                      <ArrowRight size={14} />
-                    </span>
                   </div>
                 </div>
-              </Link>
+              </div>
             </motion.div>
           </div>
         </section>
@@ -140,42 +118,7 @@ const Blog = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-background via-card/10 to-background" />
         <div className="relative container-custom">
           {/* Search + Filters */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12"
-          >
-            {/* Search */}
-            <div className="relative max-w-md mx-auto mb-8">
-              <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
-              <input
-                type="text"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                placeholder="Search articles..."
-                className="w-full pl-11 pr-4 py-3 rounded-full bg-card/60 border border-border/40 text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
-              />
-            </div>
-
-            {/* Category Filters */}
-            <div className="flex flex-wrap items-center justify-center gap-2">
-              {allFilters.map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
-                    filter === f
-                      ? "bg-primary text-primary-foreground shadow-lg"
-                      : "bg-card/40 text-muted-foreground hover:text-foreground border border-border/30 hover:border-primary/30"
-                  }`}
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
-          </motion.div>
+          {/* Search + Filters hidden while content is coming soon */}
 
           {/* Grid */}
           {filtered.length === 0 ? (
@@ -205,47 +148,24 @@ const Blog = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                 >
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="group block h-full rounded-2xl overflow-hidden bg-card/40 backdrop-blur-sm border border-border/30 hover:border-primary/30 transition-all duration-500 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.15)]"
+                  <div
+                    className="block h-full rounded-2xl overflow-hidden bg-card/40 backdrop-blur-sm border border-border/30 transition-all duration-500 hover:shadow-[0_0_40px_-10px_hsl(var(--primary)/0.15)]"
                   >
                     <div className="relative h-48 overflow-hidden">
                       <img
                         src={post.image}
                         alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
-                      <span className="absolute top-4 left-4 text-[10px] font-semibold tracking-wider uppercase text-primary bg-primary/15 backdrop-blur-sm px-3 py-1 rounded-full border border-primary/20">
-                        {post.category}
-                      </span>
                     </div>
-
+ 
                     <div className="p-6">
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground mb-3">
-                        <span>{post.date}</span>
-                        <span className="w-1 h-1 rounded-full bg-border" />
-                        <span className="flex items-center gap-1">
-                          <Clock size={11} />
-                          {post.readTime}
-                        </span>
-                      </div>
-
-                      <h3 className="font-display text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors duration-300 leading-tight line-clamp-2">
-                        {post.title}
+                      <h3 className="font-display text-lg font-bold text-primary italic mb-0">
+                        Coming Soon
                       </h3>
-                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-4">
-                        {post.excerpt}
-                      </p>
-
-                      <div className="pt-4 border-t border-border/20">
-                        <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:gap-3 transition-all duration-300">
-                          Read More
-                          <ArrowRight size={14} />
-                        </span>
-                      </div>
                     </div>
-                  </Link>
+                  </div>
                 </motion.div>
               ))}
             </div>

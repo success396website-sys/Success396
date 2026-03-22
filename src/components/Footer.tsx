@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Youtube, Check, Music } from "lucide-react";
 import logo from "@/assets/logo.webp";
 import CTAButton from "@/components/CTAButton";
+import { submitToFormspree } from "@/lib/form-helpers";
 
 const exploreLinks = [
   { label: "Home", href: "/" },
@@ -16,7 +17,7 @@ const exploreLinks = [
 ];
 
 const connectLinks = [
-  { label: "Take a Session", href: "/free-session" },
+  { label: "Take a Session", href: "/take-a-session" },
   { label: "Contact Us", href: "/contact" },
   { label: "Instagram", href: "https://www.instagram.com/thesuccess369/", icon: Instagram, external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/success369", icon: Linkedin, external: true },
@@ -40,11 +41,14 @@ const Footer = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      setSubmitted(true);
-      setEmail("");
+      const success = await submitToFormspree({ email }, "Newsletter Signup: Footer");
+      if (success) {
+        setSubmitted(true);
+        setEmail("");
+      }
     }
   };
 

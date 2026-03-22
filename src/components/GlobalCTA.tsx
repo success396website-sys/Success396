@@ -6,6 +6,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import CTAButton from "./CTAButton";
 import { cn } from "@/lib/utils";
+import { submitToFormspree } from "@/lib/form-helpers";
 
 const pillars = [
   { icon: Zap, label: "Clarity" },
@@ -43,9 +44,14 @@ const GlobalCTA = ({
   const [submitted, setSubmitted] = useState(false);
   const [agreed, setAgreed] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) setSubmitted(true);
+    if (email) {
+      const success = await submitToFormspree({ email, whatsapp }, "Newsletter Signup: Global CTA");
+      if (success) {
+        setSubmitted(true);
+      }
+    }
   };
 
   const promises = [
@@ -219,7 +225,7 @@ const GlobalCTA = ({
                         </span>
                       ))}
                     </div>
-                    <Link to="/free-session" className="text-primary/80 hover:text-primary font-bold transition-colors uppercase tracking-wider flex items-center gap-1">
+                    <Link to="/take-a-session" className="text-primary/80 hover:text-primary font-bold transition-colors uppercase tracking-wider flex items-center gap-1">
                       Take a Session <ArrowRight size={10} />
                     </Link>
                   </div>

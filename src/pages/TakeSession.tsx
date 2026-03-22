@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeUp } from "@/lib/animations";
+import { submitToFormspree } from "@/lib/form-helpers";
 
 // fadeUp imported from @/lib/animations
 
@@ -47,7 +48,7 @@ const infoSections = [
   },
 ];
 
-const FreeSession = () => {
+const TakeSession = () => {
   const [submitted, setSubmitted] = useState(false);
 
   const form = useForm<SessionFormValues>({
@@ -55,9 +56,15 @@ const FreeSession = () => {
     defaultValues: { name: "", email: "", phone: "", message: "" },
   });
 
-  const onSubmit = (data: SessionFormValues) => {
-    setSubmitted(true);
-    toast.success("Your session request has been received! We'll be in touch soon.");
+  const onSubmit = async (data: SessionFormValues) => {
+    const success = await submitToFormspree(data, "Session Request: Take a Session");
+    
+    if (success) {
+      setSubmitted(true);
+      toast.success("Your session request has been received! We'll be in touch soon.");
+    } else {
+      toast.error("Failed to send request. Please try again.");
+    }
   };
 
   return (
@@ -294,4 +301,4 @@ const FreeSession = () => {
   );
 };
 
-export default FreeSession;
+export default TakeSession;
