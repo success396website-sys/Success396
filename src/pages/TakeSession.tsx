@@ -189,7 +189,7 @@ const TakeSession = () => {
                 </div>
                 <h3 className="mb-2">Request Received!</h3>
                 <p className="text-muted-foreground mb-6 max-w-sm">
-                  Thank you for reaching out. We'll get back to you within 24 hours to schedule your session.
+                  Thank you for reaching out. We'll get back to you soon.
                 </p>
                 <Button
                   variant="outline"

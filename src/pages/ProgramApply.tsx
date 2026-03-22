@@ -230,7 +230,7 @@ const ProgramApply = () => {
                   <h2 className="text-2xl font-bold text-foreground mb-4">Application Submitted!</h2>
                   <p className="text-muted-foreground text-lg mb-2">We've received your application for:</p>
                   <p className="text-primary font-semibold text-lg mb-6">{details.fullName}</p>
-                  <p className="text-muted-foreground mb-8">Our team will review your application and reach out within 48 hours.</p>
+                  <p className="text-muted-foreground mb-8">Our team will review your application and reach out soon.</p>
                   <Link
                     to="/programs"
                     className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-colors"

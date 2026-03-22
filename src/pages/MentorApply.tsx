@@ -159,7 +159,7 @@ const MentorApply = () => {
                   </div>
                   <h2 className="text-2xl font-bold text-foreground mb-4">Application Received!</h2>
                   <p className="text-muted-foreground text-lg mb-6">
-                    Thank you for your interest in becoming a Success369 mentor. Our team will review your application and reach out within 7 business days.
+                    Our team will review your application and reach out soon.
                   </p>
                   <Link
                     to="/"

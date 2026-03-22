@@ -184,7 +184,7 @@ const Contact = () => {
                 </div>
                 <h3 className="mb-2">Message Sent!</h3>
                 <p className="text-muted-foreground mb-6 max-w-sm">
-                  Thank you for reaching out. We'll get back to you within 24 hours.
+                  Thank you for reaching out. We'll get back to you soon.
                 </p>
                 <Button
                   variant="outline"
