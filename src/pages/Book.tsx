@@ -45,7 +45,7 @@ export const bookFormats = [
     price: "₹499",
     originalPrice: "₹699",
     amountInPaise: 49900,
-    description: "Physical copy price is INR 699/- and Viral Mafia is now selling at a discounted price of INR 499/-",
+    description: "",
     icon: BookOpen,
     features: ["High-quality print", "Bonus Worksheets", "Author's Signature (Ltd)"]
   }
@@ -251,7 +251,7 @@ const Book = () => {
                   </div>
 
                 <h3 className="text-foreground mb-4 tracking-tight">{format.title}</h3>
-                <p className="text-muted-foreground font-light mb-10 text-lg leading-relaxed">{format.description}</p>
+                {format.description && <p className="text-muted-foreground font-light mb-10 text-lg leading-relaxed">{format.description}</p>}
 
                 <div className="space-y-4 mb-14 flex-grow">
                    {format.features.map(f => (
