@@ -1,6 +1,6 @@
-# Success369 | Clarity. Congruence. Catalysis.
+# Success396 | Clarity. Congruence. Catalysis.
 
-Success369 is a premium, cinematic web experience designed to facilitate sustainable success through clarity and alignment.
+Success396 is a premium, cinematic web experience designed to facilitate sustainable success through clarity and alignment.
 
 ## Core Pillars
 

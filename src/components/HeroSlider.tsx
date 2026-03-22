@@ -31,13 +31,13 @@ const slides: Slide[] = [
   },
   {
     video: success369video,
-    tag: "Success 369",
+    tag: "Success 396",
     title: "Clarity for Individuals. Direction for Leaders. Alignment for Organisations.",
     subtitle:
-      "Success369 helps individuals, professionals, leaders, and organisations align identity, purpose, and action—so growth feels clear, meaningful, and built to last.",
-    cta: "Explore Success369",
+      "Success396 helps individuals, professionals, leaders, and organisations align identity, purpose, and action—so growth feels clear, meaningful, and built to last.",
+    cta: "Explore Success396",
     ctaSecondary: "Watch Trailer",
-    ctaHref: "/success-369",
+    ctaHref: "/success-396",
   },
   {
     video: journey,
@@ -61,7 +61,7 @@ const slides: Slide[] = [
   {
     video: event,
     tag: "Events",
-    title: "Success369 Events – Inspire. Act. Achieve.",
+    title: "Success396 Events – Inspire. Act. Achieve.",
     subtitle: "You don’t attend to follow the crowd. You show up for the conversation that meets you where you are.",
     cta: "Join the Event",
     ctaSecondary: "View Gallery",
