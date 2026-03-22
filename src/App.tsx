@@ -30,7 +30,7 @@ const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
 const ShippingPolicy = lazy(() => import("./pages/ShippingPolicy"));
 const TermsConditions = lazy(() => import("./pages/TermsConditions"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
-const Success396 = lazy(() => import("./pages/Success396"));
+const Success369 = lazy(() => import("./pages/Success369"));
 const AboutUs = lazy(() => import("./pages/AboutUs"));
 const Checkout = lazy(() => import("./pages/Checkout"));
 const EventRegister = lazy(() => import("./pages/EventRegister"));
@@ -63,7 +63,7 @@ const App = () => (
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/success-396" element={<Success396 />} />
+            <Route path="/success-369" element={<Success369 />} />
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/programs" element={<Programs />} />
             <Route path="/program-gita" element={<ProgramGita />} />

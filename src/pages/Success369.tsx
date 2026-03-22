@@ -92,7 +92,7 @@ const distinctions = [
     muted: true,
   },
   {
-    side: "Success396",
+    side: "Success369",
     points: ["Alignment before acceleration", "Identity as foundation", "Sustainable coherence", "Architecture, not tactics"],
     muted: false,
   },
@@ -102,17 +102,17 @@ const distinctions = [
    PAGE
 ───────────────────────────────────────────── */
 
-const Success396Page = () => {
+const Success369Page = () => {
   const { scrollY } = useScroll();
   const heroParallax = useTransform(scrollY, [0, 600], [0, -100]);
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Helmet>
-        <title>The Success396 Model | Clarity. Congruence. Catalysis.</title>
+        <title>The Success369 Model | Clarity. Congruence. Catalysis.</title>
         <meta
           name="description"
-          content="Discover the 3–9–6 Model: three pillars, nine catalytic forces, and six alignments — a complete architecture for sustainable success."
+          content="Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success."
         />
       </Helmet>
 
@@ -179,7 +179,7 @@ const Success396Page = () => {
               custom={1}
               className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]"
             >
-              Success<span className="text-primary text-glow">396</span>{" "}—{" "}
+              Success<span className="text-primary text-glow">369</span>{" "}—{" "}
               Clarity. Congruence. Catalysis.
             </motion.h1>
 
@@ -250,7 +250,7 @@ const Success396Page = () => {
             <h2 className="mb-8">
               Why{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                3–9–6?
+                3–6–9?
               </span>
             </h2>
 
@@ -728,4 +728,4 @@ const Success396Page = () => {
   );
 };
 
-export default Success396Page;
+export default Success369Page;

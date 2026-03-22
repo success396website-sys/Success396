@@ -62,7 +62,7 @@ const JourneySection = () => {
             Begin This Journey?
           </h2>
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
-            Success396 is for those who want success to feel clear, aligned, and meaningful—not rushed or forced.
+            Success369 is for those who want success to feel clear, aligned, and meaningful—not rushed or forced.
           </p>
         </motion.div>
 

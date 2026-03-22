@@ -13,9 +13,9 @@ const Index = () => {
   return (
     <main className="min-h-screen bg-background">
       <Helmet>
-        <title>Success396 — Build Success That Is Aligned</title>
-        <meta name="description" content="Success396 helps individuals, leaders, and organisations build sustainable success through clarity, congruence, and catalysis." />
-        <meta property="og:title" content="Success396 — Build Success That Is Aligned" />
+        <title>Success369 — Build Success That Is Aligned</title>
+        <meta name="description" content="Success369 helps individuals, leaders, and organisations build sustainable success through clarity, congruence, and catalysis." />
+        <meta property="og:title" content="Success369 — Build Success That Is Aligned" />
         <meta property="og:description" content="Build sustainable success with clarity and alignment. Explore specialized journeys for leaders and organisations." />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/og-image.png" />

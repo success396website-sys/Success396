@@ -18,9 +18,9 @@ const exploreLinks = [
 const connectLinks = [
   { label: "Take a Session", href: "/free-session" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Instagram", href: "https://www.instagram.com/thesuccess396/", icon: Instagram, external: true },
-  { label: "LinkedIn", href: "https://www.linkedin.com/company/success396", icon: Linkedin, external: true },
-  { label: "YouTube", href: "https://www.youtube.com/@the396leader", icon: Youtube, external: true },
+  { label: "Instagram", href: "https://www.instagram.com/thesuccess369/", icon: Instagram, external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/success369", icon: Linkedin, external: true },
+  { label: "YouTube", href: "https://www.youtube.com/@the369leader", icon: Youtube, external: true },
   { label: "Spotify", href: "https://open.spotify.com/show/7yxUgOvL9kXUpZo3ufjfrl?si=a1Z8ueEIT-eE89f9hRT_5g", icon: Music, external: true },
 ];
 
@@ -68,7 +68,7 @@ const Footer = () => {
               <div className="h-[80px] w-auto flex items-center justify-center transition-all duration-300">
                 <img 
                   src={logo} 
-                  alt="Success396" 
+                  alt="Success369" 
                   className="h-full w-auto object-contain transition-all duration-500" 
                 />
               </div>
@@ -121,7 +121,7 @@ const Footer = () => {
             </div>
 
             <p className="text-white/70 text-sm">
-              Success396 exists to help individuals, leaders, teams, and organisations build success with clarity, alignment, and purpose—so growth is meaningful and sustainable.
+              Success369 exists to help individuals, leaders, teams, and organisations build success with clarity, alignment, and purpose—so growth is meaningful and sustainable.
             </p>
           </motion.div>
 
@@ -197,7 +197,7 @@ const Footer = () => {
               Publisher & Book Details
             </h4>
             <div className="text-white/70 text-base space-y-1">
-              <p>Success396 —</p>
+              <p>Success369 —</p>
               <p>Your Companion for</p>
               <p>Sustainable Success</p>
               <p className="mt-4 font-bold text-primary/80">Publisher: Ivory Books Ltd.</p>
@@ -209,7 +209,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/50 text-xs">
-            © {new Date().getFullYear()} Success396. All rights reserved.
+            © {new Date().getFullYear()} Success369. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center gap-6">
             {policyLinks.map((link) => (

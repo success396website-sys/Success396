@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://success396.org/sitemap.xml
+Sitemap: https://success369.org/sitemap.xml

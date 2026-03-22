@@ -49,7 +49,7 @@ const navLinks: NavLink[] = [
 ];
 
 const foundationSections = [
-  { label: "Success 396", description: "Clarity. Congruence. Catalysis.", icon: Star, href: "/success-396" },
+  { label: "Success 369", description: "Clarity. Congruence. Catalysis.", icon: Star, href: "/success-369" },
   { label: "About Us", description: "Our story and mission", icon: Info, href: "/about-us" },
 ];
 
@@ -77,7 +77,7 @@ const dropdownMap: Record<string, typeof foundationSections> = {
 
 /* Map dropdown label → route prefixes that mark it "active" */
 const dropdownActiveRoutes: Record<string, string[]> = {
-  Foundation: ["/success-396", "/about-us"],
+  Foundation: ["/success-369", "/about-us"],
   Programs: ["/programs", "/program-maya", "/program-gita", "/program-sarvam", "/program-shakti"],
   Arena: ["/events", "/podcast", "/round-tables", "/blog"],
 };
@@ -202,7 +202,7 @@ const Navbar = () => {
           <Link to="/" className="flex shrink-0 items-center">
             <img
               src={shouldUseLightLogo ? logoLight : logo}
-              alt="Success396"
+              alt="Success369"
               className="h-16 w-auto object-contain transition-all duration-300"
             />
           </Link>
