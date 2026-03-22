@@ -25,9 +25,9 @@ import { fadeUp, fadeIn, scaleUp } from "@/lib/animations";
 
 // Asset imports
 import model369Video from "@/assets/Success 369.mp4";
-import clarityImg from "@/assets/CLARITY.JPG.jpeg";
-import congruenceImg from "@/assets/CONGRUENCE.jpg.jpeg";
-import catalysisImg from "@/assets/CATALYSIS.jpg.jpeg";
+import clarityImg from "@/assets/CLARITY.JPG.webp";
+import congruenceImg from "@/assets/CONGRUENCE.jpg.webp";
+import catalysisImg from "@/assets/CATALYSIS.jpg.webp";
 
 /* ─────────────────────────────────────────────
    DATA

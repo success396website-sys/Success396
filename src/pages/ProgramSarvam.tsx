@@ -8,10 +8,10 @@ import FAQSection from "@/components/FAQSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import sarvamVideo from "@/assets/sarvam.mp4";
-import sarvam1 from "@/assets/Sarvam/1.png";
-import sarvam2 from "@/assets/Sarvam/2.png";
+import sarvam1 from "@/assets/Sarvam/1.webp";
+import sarvam2 from "@/assets/Sarvam/2.webp";
 import { fadeUp } from "@/lib/animations";
-import sarvam3 from "@/assets/website.1.jpeg";
+import sarvam3 from "@/assets/website.1.webp";
 
 // fadeUp imported from @/lib/animations
 

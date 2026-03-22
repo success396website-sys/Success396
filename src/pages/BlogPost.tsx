@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { ArrowLeft, ArrowRight, Clock, Calendar, Sparkles, BookOpen } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -118,6 +119,15 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{post.title} — Success369 Insights</title>
+        <meta name="description" content={post.excerpt || post.content[0]?.slice(0, 160)} />
+        <meta property="og:title" content={`${post.title} | Success369`} />
+        <meta property="og:description" content={post.excerpt || post.content[0]?.slice(0, 160)} />
+        <meta property="og:image" content={post.image} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       <Navbar />
 
       {/* Hero */}

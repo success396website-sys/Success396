@@ -8,9 +8,9 @@ import FAQSection from "@/components/FAQSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import mayaVideo from "@/assets/maya.mp4";
-import maya1 from "@/assets/Maya Imgs/1.png";
-import maya2 from "@/assets/Maya Imgs/2.png";
-import maya3 from "@/assets/1.png";
+import maya1 from "@/assets/Maya Imgs/1.webp";
+import maya2 from "@/assets/Maya Imgs/2.webp";
+import maya3 from "@/assets/1.webp";
 import { fadeUp } from "@/lib/animations";
 
 // fadeUp imported from @/lib/animations

@@ -19,7 +19,7 @@ export interface Event {
   speakers?: { name: string; role: string }[];
 }
 
-import eventSummitImg from "@/assets/event-summit.jpg";
+import eventSummitImg from "@/assets/event-summit.webp";
 
 export const allEvents: Event[] = [
   {

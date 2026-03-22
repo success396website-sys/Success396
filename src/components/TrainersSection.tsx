@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Linkedin, Award, Users, ArrowRight, BookOpen } from "lucide-react";
-import trainer1 from "@/assets/trainer-1.jpg";
-import trainer2 from "@/assets/trainer-2.jpg";
+import trainer1 from "@/assets/trainer-1.webp";
+import trainer2 from "@/assets/trainer-2.webp";
 import CTAButton from "./CTAButton";
 
 const trainers = [

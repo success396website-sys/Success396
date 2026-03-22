@@ -8,8 +8,8 @@ import FAQSection from "@/components/FAQSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import gitaVideo from "@/assets/gita.mp4";
-import gita1 from "@/assets/Gita/1.png";
-import gita2 from "@/assets/Gita/2.png";
+import gita1 from "@/assets/Gita/1.webp";
+import gita2 from "@/assets/Gita/2.webp";
 import { fadeUp } from "@/lib/animations";
 
 // fadeUp imported from @/lib/animations

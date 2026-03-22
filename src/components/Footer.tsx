@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Youtube, Check, Music } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo.webp";
 import CTAButton from "@/components/CTAButton";
 
 const exploreLinks = [

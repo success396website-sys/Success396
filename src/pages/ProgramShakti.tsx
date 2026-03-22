@@ -8,8 +8,8 @@ import FAQSection from "@/components/FAQSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import shaktiVideo from "@/assets/shakti.mp4";
-import shakti1 from "@/assets/Shakti/1.png";
-import shakti2 from "@/assets/Shakti/2.png";
+import shakti1 from "@/assets/Shakti/1.webp";
+import shakti2 from "@/assets/Shakti/2.webp";
 import { fadeUp } from "@/lib/animations";
 
 // fadeUp imported from @/lib/animations

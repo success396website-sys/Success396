@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
-import card1 from "@/assets/card-1.jpg";
-import card2 from "@/assets/card-2.jpg";
-import card3 from "@/assets/card-3.jpg";
-import card4 from "@/assets/card-4.jpg";
+import card1 from "@/assets/card-1.webp";
+import card2 from "@/assets/card-2.webp";
+import card3 from "@/assets/card-3.webp";
+import card4 from "@/assets/card-4.webp";
 
 const cards = [
   {

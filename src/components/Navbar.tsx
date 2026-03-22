@@ -18,8 +18,8 @@ import {
   MessageSquare,
   Users,
 } from "lucide-react";
-import logo from "@/assets/logo.png";
-import logoLight from "@/assets/logo-light.png";
+import logo from "@/assets/logo.webp";
+import logoLight from "@/assets/logo-light.webp";
 import CTAButton from "@/components/CTAButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";

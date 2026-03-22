@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -84,6 +85,10 @@ const sections = [
 const LegalNotice = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <Helmet>
+        <title>Legal Notice | Success369</title>
+        <meta name="robots" content="noindex" />
+      </Helmet>
       <Navbar />
 
       <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">
