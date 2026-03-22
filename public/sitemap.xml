@@ -49,6 +49,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://success369.org/events</loc>
+    <lastmod>2026-03-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://success369.org/book</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.7</priority>
@@ -62,5 +68,50 @@
     <loc>https://success369.org/take-a-session</loc>
     <lastmod>2026-03-22</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/privacy-policy</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/cookie-policy</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/terms-conditions</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/refund-policy</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/shipping-policy</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/legal-notice</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/disclaimer</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/community-charter</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://success369.org/acceptable-use-policy</loc>
+    <lastmod>2026-03-22</lastmod>
+    <priority>0.4</priority>
   </url>
 </urlset>

@@ -56,9 +56,12 @@ const CTAButton = ({
   const Content = (
     <>
       {variant === "shimmer" && (
-        <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite]" />
+        <>
+          <span className="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] group-hover:animate-[shimmer_1.5s_ease-in-out_infinite] opacity-100" />
+          <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.3)_50%,transparent_75%)] bg-[length:250%_250%] animate-[shimmer_2s_infinite]" />
+        </>
       )}
-      <span className="relative flex items-center gap-2">
+      <span className="relative z-10 flex items-center gap-2">
         {children}
         {Icon && <Icon size={size === "lg" ? 20 : 16} className="group-hover:translate-x-1 transition-transform" />}
       </span>

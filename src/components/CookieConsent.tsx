@@ -1,35 +1,40 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cookie, X } from "lucide-react";
+import { Cookie, X, ChevronDown } from "lucide-react";
 import { Link } from "react-router-dom";
-import CTAButton from "./CTAButton";
-import { cn } from "@/lib/utils";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 
 const CookieConsent = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  
+  const [settings, setSettings] = useState({
+    essential: true,
+    analytics: true,
+    marketing: false,
+  });
 
   useEffect(() => {
-    const consent = localStorage.getItem("cookie-consent");
+    const consent = localStorage.getItem("cookie-consent-v4");
     if (!consent) {
       const timer = setTimeout(() => {
         setIsVisible(true);
-      }, 2000); // Delay for better UX
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, []);
 
-  const handleAccept = () => {
-    localStorage.setItem("cookie-consent", "accepted");
-    setIsVisible(false);
-  };
-
-  const handleDecline = () => {
-    localStorage.setItem("cookie-consent", "declined");
-    setIsVisible(false);
-  };
-
-  const handleDismiss = () => {
-    localStorage.setItem("cookie-consent", "dismissed");
+  const handleSave = (type: "all" | "selected") => {
+    const finalSettings = type === "all" 
+      ? { essential: true, analytics: true, marketing: true }
+      : settings;
+      
+    localStorage.setItem("cookie-consent-v4", JSON.stringify({
+      ...finalSettings,
+      date: new Date().toISOString()
+    }));
     setIsVisible(false);
   };
 
@@ -37,78 +42,94 @@ const CookieConsent = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ y: 100, opacity: 0, scale: 0.95 }}
-          animate={{ y: 0, opacity: 1, scale: 1 }}
-          exit={{ y: 50, opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-6 left-6 right-6 z-[100] md:left-auto md:right-8 md:max-w-md lg:max-w-lg"
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: 20, opacity: 0 }}
+          className="fixed bottom-6 left-6 right-6 md:left-auto md:right-8 z-[100] md:max-w-[440px]"
         >
-          <div className="relative overflow-hidden rounded-[2.5rem] bg-black/80 backdrop-blur-3xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] p-8 md:p-10">
-            {/* Artistic background accents */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/15 blur-[100px] pointer-events-none rounded-full -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 blur-[80px] pointer-events-none rounded-full translate-y-1/2 -translate-x-1/2" />
-            
-            <div className="relative z-10">
-              <div className="flex flex-col gap-6">
-                <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary border border-primary/20 shadow-[0_0_20px_rgba(var(--primary),0.2)]">
-                      <Cookie size={20} />
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-display font-medium tracking-tight text-white italic">
-                      Clarity Matters — <span className="text-primary font-bold not-italic">Even for Cookies</span>
-                    </h3>
+          <div className="bg-black/95 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden p-6 md:p-8">
+            <div className="flex flex-col gap-6">
+              {/* Header */}
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-xl text-primary border border-primary/20">
+                    <Cookie size={20} />
                   </div>
-                  
-                  <p className="text-sm md:text-base text-white/70 leading-relaxed font-light mb-8">
-                    We use cookies to help the Success369 website function smoothly and to understand how visitors use our platform. Some cookies are essential. Others help us improve the experience. You can choose what works best for you.
-                  </p>
+                  <h3 className="text-lg font-semibold text-white">Your Cookie Privacy</h3>
                 </div>
+                <button 
+                  onClick={() => setIsVisible(false)}
+                  className="text-white/20 hover:text-white transition-colors"
+                >
+                  <X size={18} />
+                </button>
+              </div>
 
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-wrap gap-3">
-                    <CTAButton
-                      variant="shimmer"
-                      size="md"
-                      onClick={handleAccept}
-                      className="flex-1 min-w-[200px] justify-center text-sm tracking-wide uppercase font-bold py-4"
+              {/* Description */}
+              <p className="text-sm text-white/50 leading-relaxed">
+                We use cookies to improve your experience and analyze our traffic. By clicking “Accept All”, you consent to our use of cookies as outlined in our Policy.
+              </p>
+
+              {/* Preferences Accordion */}
+              <div className="space-y-4">
+                <button 
+                  onClick={() => setShowSettings(!showSettings)}
+                  className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-primary/80 hover:text-primary transition-colors"
+                >
+                  {showSettings ? "Hide" : "Customize"} Preferences
+                  <ChevronDown size={14} className={`transition-transform duration-300 ${showSettings ? 'rotate-180' : ''}`} />
+                </button>
+
+                <AnimatePresence>
+                  {showSettings && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden space-y-3"
                     >
-                      Yes, Improve My Experience
-                    </CTAButton>
-                    <button
-                      onClick={handleDecline}
-                      className="flex-1 px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300"
-                    >
-                      No Thanks
-                    </button>
-                  </div>
-                  
-                  <div className="flex flex-col items-center gap-4 pt-4 border-t border-white/5">
-                    <Link 
-                      to="/cookie-policy"
-                      className="text-xs uppercase tracking-widest text-primary/80 hover:text-primary font-bold transition-colors"
-                    >
-                      Cookie Settings
-                    </Link>
-                    
-                    <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/30 font-medium">
-                      <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                      <span className="h-1 w-1 rounded-full bg-white/20" />
-                      <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
-                    </div>
-                  </div>
-                </div>
+                      <div className="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5">
+                        <Label className="text-xs text-white/70">Essential (Required)</Label>
+                        <span className="text-[10px] text-primary/60 font-bold uppercase">Always On</span>
+                      </div>
+                      
+                      <div className="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors cursor-pointer" onClick={() => setSettings(s => ({...s, analytics: !s.analytics}))}>
+                        <Label className="text-xs text-white/70">Performance & Analytics</Label>
+                        <Checkbox checked={settings.analytics} onCheckedChange={(v) => setSettings(s => ({...s, analytics: !!v}))} />
+                      </div>
+
+                      <div className="flex items-center justify-between p-3 rounded-2xl bg-white/5 border border-white/5 hover:border-white/10 transition-colors cursor-pointer" onClick={() => setSettings(s => ({...s, marketing: !s.marketing}))}>
+                        <Label className="text-xs text-white/70">Personalization</Label>
+                        <Checkbox checked={settings.marketing} onCheckedChange={(v) => setSettings(s => ({...s, marketing: !!v}))} />
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Actions */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Button 
+                  onClick={() => handleSave("all")}
+                  className="flex-1 rounded-full bg-primary hover:bg-primary/90 text-white font-bold h-11"
+                >
+                  Accept All
+                </Button>
+                <Button 
+                  variant="outline"
+                  onClick={() => handleSave("selected")}
+                  className="flex-1 rounded-full border-white/10 hover:bg-white/5 text-white/70 font-bold h-11"
+                >
+                  Save Selection
+                </Button>
+              </div>
+
+              <div className="text-center pt-2">
+                <Link to="/cookie-policy" className="text-[10px] uppercase tracking-widest text-white/20 hover:text-white transition-colors">
+                  Read Full Cookie Policy
+                </Link>
               </div>
             </div>
-
-            {/* Subtle dismiss button */}
-            <button 
-              onClick={handleDismiss}
-              className="absolute top-6 right-6 p-2 text-white/20 hover:text-white/60 transition-colors"
-              aria-label="Dismiss"
-            >
-              <X size={18} />
-            </button>
           </div>
         </motion.div>
       )}
