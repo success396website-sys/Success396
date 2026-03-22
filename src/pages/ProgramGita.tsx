@@ -19,7 +19,7 @@ const ProgramGita = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>GITA — Clarity Before Action | Success369</title>
-        <meta name="description" content="GITA is the essential first phase of Success369. A guided clarity session for those at a decision point, designed to reveal your next direction with confidence." />
+        <meta name="description" content="GITA is an essential part of Success369. A guided clarity session for those at a decision point, designed to reveal your next direction with confidence." />
       </Helmet>
       <Navbar />
 
@@ -84,6 +84,45 @@ const ProgramGita = () => {
         </div>
       </section>
 
+
+      {/* --- WHAT YOU GAIN (Transformation) --- */}
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="mb-6">What You Gain</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Clarity comes first. Action comes after."</p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Self-Understanding", desc: "Clear understanding of who you are right now.", icon: Users },
+              { title: "Direction Clarity", desc: "Knowing which path makes sense from here.", icon: Target },
+              { title: "Confident Decisions", desc: "Confidence in your next moves.", icon: Sparkles },
+              { title: "Grounded Path", desc: "A calm way forward from here.", icon: Building }
+            ].map((gain, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
+                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="mb-3">{gain.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* --- FOUNDATION STYLE: WHO SHOULD BEGIN? --- */}
       <section className="section bg-background relative overflow-hidden">
@@ -165,45 +204,6 @@ const ProgramGita = () => {
                     <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">{card.description}</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- WHAT YOU GAIN (Transformation) --- */}
-      <section className="py-24 sm:py-32 relative overflow-hidden">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">What You Gain</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Clarity comes first. Action comes after."</p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Self-Understanding", desc: "Clear understanding of who you are right now.", icon: Users },
-              { title: "Direction Clarity", desc: "Knowing which path makes sense from here.", icon: Target },
-              { title: "Confident Decisions", desc: "Confidence in your next moves.", icon: Sparkles },
-              { title: "Grounded Path", desc: "A calm way forward from here.", icon: Building }
-            ].map((gain, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
-                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="mb-3">{gain.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
               </motion.div>
             ))}
           </div>

@@ -34,7 +34,6 @@ const programCards = [
     href: "/program-maya",
     outcome: "Coherence, focus, and grounded momentum.",
     cta: "Begin the MAYA Journey",
-    phase: "Phase 1"
   },
   {
     icon: Eye,
@@ -44,7 +43,6 @@ const programCards = [
     href: "/program-gita",
     outcome: "Clear direction and confident next steps.",
     cta: "Begin the GITA Journey",
-    phase: "Phase 2"
   },
   {
     icon: Shield,
@@ -54,7 +52,6 @@ const programCards = [
     href: "/program-sarvam",
     outcome: "A stable success architecture that endures.",
     cta: "Begin the SARVAM Journey",
-    phase: "Phase 3"
   },
   {
     icon: Sun,
@@ -64,7 +61,6 @@ const programCards = [
     href: "/program-shakti",
     outcome: "Sharper execution without losing alignment.",
     cta: "Begin the SHAKTI Journey",
-    phase: "Phase 4"
   },
 ];
 
@@ -81,7 +77,7 @@ const Programs = () => {
     <div ref={containerRef} className="min-h-screen bg-background text-foreground/90 selection:bg-primary/30 overflow-x-hidden">
       <Helmet>
         <title>Programs — Success369 Journeys</title>
-        <meta name="description" content="Explore the four phases of Success369 Journeys: MAYA, GITA, SARVAM, and SHAKTI — structured growth experiences for real decisions and transitions." />
+        <meta name="description" content="Explore the Success369 Journeys: MAYA, GITA, SARVAM, and SHAKTI — structured growth experiences for real decisions and transitions." />
       </Helmet>
       <Navbar />
 
@@ -139,7 +135,7 @@ const Programs = () => {
                 Begin Your Journey
               </CTAButton>
               <CTAButton to="/free-session" size="lg" variant="outline" icon={null as any} className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
-                Take a Free Session
+                Take a Session
               </CTAButton>
             </motion.div>
 
@@ -246,10 +242,6 @@ const Programs = () => {
                 transition={{ delay: i * 0.15, duration: 0.8 }}
                 className="relative text-center group"
               >
-                {/* Background Number Pattern */}
-                <span className="absolute top-0 left-12 font-display text-7xl font-black text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.07] group-hover:-translate-y-4">
-                  0{i + 1}
-                </span>
 
                 <div className="relative w-24 h-24 mx-auto rounded-3xl bg-secondary/30 border border-border/50 flex items-center justify-center mb-8 group-hover:border-primary/40 group-hover:bg-primary/5 transition-all duration-500 z-10">
                   <step.icon size={32} className="text-primary/60 group-hover:text-primary transition-all duration-500" />
@@ -279,7 +271,7 @@ const Programs = () => {
           </h2>
         }
         description="If you’re unsure where to start, begin with a conversation. Understand your context. See your options clearly. Decide with confidence."
-        ctaText="Book a Session"
+        ctaText="Take a Session"
         ctaHref="/free-session"
         showPillars={false}
       />

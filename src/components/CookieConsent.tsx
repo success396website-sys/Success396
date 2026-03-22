@@ -37,63 +37,78 @@ const CookieConsent = () => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-6 left-6 right-6 z-[100] md:left-auto md:max-w-md"
+          initial={{ y: 100, opacity: 0, scale: 0.95 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          exit={{ y: 50, opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="fixed bottom-6 left-6 right-6 z-[100] md:left-auto md:right-8 md:max-w-md lg:max-w-lg"
         >
-          <div className="relative overflow-hidden rounded-3xl bg-background/80 backdrop-blur-2xl border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] p-6 md:p-8">
-            {/* Ambient background glow */}
-            <div className="absolute -top-24 -right-24 w-48 h-48 bg-primary/20 blur-[80px] pointer-events-none rounded-full" />
+          <div className="relative overflow-hidden rounded-[2.5rem] bg-black/80 backdrop-blur-3xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.8)] p-8 md:p-10">
+            {/* Artistic background accents */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-primary/15 blur-[100px] pointer-events-none rounded-full -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/10 blur-[80px] pointer-events-none rounded-full translate-y-1/2 -translate-x-1/2" />
             
             <div className="relative z-10">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="shrink-0 h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
-                  <Cookie size={24} />
-                </div>
+              <div className="flex flex-col gap-6">
                 <div>
-                  <h3 className="text-xl font-display font-bold mb-2">Cookie Settings</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    We use cookies to enhance your browsing experience, analyze site usage, and assist in our marketing efforts.
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary border border-primary/20 shadow-[0_0_20px_rgba(var(--primary),0.2)]">
+                      <Cookie size={20} />
+                    </div>
+                    <h3 className="text-xl md:text-2xl font-display font-medium tracking-tight text-white italic">
+                      Clarity Matters — <span className="text-primary font-bold not-italic">Even for Cookies</span>
+                    </h3>
+                  </div>
+                  
+                  <p className="text-sm md:text-base text-white/70 leading-relaxed font-light mb-8">
+                    We use cookies to help the Success369 website function smoothly and to understand how visitors use our platform. Some cookies are essential. Others help us improve the experience. You can choose what works best for you.
                   </p>
                 </div>
-                <button 
-                  onClick={handleDismiss}
-                  className="shrink-0 p-1 text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label="Dismiss cookie notice"
-                >
-                  <X size={20} />
-                </button>
-              </div>
 
-              <div className="flex flex-col gap-4">
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <CTAButton
-                    variant="shimmer"
-                    size="sm"
-                    onClick={handleAccept}
-                    className="flex-1 justify-center py-3 text-xs sm:text-sm"
-                  >
-                    Accept all necessary cookies
-                  </CTAButton>
-                  <button
-                    onClick={handleDecline}
-                    className="px-6 py-2.5 text-sm font-semibold rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-200 flex-1 sm:flex-none"
-                  >
-                    Decline
-                  </button>
-                </div>
-                <div className="text-center">
-                  <Link 
-                    to="/cookie-policy" 
-                    className="text-xs text-muted-foreground hover:text-primary transition-colors underline underline-offset-4"
-                  >
-                    Read our Cookie Policy
-                  </Link>
+                <div className="flex flex-col gap-4">
+                  <div className="flex flex-wrap gap-3">
+                    <CTAButton
+                      variant="shimmer"
+                      size="md"
+                      onClick={handleAccept}
+                      className="flex-1 min-w-[200px] justify-center text-sm tracking-wide uppercase font-bold py-4"
+                    >
+                      Yes, Improve My Experience
+                    </CTAButton>
+                    <button
+                      onClick={handleDecline}
+                      className="flex-1 px-8 py-3.5 text-xs font-bold uppercase tracking-widest text-white/60 hover:text-white rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all duration-300"
+                    >
+                      No Thanks
+                    </button>
+                  </div>
+                  
+                  <div className="flex flex-col items-center gap-4 pt-4 border-t border-white/5">
+                    <Link 
+                      to="/cookie-policy"
+                      className="text-xs uppercase tracking-widest text-primary/80 hover:text-primary font-bold transition-colors"
+                    >
+                      Cookie Settings
+                    </Link>
+                    
+                    <div className="flex items-center gap-3 text-[10px] uppercase tracking-[0.2em] text-white/30 font-medium">
+                      <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
+                      <span className="h-1 w-1 rounded-full bg-white/20" />
+                      <Link to="/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</Link>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+
+            {/* Subtle dismiss button */}
+            <button 
+              onClick={handleDismiss}
+              className="absolute top-6 right-6 p-2 text-white/20 hover:text-white/60 transition-colors"
+              aria-label="Dismiss"
+            >
+              <X size={18} />
+            </button>
           </div>
         </motion.div>
       )}

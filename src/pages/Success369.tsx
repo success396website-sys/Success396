@@ -201,7 +201,7 @@ const Success369Page = () => {
               className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
             >
               <CTAButton to="/free-session" size="md" variant="shimmer">
-                Take a Free Session
+                Take a Session
               </CTAButton>
               <CTAButton
                 to="/programs"
@@ -718,7 +718,7 @@ const Success369Page = () => {
           </h2>
         }
         description="Most people start with a decision, a tension, a sense that something could be more aligned. That is enough. The architecture works quietly in the background."
-        ctaText="Take a Free Session"
+        ctaText="Take a Session"
         ctaHref="/free-session"
         showPillars={true}
       />

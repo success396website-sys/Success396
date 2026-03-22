@@ -88,6 +88,45 @@ const ProgramShakti = () => {
       </section>
 
 
+      {/* --- WHAT YOU GAIN --- */}
+      <section className="py-24 sm:py-32 relative overflow-hidden">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="mb-6">What You Gain</h2>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Movement becomes clean and confident — not forced."</p>
+          </motion.div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { title: "Sharper Execution", desc: "Translate your clarity into precise action.", icon: Target },
+              { title: "Stronger Influence", desc: "Build credibility through alignment and presence.", icon: Sparkles },
+              { title: "Team Alignment", desc: "Create execution rhythm without corporate jargon.", icon: Users },
+              { title: "Usable Tools", desc: "Practical, immediately applicable activation frameworks.", icon: Shield }
+            ].map((gain, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
+                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
+                </div>
+                <h3 className="mb-3">{gain.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* --- WHO IT'S FOR (Foundation Style) --- */}
       <section className="section bg-background relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px] pointer-events-none -translate-x-1/2" />
@@ -163,45 +202,6 @@ const ProgramShakti = () => {
                     <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed">{card.description}</p>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* --- WHAT YOU GAIN --- */}
-      <section className="py-24 sm:py-32 relative overflow-hidden">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="mb-6">What You Gain</h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto italic">"Movement becomes clean and confident — not forced."</p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { title: "Sharper Execution", desc: "Translate your clarity into precise action.", icon: Target },
-              { title: "Stronger Influence", desc: "Build credibility through alignment and presence.", icon: Sparkles },
-              { title: "Team Alignment", desc: "Create execution rhythm without corporate jargon.", icon: Users },
-              { title: "Usable Tools", desc: "Practical, immediately applicable activation frameworks.", icon: Shield }
-            ].map((gain, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-3xl bg-card/40 border border-border/30 hover:border-primary/40 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-500 group-hover:text-white">
-                  <gain.icon size={20} className="text-primary group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="mb-3">{gain.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{gain.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -311,7 +311,7 @@ const ProgramShakti = () => {
             Activate your <span className="text-primary italic">aligned momentum.</span>
           </h2>
         }
-        description="Book a free session to explore how SHAKTI can accelerate impact for you, your team, or your organisation."
+        description="Take a session to explore how SHAKTI can accelerate impact for you, your team, or your organisation."
         ctaText="Begin the SHAKTI Journey"
         ctaHref="/apply/shakti"
         showPillars={false}

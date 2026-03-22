@@ -20,7 +20,6 @@ const programDetails: Record<string, {
   tagline: string;
   description: string;
   icon: typeof BookOpen;
-  phase: string;
   duration: string;
   format: string;
   groupSize: string;
@@ -29,10 +28,9 @@ const programDetails: Record<string, {
   GITA: {
     name: "GITA",
     fullName: "GITA — Clarity Before Action",
-    tagline: "Phase 1: PAUSE",
+    tagline: "PAUSE",
     description: "A guided clarity session for those at a decision point, designed to reveal your next direction with confidence.",
     icon: Eye,
-    phase: "Phase 1",
     duration: "3-hour guided session",
     format: "Online or In-Person",
     groupSize: "1:1 or small group",
@@ -41,10 +39,9 @@ const programDetails: Record<string, {
   MAYA: {
     name: "MAYA",
     fullName: "MAYA — Face What's Real",
-    tagline: "Phase 2: CONFRONT",
+    tagline: "CONFRONT",
     description: "A deep-dive journey into the patterns, beliefs, and illusions that silently hold you back from authentic success.",
     icon: Heart,
-    phase: "Phase 2",
     duration: "6-week journey",
     format: "Online or In-Person",
     groupSize: "Cohort-based",
@@ -53,10 +50,9 @@ const programDetails: Record<string, {
   SARVAM: {
     name: "SARVAM",
     fullName: "SARVAM — Build the System",
-    tagline: "Phase 3: BUILD",
-    description: "The architecture phase — designing and implementing the systems, habits, and structures that make your success sustainable.",
+    tagline: "BUILD",
+    description: "The architecture journey — designing and implementing the systems, habits, and structures that make your success sustainable.",
     icon: Target,
-    phase: "Phase 3",
     duration: "12-week intensive",
     format: "Hybrid",
     groupSize: "Small cohort",
@@ -65,10 +61,9 @@ const programDetails: Record<string, {
   SHAKTI: {
     name: "SHAKTI",
     fullName: "SHAKTI — Lead & Scale",
-    tagline: "Phase 4: LEAD",
+    tagline: "LEAD",
     description: "The leadership accelerator — stepping into your power to lead teams, organisations, and movements with aligned authority.",
     icon: Zap,
-    phase: "Phase 4",
     duration: "Ongoing mentorship",
     format: "In-Person & Virtual",
     groupSize: "By invitation",
@@ -171,7 +166,6 @@ const ProgramApply = () => {
                   </div>
                   <div>
                     <h3 className="font-display text-xl font-bold text-foreground">{details.name}</h3>
-                    <p className="text-primary text-xs font-bold uppercase tracking-widest">{details.phase}</p>
                   </div>
                 </div>
 

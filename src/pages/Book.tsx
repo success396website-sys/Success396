@@ -42,20 +42,12 @@ export const bookFormats = [
   {
     id: "hardcover",
     title: "Hardcover Edition",
-    price: "₹1,500",
-    amountInPaise: 150000,
-    description: "Premium cloth-bound edition for your library. Includes digital resources.",
+    price: "₹499",
+    originalPrice: "₹699",
+    amountInPaise: 49900,
+    description: "Physical copy price is INR 699/- and Viral Mafia is now selling at a discounted price of INR 499/-",
     icon: BookOpen,
     features: ["High-quality print", "Bonus Worksheets", "Author's Signature (Ltd)"]
-  },
-  {
-    id: "digital",
-    title: "Digital Ecosystem",
-    price: "₹2,500",
-    amountInPaise: 250000,
-    description: "Instant access to E-book, Audiobook, and Interactive Journal.",
-    icon: FileText,
-    features: ["Kindle & PDF Formats", "Audiobook Included", "Interactive Journal"]
   }
 ];
 
@@ -230,25 +222,33 @@ const Book = () => {
             <p className="text-muted-foreground text-xl font-light">Choose the format that fits your journey.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            {bookFormats.map((format, i) => (
-              <motion.div
-                key={format.id}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: i * 0.2 }}
-                className="relative p-12 sm:p-16 rounded-[4rem] bg-gradient-to-br from-foreground/[0.03] to-transparent border border-border/50 backdrop-blur-2xl text-left flex flex-col group hover:border-primary/50 transition-all duration-700"
-              >
-                <div className="flex justify-between items-start mb-12">
-                  <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-700">
-                    <format.icon size={28} className="text-primary group-hover:text-white" />
+            <div className={`grid ${bookFormats.length === 1 ? 'max-w-2xl mx-auto' : 'md:grid-cols-2 gap-10 max-w-5xl mx-auto'}`}>
+              {bookFormats.map((format, i) => (
+                <motion.div
+                  key={format.id}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: i * 0.2 }}
+                  className="relative p-12 sm:p-16 rounded-[4rem] bg-gradient-to-br from-foreground/[0.03] to-transparent border border-border/50 backdrop-blur-2xl text-left flex flex-col group hover:border-primary/50 transition-all duration-700"
+                >
+                  <div className="flex justify-between items-start mb-12">
+                    <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-all duration-700">
+                      <format.icon size={28} className="text-primary group-hover:text-white" />
+                    </div>
+                    <div className="text-right">
+                      {/* Price display with original struck-out */}
+                      <div className="flex items-center gap-3 justify-end">
+                        {(format as any).originalPrice && (
+                          <span className="text-xl text-muted-foreground line-through opacity-60">
+                            {(format as any).originalPrice}
+                          </span>
+                        )}
+                        <p className="text-3xl font-bold text-foreground transition-transform group-hover:scale-110 duration-500">{format.price}</p>
+                      </div>
+                      <p className="text-[10px] font-bold uppercase tracking-widest text-primary/50">One Time Purchase</p>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-3xl font-bold text-foreground">{format.price}</p>
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-primary/50">One Time Purchase</p>
-                  </div>
-                </div>
 
                 <h3 className="text-foreground mb-4 tracking-tight">{format.title}</h3>
                 <p className="text-muted-foreground font-light mb-10 text-lg leading-relaxed">{format.description}</p>
@@ -344,7 +344,7 @@ const Book = () => {
           </h2>
         }
         description="Start with the book. Go deeper with the Journeys. Either way, the first step is clarity."
-        ctaText="Take a Free Session"
+        ctaText="Take a Session"
         ctaHref="/free-session"
         showPillars={false}
       />

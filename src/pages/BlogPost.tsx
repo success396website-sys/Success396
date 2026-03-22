@@ -18,7 +18,7 @@ const fadeUp = {
 const ctaItems = [
   { label: "Read the Book", description: "Dive deeper into the Success369 framework", href: "#", icon: BookOpen },
   { label: "Explore Journeys", description: "Find your transformational path", href: "#", icon: Sparkles },
-  { label: "Free Session", description: "Experience Success369 coaching firsthand", href: "#", icon: ArrowRight },
+  { label: "Take a Session", description: "Experience Success369 coaching firsthand", href: "#", icon: ArrowRight },
 ];
 
 const BlogPost = () => {

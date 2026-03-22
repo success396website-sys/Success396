@@ -14,6 +14,8 @@ interface CTAButtonProps {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
+  target?: string;
+  rel?: string;
 }
 
 const CTAButton = ({
@@ -27,6 +29,8 @@ const CTAButton = ({
   onClick,
   type = "button",
   disabled,
+  target,
+  rel,
 }: CTAButtonProps) => {
   const sizeClasses = {
     sm: "px-6 py-2.5 text-xs sm:text-sm",
@@ -71,7 +75,7 @@ const CTAButton = ({
 
   if (href) {
     return (
-      <a href={href} className={commonClasses} onClick={onClick}>
+      <a href={href} className={commonClasses} onClick={onClick} target={target} rel={rel}>
         {Content}
       </a>
     );

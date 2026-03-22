@@ -220,7 +220,7 @@ const GlobalCTA = ({
                       ))}
                     </div>
                     <Link to="/free-session" className="text-primary/80 hover:text-primary font-bold transition-colors uppercase tracking-wider flex items-center gap-1">
-                      Free Session <ArrowRight size={10} />
+                      Take a Session <ArrowRight size={10} />
                     </Link>
                   </div>
                 </motion.div>

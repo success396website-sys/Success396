@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Linkedin, Twitter, Award, Users, ArrowRight, BookOpen } from "lucide-react";
+import { Linkedin, Award, Users, ArrowRight, BookOpen } from "lucide-react";
 import trainer1 from "@/assets/trainer-1.jpg";
 import trainer2 from "@/assets/trainer-2.jpg";
 import CTAButton from "./CTAButton";
@@ -14,6 +14,7 @@ const trainers = [
     credentials: ["Ph.D. Academic Leader", "Global Entrepreneur", "Dedicated Philanthropist"],
     specialties: ["Leadership Excellence", "Purpose Discovery", "Human Potential"],
     stats: { clients: "10k+", years: "25+", workshops: "1000+" },
+    linkedin: "https://www.linkedin.com/in/ajayya-kumar/",
   },
   {
     name: "Praveen Parameswar",
@@ -24,6 +25,7 @@ const trainers = [
     credentials: ["Education Entrepreneur", "Strategic Mentor", "Growth Specialist"],
     specialties: ["Career Navigation", "Strategic Growth", "Clarity Coaching"],
     stats: { clients: "5k+", years: "15+", workshops: "750+" },
+    linkedin: "https://www.linkedin.com/in/praveenparameswar/",
   },
 ];
 
@@ -134,20 +136,22 @@ Success369 is guided by two stewards who believe success is cultivated with clar
                     {/* Actions */}
                     <div className="flex items-center gap-4 pt-2">
                       <CTAButton 
-                        to="/free-session"
+                        href="mailto:support@success369.org"
                         size="sm"
                         variant="primary"
                         className="uppercase tracking-wider"
                       >
-                        Book a Session
+                        Take a Session
                       </CTAButton>
                       <div className="flex gap-2">
-                        <button className="h-9 w-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors duration-300">
+                        <a 
+                          href={trainer.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="h-9 w-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors duration-300"
+                        >
                           <Linkedin className="h-4 w-4" />
-                        </button>
-                        <button className="h-9 w-9 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-colors duration-300">
-                          <Twitter className="h-4 w-4" />
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>

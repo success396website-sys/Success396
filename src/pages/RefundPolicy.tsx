@@ -13,32 +13,126 @@ const fadeUp = {
 
 const sections = [
   {
-    title: "Refund Eligibility",
-    content: "We want you to be fully satisfied with your Success369 experience. If for any reason you are not satisfied with a paid programme or product, you may request a refund within 14 days of purchase or booking confirmation, provided the session or programme has not yet commenced.",
+    title: "1. Introduction",
+    content: [
+      "This Refund & Cancellation Policy explains the terms under which refunds, cancellations, and rescheduling requests are handled for services and products offered by Success369 Private Limited (“Success369”, “we”, “our”, or “us”).",
+      "This policy applies to all paid services including coaching sessions, programs (GITA, MAYA, SHAKTI, SARVAM), workshops, events, digital courses, and physical products sold through the Success369 website.",
+      "By purchasing or enrolling in any Success369 product or service, you acknowledge and agree to this policy."
+    ],
   },
   {
-    title: "Book Purchases",
-    content: "Physical books may be returned within 14 days of delivery in their original, unused condition for a full refund. Digital/e-book purchases are non-refundable once the download link has been accessed. Shipping costs for returns are the responsibility of the buyer unless the item arrived damaged or defective.",
+    title: "2. General Policy",
+    content: [
+      "Success369 programs and services require significant preparation and allocation of resources. Purchases are considered a commitment to participate. Refunds may only be issued under the specific conditions described in this policy, and are generally not issued for change of mind or personal circumstances."
+    ],
   },
   {
-    title: "Programme & Session Refunds",
-    content: "For MAYA, GITA, SARVAM, and SHAKTI programmes: cancellations made more than 7 days before the scheduled start date are eligible for a full refund. Cancellations made within 7 days of the start date may receive a 50% refund or a credit toward a future programme, at our discretion. Once a programme has begun, no refunds will be issued.",
+    title: "3. Coaching Programs and Learning Journeys",
+    content: [
+      "Cancellation More Than 7 Days Before Start: Success369 may issue a refund after deducting administrative or processing charges.",
+      "Cancellation Within 7 Days of Start: Success369 may offer a partial refund or credit toward a future program.",
+      "After Program Has Started: Once the program has started or sessions have begun, no refunds will be issued because coaching slots are reserved and materials have been prepared."
+    ],
   },
   {
-    title: "Free Sessions",
-    content: "Free introductory sessions carry no financial obligation. If you need to reschedule or cancel a free session, please provide at least 24 hours' notice so we can offer the slot to someone else.",
+    title: "4. Digital Courses and Online Content",
+    content: [
+      "Once access to digital materials (recorded sessions, member platforms, downloads) has been granted, fees paid are generally non-refundable."
+    ],
   },
   {
-    title: "Events & Workshops",
-    content: "Event tickets may be refunded up to 7 days before the event date. Within 7 days of the event, tickets are non-refundable but may be transferred to another person. If Success369 cancels an event, all ticket holders will receive a full refund.",
+    title: "5. Workshops, Seminars, and Events",
+    content: [
+      "More than 7 Days Before: Refund after deduction of administrative charges.",
+      "3–7 Days Before: Partial refund or program credit may be offered.",
+      "Less than 72 Hours: No refund will be issued.",
+      "No-shows without prior cancellation are not eligible for refunds."
+    ],
   },
   {
-    title: "How to Request a Refund",
-    content: "To request a refund, please email support@success369.org with your order number, name, and reason for the refund. We aim to process all refund requests within 5–10 business days. Refunds will be issued to the original payment method.",
+    title: "6. Consultation and Session Cancellations",
+    content: [
+      "Cancellations must be made at least 24 hours before the scheduled session. If a cancellation occurs within less than 24 hours, the session may be treated as completed and no refund will be issued."
+    ],
   },
   {
-    title: "Exceptions",
-    content: "We reserve the right to refuse a refund if we believe the policy is being abused or if the terms above are not met. In cases of dispute, we will work in good faith to reach a fair resolution.",
+    title: "7. Rescheduling Requests",
+    content: [
+      "Rescheduling is subject to availability and operational considerations. Success369 reserves the right to approve or decline rescheduling requests."
+    ],
+  },
+  {
+    title: "8. Physical Book Orders",
+    content: [
+      "Success369 may sell books through the website using authorized payment processors like Razorpay or Stripe. Books are shipped through authorized logistics partners."
+    ],
+  },
+  {
+    title: "9. Cancellation of Book Orders",
+    content: [
+      "Customers may request cancellation before the order has been shipped for a full refund. Once shipped, the return process must be followed."
+    ],
+  },
+  {
+    title: "10. Damaged or Incorrect Items",
+    content: [
+      "If you receive a damaged or incorrect item, notify us within 48 hours with your order number and photographs of the issue. Upon verification, we may offer a replacement or a refund."
+    ],
+  },
+  {
+    title: "11. Returns for Physical Books",
+    content: [
+      "Returns accepted within 7 days of delivery if the book is unused, undamaged, and original packaging is intact."
+    ],
+  },
+  {
+    title: "12. Return Shipping",
+    content: [
+      "Unless the product is defective or incorrectly delivered, the customer is responsible for return shipping costs."
+    ],
+  },
+  {
+    title: "13. Lost Shipments",
+    content: [
+      "If a shipment is confirmed lost by our courier partner, we will issue a replacement product or a full refund."
+    ],
+  },
+  {
+    title: "14. Refund Processing",
+    content: [
+      "Approved refunds will be processed to the original payment method. Processing typically takes 7–10 business days depending on banking systems."
+    ],
+  },
+  {
+    title: "15. Chargebacks",
+    content: [
+      "Please contact us before initiating a chargeback. Unauthorized chargebacks may result in suspension of platform access."
+    ],
+  },
+  {
+    title: "16. Cancellation by Success369",
+    content: [
+      "If we cancel a program or event, participants will be offered rescheduling, credit, or a full refund."
+    ],
+  },
+  {
+    title: "17. Exceptional Circumstances",
+    content: [
+      "Emergency requests (e.g., medical issues) may be reviewed on a case-by-case basis at the sole discretion of Success369."
+    ],
+  },
+  {
+    title: "18. Policy Updates",
+    content: [
+      "The latest version of this policy will always be available on the Success369 website."
+    ],
+  },
+  {
+    title: "19. Contact",
+    content: [
+      "For refund or cancellation requests, please contact:",
+      "Success369 Private Limited\nEmail: support@success369.org\nRegional Office: Jayanagar 9th Block, Bangalore, India"
+    ],
   },
 ];
 
@@ -57,11 +151,11 @@ const RefundPolicy = () => {
               <p className="font-display text-xs uppercase tracking-[0.3em] text-primary font-bold">Legal</p>
               <span className="h-[1px] w-8 bg-primary/60" />
             </motion.div>
-            <motion.h1 custom={1} variants={fadeUp} className="mb-8">
-              Refund <span className="text-glow text-primary">Policy</span>
+            <motion.h1 custom={1} variants={fadeUp} className="mb-8 font-light">
+              Refund & <span className="text-glow text-primary italic font-normal">Cancellation</span>
             </motion.h1>
-            <motion.p custom={2} variants={fadeUp} className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto">
-              Our commitment to fairness and transparency in all transactions.
+            <motion.p custom={2} variants={fadeUp} className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto font-light">
+              Our commitment to transparency and fairness in all Success369 transactions.
             </motion.p>
           </motion.div>
         </div>
@@ -69,19 +163,25 @@ const RefundPolicy = () => {
 
       <section className="relative py-16 sm:py-20">
         <div className="absolute inset-0 bg-gradient-to-b from-background to-card/10" />
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 space-y-10">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 space-y-8">
           {sections.map((section, i) => (
             <motion.div
               key={section.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="relative p-8 rounded-3xl bg-card/30 backdrop-blur-sm border border-border/30"
+              transition={{ duration: 0.6, delay: i * 0.04 }}
+              className="relative p-8 rounded-3xl bg-card/10 backdrop-blur-sm border border-white/5"
             >
               <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-              <h3 className="mb-3">{section.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{section.content}</p>
+              <h3 className="mb-6 font-display text-xl font-bold tracking-tight text-foreground/90">{section.title}</h3>
+              <div className="space-y-4">
+                {section.content.map((paragraph, idx) => (
+                  <p key={idx} className="text-muted-foreground leading-relaxed font-light whitespace-pre-line">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </motion.div>
           ))}
 
@@ -89,9 +189,10 @@ const RefundPolicy = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-muted-foreground/60 text-sm text-center pt-8"
+            className="text-muted-foreground/60 text-sm text-center pt-8 font-light"
           >
-            Last updated: February 2026. For questions, contact support@success369.org.
+            Effective Date: 02 March 2026. Last updated: 02 March 2026. <br />
+            For questions, contact support@success369.org.
           </motion.p>
         </div>
       </section>

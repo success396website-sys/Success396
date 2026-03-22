@@ -28,7 +28,7 @@ const podcasts = [
       { label: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/success369" },
       { label: "Spotify", href: "https://open.spotify.com/show/success369" },
       { label: "Google Podcasts", href: "https://podcasts.google.com/feed/success369" },
-      { label: "YouTube", href: "https://youtube.com/@success369" },
+      { label: "YouTube", href: "https://www.youtube.com/@the369leader" },
     ],
   },
   {
@@ -42,48 +42,36 @@ const podcasts = [
     platforms: [
       { label: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/aligned-leaders" },
       { label: "Spotify", href: "https://open.spotify.com/show/aligned-leaders" },
-      { label: "YouTube", href: "https://youtube.com/@success369" },
+      { label: "YouTube", href: "https://www.youtube.com/@the369leader" },
     ],
   },
 ];
 
 const featuredEpisodes = [
   {
-    title: "Why Clarity Comes Before Action",
+    title: "1st Episode by Ajay and Praveen",
     podcast: "The Success369 Podcast",
-    duration: "42 min",
-    description: "Exploring the GITA framework and why most people skip the most important step in their growth journey.",
+    id: "ZatkdgdW7pY",
+    description: "Deep dive into the core philosophy of Success369 with the creators themselves."
   },
   {
-    title: "Breaking Free from Unconscious Patterns",
-    podcast: "The Success369 Podcast",
-    duration: "38 min",
-    description: "A deep dive into MAYA and how hidden beliefs silently shape our decisions and outcomes.",
+    title: "2nd Episode by Renuka Methil",
+    podcast: "Success369 Series",
+    id: "eg7rowfo19U",
+    description: "Insights on leadership and alignment with Renuka Methil."
   },
   {
-    title: "Building Teams That Don't Burn Out",
-    podcast: "Aligned Leaders",
-    duration: "45 min",
-    description: "How aligned leadership creates sustainable high performance without sacrificing wellbeing.",
+    title: "Episode 1 by Marco Landi",
+    podcast: "Success369 Series",
+    id: "jca2VitiUxc",
+    description: "International perspectives on business and human potential."
   },
   {
-    title: "The Architecture of Sustainable Success",
-    podcast: "The Success369 Podcast",
-    duration: "51 min",
-    description: "Understanding the SARVAM journey and why complete transformation requires a complete architecture.",
-  },
-  {
-    title: "Purpose-Driven Performance",
-    podcast: "Aligned Leaders",
-    duration: "36 min",
-    description: "Why organisations anchored in purpose consistently outperform those driven by metrics alone.",
-  },
-  {
-    title: "From Momentum to Alignment",
-    podcast: "The Success369 Podcast",
-    duration: "40 min",
-    description: "The shift from chasing goals to building a life where success flows from who you are.",
-  },
+    title: "Episode 2 by Divya S Iyer",
+    podcast: "Success369 Series",
+    id: "JhBuOrz3GOc",
+    description: "Exploring purpose and performance with Divya S Iyer."
+  }
 ];
 
 const Podcast = () => {
@@ -152,10 +140,17 @@ const Podcast = () => {
             </motion.p>
 
             <motion.div custom={3} variants={fadeUp} className="flex flex-wrap gap-4">
-              <CTAButton href="#shows" size="lg" variant="shimmer" className="px-10">
+              <CTAButton href="#episodes" size="lg" variant="shimmer" className="px-10">
                 Explore Shows
               </CTAButton>
-              <CTAButton href="#watch" size="lg" variant="outline" className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
+              <CTAButton 
+                href="https://www.youtube.com/@the369leader" 
+                target="_blank"
+                rel="noopener noreferrer"
+                size="lg" 
+                variant="outline" 
+                className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50"
+              >
                 Watch on YouTube
               </CTAButton>
             </motion.div>
@@ -189,7 +184,7 @@ const Podcast = () => {
             <div className="relative aspect-video rounded-[2rem] overflow-hidden border border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.5)] bg-black">
               <iframe
                 className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/5lwI2eoGN6E"
+                src="https://www.youtube.com/embed/ZatkdgdW7pY"
                 title="Success369 Featured Episode"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 referrerPolicy="strict-origin-when-cross-origin"
@@ -204,7 +199,7 @@ const Podcast = () => {
 
           <div className="mt-12 text-center">
              <a 
-              href="https://youtube.com/@success369" 
+              href="https://www.youtube.com/@the369leader" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 text-primary font-bold tracking-[0.2em] uppercase text-xs group"
@@ -215,7 +210,7 @@ const Podcast = () => {
         </div>
       </section>
 
-      {/* Podcast Shows */}
+      {/* Podcast Shows - Hidden for now
       <section id="shows" className="section relative overflow-hidden bg-background">
         <div className="container-custom relative z-10">
           {podcasts.map((podcast, idx) => (
@@ -230,11 +225,9 @@ const Podcast = () => {
                 idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
               } gap-12 md:gap-20 items-center group`}
             >
-              {/* Background Number Pattern */}
               <span className={`absolute -top-12 ${idx % 2 === 0 ? "-right-8" : "-left-8"} font-display text-[12rem] font-black text-foreground/[0.03] select-none pointer-events-none transition-all duration-1000 group-hover:text-primary/[0.07] group-hover:-translate-y-4`}>
                 0{idx + 1}
               </span>
-              {/* Cover */}
               <div className="w-full max-w-[320px] shrink-0">
                 <div className="relative group">
                   <div className="absolute -inset-3 bg-gradient-to-br from-primary/30 to-pink-400/20 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -246,7 +239,6 @@ const Podcast = () => {
                 </div>
               </div>
 
-              {/* Info */}
               <div className="relative flex-1 space-y-8 z-10">
                 <div>
                   <h2 className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent uppercase tracking-tight">
@@ -284,9 +276,10 @@ const Podcast = () => {
           ))}
         </div>
       </section>
+      */}
 
       {/* Featured Episodes */}
-      <section className="section relative">
+      <section id="episodes" className="section relative">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/[0.03] to-background" />
 
         <div className="relative container-custom">
@@ -306,7 +299,7 @@ const Podcast = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
             {featuredEpisodes.map((ep, i) => (
               <motion.div
                 key={ep.title}
@@ -315,24 +308,33 @@ const Podcast = () => {
                 whileInView="visible"
                 viewport={{ once: true }}
                 custom={i * 0.1}
-                className="group bg-card/30 backdrop-blur-sm border border-border/30 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300"
+                className="group space-y-6"
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
-                    <Play size={16} className="text-primary ml-0.5" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-primary font-medium">{ep.podcast}</p>
-                    <p className="text-xs text-muted-foreground">{ep.duration}</p>
-                  </div>
+                {/* YouTube Embed */}
+                <div className="relative aspect-video rounded-3xl overflow-hidden border border-border/30 bg-black shadow-2xl group-hover:border-primary/40 transition-colors duration-500">
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${ep.id}`}
+                    title={ep.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  ></iframe>
                 </div>
 
-                <h3 className="font-display font-semibold text-foreground mb-2 leading-snug">
-                  {ep.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {ep.description}
-                </p>
+                <div className="px-2">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-[10px] font-black uppercase tracking-[0.3em] text-primary px-3 py-1 rounded-full bg-primary/10">
+                      {ep.podcast}
+                    </span>
+                  </div>
+                  <h3 className="text-2xl font-bold mb-3 leading-tight group-hover:text-primary transition-colors">
+                    {ep.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed max-w-lg">
+                    {ep.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -381,7 +383,7 @@ const Podcast = () => {
         }
         description="Subscribe to our podcasts and get weekly insights on clarity, alignment, and sustainable success delivered straight to your ears."
         ctaText="Subscribe on YouTube"
-        ctaHref="https://youtube.com/@success369"
+        ctaHref="https://www.youtube.com/@the369leader"
         showPillars={false}
       />
 

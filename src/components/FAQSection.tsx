@@ -34,7 +34,7 @@ const defaultFaqs: FAQItem[] = [
     answer:
       "Success369 Journeys are designed for:\n• Individuals at life or career crossroads\n• Professionals and leaders navigating growth or transition\n• Founders and entrepreneurs building long-term value\n• Teams and organisations seeking alignment and execution\n\nEach journey is stand-alone and chosen based on readiness—not hierarchy.",
     cta: {
-      text: "Take a Free Session",
+      text: "Take a Session",
       href: "/free-session"
     }
   },
@@ -46,16 +46,16 @@ const defaultFaqs: FAQItem[] = [
   {
     question: "I’m not sure which journey is right for me. What should I do?",
     answer:
-      "That’s common—and expected.\nIf you’re unsure, the best place to begin is a free Success369 session.\nIt’s a calm conversation designed to help you:\n• Understand where you are\n• See what fits\n• Decide without pressure",
+      "That’s common—and expected.\nIf you’re unsure, the best place to begin is a Success369 session.\nIt’s a calm conversation designed to help you:\n• Understand where you are\n• See what fits\n• Decide without pressure",
     cta: {
-      text: "Take a Free Session",
+      text: "Take a Session",
       href: "/free-session"
     }
   },
   {
-    question: "What happens in a free session?",
+    question: "What happens in a session?",
     answer:
-      "The free session is a guided conversation, not a sales call.\nYou can expect:\n• Thoughtful listening\n• Clarifying questions\n• A clearer view of your situation\n• Honest guidance on whether—and how—Success369 may help\n\nThere is no obligation to proceed further.",
+      "The session is a guided conversation, not a sales call.\nYou can expect:\n• Thoughtful listening\n• Clarifying questions\n• A clearer view of your situation\n• Honest guidance on whether—and how—Success369 may help\n\nThere is no obligation to proceed further.",
   },
   {
     question: "Is Success369 only for individuals, or also for teams and organisations?",
@@ -80,9 +80,9 @@ const defaultFaqs: FAQItem[] = [
   {
     question: "How do I get started?",
     answer:
-      "The simplest way to begin is with a free session.\nIt helps you explore Success369 without pressure and decide your next step with confidence.",
+      "The simplest way to begin is with a session.\nIt helps you explore Success369 without pressure and decide your next step with confidence.",
     cta: {
-      text: "Take a Free Session",
+      text: "Take a Session",
       href: "/free-session"
     }
   },

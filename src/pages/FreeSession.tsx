@@ -27,7 +27,7 @@ type SessionFormValues = z.infer<typeof sessionSchema>;
 const infoSections = [
   {
     icon: Sparkles,
-    title: "What the Free Session Is",
+    title: "What the Session Is",
     content: "A warm, unhurried conversation — not a sales call, not an assessment, not a pitch. It's a space for you to explore what's present for you right now, ask questions, and get a sense of whether the Success369 approach resonates with where you are in your life and leadership.",
   },
   {
@@ -63,8 +63,8 @@ const FreeSession = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Free Session — Your First Step | Success369</title>
-        <meta name="description" content="Book a free 30-minute session with Success369. No pitch, no pressure — just a warm conversation to explore what's next for your journey." />
+        <title>Take a Session — Your First Step | Success369</title>
+        <meta name="description" content="Book a 30-minute session with Success369. No pitch, no pressure — just a warm conversation to explore what's next for your journey." />
       </Helmet>
       <Navbar />
 
@@ -94,7 +94,7 @@ const FreeSession = () => {
             >
               Take a
               <br />
-              <span className="text-glow text-primary">Free Session</span>
+              <span className="text-glow text-primary">Session</span>
             </motion.h1>
 
             <motion.p
@@ -110,7 +110,7 @@ const FreeSession = () => {
                 href="#booking"
                 className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm font-semibold text-primary-foreground bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] transition-all duration-500 shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)]"
               >
-                Book a Free Session
+                Take a Session
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
             </motion.div>
@@ -182,7 +182,7 @@ const FreeSession = () => {
                 </div>
                 <h3 className="mb-2">Request Received!</h3>
                 <p className="text-muted-foreground mb-6 max-w-sm">
-                  Thank you for reaching out. We'll get back to you within 24 hours to schedule your free session.
+                  Thank you for reaching out. We'll get back to you within 24 hours to schedule your session.
                 </p>
                 <Button
                   variant="outline"
@@ -194,7 +194,7 @@ const FreeSession = () => {
               </motion.div>
             ) : (
               <>
-                <h3 className="mb-6">Book a Free Session</h3>
+                <h3 className="mb-6">Take a Session</h3>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
                     <div className="grid sm:grid-cols-2 gap-5">
@@ -278,7 +278,7 @@ const FreeSession = () => {
                         className="w-full rounded-full h-12 text-sm font-semibold bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-right transition-all duration-500 text-primary-foreground"
                       >
                         <Send className="w-4 h-4 mr-2" />
-                        Book a Free Session
+                        Take a Session
                       </Button>
                     </motion.div>
                   </form>

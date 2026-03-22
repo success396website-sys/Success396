@@ -25,7 +25,7 @@ const slides: Slide[] = [
     title: "Become your most aligned self to achieve your highest aspirations.",
     subtitle:
       "Align who you are, what you believe, and how you act—so progress feels steady, coherent, and deeply fulfilling.",
-    cta: "Take a Free Session",
+    cta: "Take a Session",
     ctaSecondary: "Watch Trailer",
     ctaHref: "/free-session",
   },

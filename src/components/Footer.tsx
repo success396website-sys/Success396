@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Instagram, Linkedin, Youtube, Check } from "lucide-react";
+import { Instagram, Linkedin, Youtube, Check, Music } from "lucide-react";
 import logo from "@/assets/logo.png";
 import CTAButton from "@/components/CTAButton";
 
@@ -16,11 +16,12 @@ const exploreLinks = [
 ];
 
 const connectLinks = [
-  { label: "Take a Free Session", href: "/free-session" },
+  { label: "Take a Session", href: "/free-session" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Instagram", href: "https://instagram.com/success369", icon: Instagram, external: true },
-  { label: "LinkedIn", href: "https://linkedin.com/company/success369", icon: Linkedin, external: true },
-  { label: "YouTube", href: "https://youtube.com/@success369", icon: Youtube, external: true },
+  { label: "Instagram", href: "https://www.instagram.com/thesuccess369/", icon: Instagram, external: true },
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/success369", icon: Linkedin, external: true },
+  { label: "YouTube", href: "https://www.youtube.com/@the369leader", icon: Youtube, external: true },
+  { label: "Spotify", href: "https://open.spotify.com/show/7yxUgOvL9kXUpZo3ufjfrl?si=a1Z8ueEIT-eE89f9hRT_5g", icon: Music, external: true },
 ];
 
 const policyLinks = [
@@ -28,7 +29,11 @@ const policyLinks = [
   { label: "Cookie Policy", href: "/cookie-policy" },
   { label: "Terms & Conditions", href: "/terms-conditions" },
   { label: "Refund Policy", href: "/refund-policy" },
+  { label: "Disclaimer", href: "/disclaimer" },
   { label: "Shipping Policy", href: "/shipping-policy" },
+  { label: "Acceptable Use", href: "/acceptable-use" },
+  { label: "Legal Notice", href: "/legal-notice" },
+  { label: "Community Charter", href: "/community-charter" },
 ];
 
 const Footer = () => {

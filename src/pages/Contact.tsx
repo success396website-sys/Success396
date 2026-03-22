@@ -36,7 +36,7 @@ const subjects = [
   "Program - GITA",
   "Program - SARVAM",
   "Program - SHAKTI",
-  "Book a Session",
+  "Take a Session",
   "Corporate Training",
   "Speaking Engagement",
   "Partnership",
@@ -46,14 +46,14 @@ const subjects = [
 const contactInfo = [
   { icon: Mail, label: "Email", value: "support@success369.org", href: "mailto:support@success369.org" },
   { icon: Phone, label: "Phone", value: "+44 20 7946 0958", href: "tel:+442079460958" },
-  { icon: MapPin, label: "Corporate Office", value: "Bangalore" },
+  { icon: MapPin, label: "Corporate Office", value: "Success369 Private Limited, KOKARYA, Business Synergy Center, \"NAGANANDA COMMERCIAL COMPLEX\", NO.07/3, 15/1, 185/2, 185/A, SECOND FLOOR, 18TH MAIN ROAD, JAYANAGAR 9TH BLOCK, BENGALURU-560041" },
   { icon: Clock, label: "Hours", value: "Mon – Fri, 9 AM – 6 PM GMT" },
 ];
 
 const socialLinks = [
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com/success369" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/success369" },
-  { icon: Youtube, label: "YouTube", href: "https://youtube.com/@success369" },
+  { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/thesuccess369/" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/success369" },
+  { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@the369leader" },
 ];
 
 const fadeUp = {
@@ -447,13 +447,19 @@ const Contact = () => {
               variants={fadeUp}
               className="rounded-xl border border-border/40 bg-card/40 backdrop-blur-sm overflow-hidden"
             >
-              <div className="relative h-48 bg-gradient-to-br from-primary/5 via-card/60 to-pink-500/5 flex items-center justify-center">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsl(var(--primary)/0.08),transparent_70%)]" />
-                <div className="text-center relative">
-                  <MapPin className="w-8 h-8 text-primary/40 mx-auto mb-2" />
-                  <p className="text-muted-foreground text-sm">Bangalore</p>
-                  <p className="text-muted-foreground/50 text-xs mt-1">Map coming soon</p>
-                </div>
+              <div className="relative h-64 bg-card/60 overflow-hidden">
+                <iframe
+                  src="https://maps.google.com/maps?q=Nagananda%20Commercial%20Complex%20Jayanagar%209th%20Block%20Bengaluru&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: "grayscale(0.3) contrast(1.1) invert(0.9) hue-rotate(180deg)" }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Success369 Office Location"
+                  className="absolute inset-0 z-0"
+                ></iframe>
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/20 to-transparent z-10" />
               </div>
             </motion.div>
           </div>
