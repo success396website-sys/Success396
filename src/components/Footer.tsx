@@ -17,7 +17,7 @@ const exploreLinks = [
 ];
 
 const connectLinks = [
-  { label: "Take a Session", href: "/take-a-session" },
+  { label: "Take a Session", href: "/free-session" },
   { label: "Contact Us", href: "/contact" },
   { label: "Instagram", href: "https://www.instagram.com/thesuccess369/", icon: Instagram, external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/success369", icon: Linkedin, external: true },

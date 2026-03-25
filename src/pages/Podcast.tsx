@@ -26,7 +26,7 @@ const podcasts = [
       "Join us every week as we unpack transformational frameworks, share real stories of aligned growth, and challenge the conventional narratives around success. This podcast is your weekly companion for building a life of clarity, congruence, and catalysis.",
     platforms: [
       { label: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/success369" },
-      { label: "Spotify", href: "https://open.spotify.com/show/success369" },
+      { label: "Spotify", href: "https://open.spotify.com/show/7yxUgOvL9kXUpZo3ufjfrl?si=a1Z8ueEIT-eE89f9hRT_5g" },
       { label: "Google Podcasts", href: "https://podcasts.google.com/feed/success369" },
       { label: "YouTube", href: "https://www.youtube.com/@the369leader" },
     ],
@@ -41,7 +41,7 @@ const podcasts = [
       "Aligned Leaders explores how organisations and teams can create cultures of sustainable growth. Each episode features deep conversations with founders, executives, and coaches who lead with clarity and purpose.",
     platforms: [
       { label: "Apple Podcasts", href: "https://podcasts.apple.com/podcast/aligned-leaders" },
-      { label: "Spotify", href: "https://open.spotify.com/show/aligned-leaders" },
+      { label: "Spotify", href: "https://open.spotify.com/show/7yxUgOvL9kXUpZo3ufjfrl?si=a1Z8ueEIT-eE89f9hRT_5g" },
       { label: "YouTube", href: "https://www.youtube.com/@the369leader" },
     ],
   },

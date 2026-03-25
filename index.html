@@ -51,8 +51,16 @@
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
       })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-      fbq("init", "789944417071903");
-      fbq("track", "PageView");
+      
+      // Initialize pixel only after consent
+      window.initializeMetaPixel = function() {
+        fbq("init", "789944417071903");
+        fbq("track", "PageView");
+      };
+      
+      // For now, if you don't have a consent banner yet, 
+      // you can call it immediately or wait for your banner implementation.
+      // initializeMetaPixel(); 
     </script>
     <!-- End Meta Pixel Code -->
   </head>
