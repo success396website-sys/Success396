@@ -49,7 +49,7 @@ const navLinks: NavLink[] = [
 ];
 
 const foundationSections = [
-  { label: "Success 369", description: "Clarity. Congruence. Catalysis.", icon: Star, href: "/success-369" },
+  { label: "Success369", description: "Clarity. Congruence. Catalysis.", icon: Star, href: "/success-369" },
   { label: "About Us", description: "Our story and mission", icon: Info, href: "/about-us" },
 ];
 
