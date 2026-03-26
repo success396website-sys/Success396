@@ -1,7 +1,17 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-const ASSETS_DIR = 'c:/Users/vigne/Downloads/motion-cta-dream-main/motion-cta-dream-main/src/assets';
+
+const ASSETS_DIR = process.argv[2] || path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'src/assets');
+
+if (!fs.existsSync(ASSETS_DIR)) {
+    console.error(`Directory not found: ${ASSETS_DIR}`);
+    console.log('Usage: node list_images.mjs [optional/path/to/assets]');
+    process.exit(1);
+}
+
+
 
 function getFiles(dir) {
     let results = [];

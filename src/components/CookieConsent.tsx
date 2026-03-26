@@ -32,6 +32,11 @@ const CookieConsent = () => {
     setShow(false);
   };
 
+  const handleDismiss = () => {
+    localStorage.setItem("cookie-consent", "dismissed");
+    setShow(false);
+  };
+
   return (
     <AnimatePresence>
       {show && (
@@ -57,12 +62,13 @@ const CookieConsent = () => {
                   </p>
                 </div>
                 <button 
-                  onClick={() => setShow(false)}
+                  onClick={handleDismiss}
                   className="text-white/30 hover:text-white transition-colors"
                   aria-label="Dismiss cookie consent banner"
                 >
                   <X size={18} />
                 </button>
+
               </div>
 
               <div className="flex items-center gap-3">
