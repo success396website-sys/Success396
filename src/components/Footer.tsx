@@ -22,7 +22,7 @@ const connectLinks = [
   { label: "Instagram", href: "https://www.instagram.com/thesuccess369/", icon: Instagram, external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/success369", icon: Linkedin, external: true },
   { label: "YouTube", href: "https://www.youtube.com/@the369leader", icon: Youtube, external: true },
-  { label: "Spotify", href: "https://open.spotify.com/show/7yxUgOvL9kXUpZo3ufjfrl?si=a1Z8ueEIT-eE89f9hRT_5g", icon: Music, external: true },
+  { label: "Spotify", href: "https://open.spotify.com/show/7yxUgOvL9kXUpZo3ufjfrl", icon: Music, external: true },
 ];
 
 const policyLinks = [
