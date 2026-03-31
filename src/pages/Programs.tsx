@@ -15,6 +15,7 @@ import FAQSection from "@/components/FAQSection";
 import ProgramComparison from "@/components/ProgramComparison";
 import journeyVideo from "@/assets/Journey op 1.mp4";
 import { fadeUp } from "@/lib/animations";
+import { trackViewContent, trackLead } from "@/lib/pixel";
 
 // fadeUp imported from @/lib/animations
 
@@ -34,6 +35,7 @@ const programCards = [
     href: "/program-maya",
     outcome: "Coherence, focus, and grounded momentum.",
     cta: "Begin the MAYA Journey",
+    pixelName: "MAYA Program",
   },
   {
     icon: Eye,
@@ -43,6 +45,7 @@ const programCards = [
     href: "/program-gita",
     outcome: "Clear direction and confident next steps.",
     cta: "Begin the GITA Journey",
+    pixelName: "GITA Program",
   },
   {
     icon: Shield,
@@ -52,6 +55,7 @@ const programCards = [
     href: "/program-sarvam",
     outcome: "A stable success architecture that endures.",
     cta: "Begin the SARVAM Journey",
+    pixelName: "SARVAM Program",
   },
   {
     icon: Sun,
@@ -61,6 +65,7 @@ const programCards = [
     href: "/program-shakti",
     outcome: "Sharper execution without losing alignment.",
     cta: "Begin the SHAKTI Journey",
+    pixelName: "SHAKTI Program",
   },
 ];
 
@@ -78,7 +83,56 @@ const Programs = () => {
       <Helmet>
         <title>Programs — Success369 Journeys</title>
         <meta name="description" content="Explore the Success369 Journeys: MAYA, GITA, SARVAM, and SHAKTI — structured growth experiences for real decisions and transitions." />
+        <link rel="canonical" href="https://success369.org/programs" />
+        <meta property="og:title" content="Programs — Success369 Journeys" />
+        <meta property="og:description" content="Explore the Success369 Journeys: MAYA, GITA, SARVAM, and SHAKTI — structured growth experiences for real decisions and transitions." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://success369.org/programs" />
+        <meta property="og:image" content="https://success369.org/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Programs — Success369 Journeys" />
+        <meta name="twitter:description" content="Explore the Success369 Journeys: MAYA, GITA, SARVAM, and SHAKTI — structured growth experiences for real decisions and transitions." />
+        <meta name="twitter:image" content="https://success369.org/og-image.png" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "name": "Success369 Journeys",
+            "url": "https://success369.org/programs",
+            "description": "Structured growth journeys for real decisions and transitions.",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "MAYA — Realigning Unseen Patterns",
+                "url": "https://success369.org/program-maya"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "GITA — Clarity Before Action",
+                "url": "https://success369.org/program-gita"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "SARVAM — Architecting Sustainable Success",
+                "url": "https://success369.org/program-sarvam"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "SHAKTI — Activating Aligned Momentum",
+                "url": "https://success369.org/program-shakti"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
+
       <Navbar />
 
       {/* --- HERO SECTION --- */}
@@ -131,10 +185,10 @@ const Programs = () => {
             </motion.div>
 
             <motion.div custom={3} variants={fadeUp} className="flex flex-col sm:flex-row justify-start items-center gap-6 mb-16">
-              <CTAButton href="#journeys-intro" size="lg" variant="shimmer" className="px-10">
+              <CTAButton href="#journeys-intro" size="lg" variant="shimmer" className="px-10" onClick={() => trackViewContent("Programs Page")}>
                 Begin Your Journey
               </CTAButton>
-              <CTAButton to="/take-a-session" size="lg" variant="outline" icon={null as any} className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
+              <CTAButton to="/take-a-session" size="lg" variant="outline" icon={null} className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50" onClick={() => trackLead("Session Intent")}>
                 Take a Session
               </CTAButton>
             </motion.div>

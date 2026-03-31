@@ -5,8 +5,9 @@ import {
   Check, CreditCard, ShieldCheck,
   Package, ShoppingCart, FileText, Quote,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { trackViewContent, trackInitiateCheckout } from "@/lib/pixel";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CTAButton from "@/components/CTAButton";
@@ -55,7 +56,12 @@ const Book = () => {
   const [loading, setLoading] = useState<string | null>(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    trackViewContent("Book Page");
+  }, []);
+
   const handleBuyClick = (format: typeof bookFormats[0]) => {
+    trackInitiateCheckout("Book Purchase");
     setLoading(format.id);
     // Navigate to /checkout with the selected format
     navigate("/checkout", {
@@ -121,10 +127,10 @@ const Book = () => {
               </motion.p>
 
               <motion.div custom={3} variants={fadeUp} className="flex flex-wrap gap-6">
-                <CTAButton href="#pricing" size="lg" variant="shimmer" className="px-10">
+                <CTAButton href="#pricing" size="lg" variant="shimmer" className="px-10" onClick={() => trackInitiateCheckout("Book Purchase")}>
                   Secure Your Copy
                 </CTAButton>
-                <CTAButton href="#pillars" size="lg" variant="outline" className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50">
+                <CTAButton href="#pillars" size="lg" variant="outline" className="px-10 border-white/10 text-white hover:text-white hover:border-primary/50" onClick={() => trackViewContent("Book Page")}>
                   Explore What's Inside
                 </CTAButton>
               </motion.div>
@@ -239,9 +245,9 @@ const Book = () => {
                     <div className="text-right">
                       {/* Price display with original struck-out */}
                       <div className="flex items-center gap-3 justify-end">
-                        {(format as any).originalPrice && (
+                        {format.originalPrice && (
                           <span className="text-xl text-muted-foreground line-through opacity-60">
-                            {(format as any).originalPrice}
+                            {format.originalPrice}
                           </span>
                         )}
                         <p className="text-3xl font-bold text-foreground transition-transform group-hover:scale-110 duration-500">{format.price}</p>

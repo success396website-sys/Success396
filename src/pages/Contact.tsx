@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { submitToFormspree } from "@/lib/form-helpers";
+import { fadeUp } from "@/lib/animations";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be under 100 characters"),
@@ -55,14 +56,6 @@ const socialLinks = [
   { icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@the369leader" },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);

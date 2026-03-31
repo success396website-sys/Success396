@@ -14,6 +14,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { fadeUp } from "@/lib/animations";
 import { submitToFormspree } from "@/lib/form-helpers";
+import { trackLead } from "@/lib/pixel";
 
 const programDetails: Record<string, {
   name: string;
@@ -116,6 +117,7 @@ const ProgramApply = () => {
     const success = await submitToFormspree({ program: details.name, ...data }, `Program Application: ${details.name}`);
     
     if (success) {
+      trackLead(`${details.name} Application`);
       setSubmitted(true);
       toast.success(`Application for ${details.name} submitted! We'll review and get back to you.`);
     } else {

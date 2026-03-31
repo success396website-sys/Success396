@@ -10,7 +10,7 @@ interface CTAButtonProps {
   variant?: "primary" | "secondary" | "shimmer" | "outline";
   size?: "sm" | "md" | "lg";
   className?: string;
-  icon?: LucideIcon;
+  icon?: LucideIcon | null;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;

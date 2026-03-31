@@ -1,10 +1,12 @@
 import { useState } from "react";
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Instagram, Linkedin, Youtube, Check, Music } from "lucide-react";
 import logo from "@/assets/logo.webp";
 import CTAButton from "@/components/CTAButton";
 import { submitToFormspree } from "@/lib/form-helpers";
+import { trackLead } from "@/lib/pixel";
 
 const exploreLinks = [
   { label: "Home", href: "/" },
@@ -16,12 +18,18 @@ const exploreLinks = [
   { label: "Round tables", href: "/round-tables" },
 ];
 
-const connectLinks = [
-  { label: "Take a Session", href: "/free-session" },
+const connectLinks: Array<{
+  label: string;
+  href: string;
+  icon?: React.ComponentType<{ size?: number; className?: string }>;
+  external?: boolean;
+  pixelEvent?: string;
+}> = [
+  { label: "Take a Session", href: "/take-a-session", pixelEvent: "Session Intent" },
   { label: "Contact Us", href: "/contact" },
   { label: "Instagram", href: "https://www.instagram.com/thesuccess369/", icon: Instagram, external: true },
   { label: "LinkedIn", href: "https://www.linkedin.com/company/success369", icon: Linkedin, external: true },
-  { label: "YouTube", href: "https://www.youtube.com/@the369leader", icon: Youtube, external: true },
+  { label: "YouTube", href: "https://www.youtube.com/@the369leader", icon: Youtube, external: true, pixelEvent: "Podcast Subscribe Intent" },
   { label: "Spotify", href: "https://open.spotify.com/show/7yxUgOvL9kXUpZo3ufjfrl", icon: Music, external: true },
 ];
 
@@ -46,6 +54,7 @@ const Footer = () => {
     if (email) {
       const success = await submitToFormspree({ email }, "Newsletter Signup: Footer");
       if (success) {
+        trackLead("Community Join");
         setSubmitted(true);
         setEmail("");
       }
@@ -172,6 +181,7 @@ const Footer = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={link.pixelEvent ? () => trackLead(link.pixelEvent!) : undefined}
                       className="text-white/70 text-sm hover:text-primary transition-colors duration-200 inline-flex items-center gap-2 group"
                     >
                       {link.icon && <link.icon size={14} className="group-hover:scale-110 transition-transform" />}
@@ -180,6 +190,7 @@ const Footer = () => {
                   ) : (
                     <Link
                       to={link.href}
+                      onClick={link.pixelEvent ? () => trackLead(link.pixelEvent!) : undefined}
                       className="text-white/70 text-sm hover:text-primary transition-colors duration-200 inline-flex items-center gap-2 group"
                     >
                       {link.label}

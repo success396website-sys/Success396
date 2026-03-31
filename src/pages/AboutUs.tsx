@@ -68,9 +68,43 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>About Us | Success369 - Engineering Success</title>
+        <title>About Us | Success369 — Engineering Success</title>
         <meta name="description" content="Success369 is a philosophy-led, systems-driven enterprise headquartered in Bengaluru, India. We architect meaningful success through disciplined execution." />
+        <link rel="canonical" href="https://success369.org/about-us" />
+        <meta property="og:title" content="About Us | Success369 — Engineering Success" />
+        <meta property="og:description" content="Success369 is a philosophy-led, systems-driven enterprise headquartered in Bengaluru, India. We architect meaningful success through disciplined execution." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://success369.org/about-us" />
+        <meta property="og:image" content="https://success369.org/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Us | Success369 — Engineering Success" />
+        <meta name="twitter:description" content="Success369 is a philosophy-led, systems-driven enterprise headquartered in Bengaluru, India. We architect meaningful success through disciplined execution." />
+        <meta name="twitter:image" content="https://success369.org/og-image.png" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About Success369",
+            "url": "https://success369.org/about-us",
+            "description": "Success369 is a philosophy-led, systems-driven enterprise headquartered in Bengaluru, India.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Success369",
+              "url": "https://success369.org",
+              "logo": "https://success369.org/favicon.png",
+              "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Bengaluru",
+                "addressCountry": "IN"
+              }
+            }
+          })}
+        </script>
       </Helmet>
+
       
       <Navbar />
 

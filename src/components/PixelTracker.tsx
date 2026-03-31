@@ -1,23 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
+import { hasConsent } from "@/lib/pixel";
 
 /**
- * PixelTracker component to handle Meta Pixel PageView events on route changes.
- * This runs automatically for every page change as long as the user has accepted cookies.
+ * Fires PageView on every client-side route change — only if the user
+ * has accepted cookies. The initial PageView is fired by initPixel()
+ * in CookieConsent, so we skip the first render to avoid a duplicate.
  */
 const PixelTracker = () => {
   const location = useLocation();
+  const isFirstRender = useRef(true);
 
   useEffect(() => {
-    // Only track if consent was accepted
-    const consent = localStorage.getItem("cookie-consent");
-    
-    if (consent === "accepted" && typeof (window as any).fbq === "function") {
-      // Track PageView on route change
-      (window as any).fbq("track", "PageView");
-      console.log(`[Meta Pixel] PageView tracked for: ${location.pathname}`);
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
     }
-  }, [location]);
+    if (hasConsent() && typeof window.fbq === "function") {
+      window.fbq("track", "PageView");
+    }
+  }, [location.pathname]);
 
   return null;
 };

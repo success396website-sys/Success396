@@ -23,6 +23,7 @@ import logoLight from "@/assets/logo-light.webp";
 import CTAButton from "@/components/CTAButton";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { useTheme } from "next-themes";
+import { trackLead } from "@/lib/pixel";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -293,6 +294,7 @@ const Navbar = () => {
               size="md"
               variant="shimmer"
               className="px-5 py-2 text-[14px]"
+              onClick={() => trackLead("Community Join")}
             >
               Join our community
             </CTAButton>
@@ -344,6 +346,8 @@ const Navbar = () => {
                       {link.hasDropdown ? (
                         <button
                           onClick={() => toggleMobileSection(link.label)}
+                          aria-expanded={isExpanded}
+                          aria-haspopup="true"
                           className={`
                             flex w-full items-center justify-between
                             border-b border-border/30 py-4

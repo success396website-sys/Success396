@@ -4,34 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <!-- Document title -->
     <title>Success369 | Clarity. Congruence. Catalysis</title>
     <meta name="description" content="Build sustainable success with clarity and alignment. Success369 exists to help individuals and leaders build meaningful growth." />
     <meta name="author" content="Success369" />
+    <meta name="robots" content="index, follow" />
     <meta name="facebook-domain-verification" content="wi7c7qnt4idb3t9aibmehusqoo43nr" />
+    <!-- <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_ID" /> -->
 
+    <meta property="og:site_name" content="Success369" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:url" content="https://success369.org" />
+    <meta property="og:title" content="Success369 | Clarity. Congruence. Catalysis" />
+    <meta property="og:description" content="Build sustainable success with clarity and alignment. Success369 exists to help individuals and leaders build meaningful growth." />
+    <meta property="og:image" content="https://success369.org/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_IN" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/og-image.png" />
-    <meta
-      property="og:title"
-      content="Success369 | Clarity. Congruence. Catalysis"
-    />
-    <meta
-      name="twitter:title"
-      content="Success369 | Clarity. Congruence. Catalysis"
-    />
-    <meta
-      property="og:description"
-      content="Build sustainable success with clarity and alignment."
-    />
-    <meta
-      name="twitter:description"
-      content="Build sustainable success with clarity and alignment."
-    />
-    <!-- Meta Pixel Code -->
+    <meta name="twitter:title" content="Success369 | Clarity. Congruence. Catalysis" />
+    <meta name="twitter:description" content="Build sustainable success with clarity and alignment. Success369 exists to help individuals and leaders build meaningful growth." />
+    <meta name="twitter:image" content="https://success369.org/og-image.png" />
+
+    <!-- Meta Pixel Code (loads stub only — initialized after cookie consent) -->
     <script>
       !(function (f, b, e, v, n, t, s) {
         if (f.fbq) return;
@@ -49,28 +44,12 @@
         s = b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t, s);
       })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-      
-      // Initialize pixel only after consent
-      window.initializeMetaPixel = function() {
-        fbq("init", "789944417071903");
-        fbq("track", "PageView");
-      };
-      
-      // For now, if you don't have a consent banner yet, 
-      // you can call it immediately or wait for your banner implementation.
-      // initializeMetaPixel(); 
+      // fbq("init") is called only after cookie consent — see CookieConsent.tsx
     </script>
     <!-- End Meta Pixel Code -->
   </head>
 
   <body>
-    <noscript
-      ><img
-        height="1"
-        width="1"
-        style="display:none"
-        src="https://www.facebook.com/tr?id=789944417071903&ev=PageView&noscript=1"
-    /></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

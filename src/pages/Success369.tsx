@@ -110,11 +110,36 @@ const Success369Page = () => {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <Helmet>
         <title>The Success369 Model | Clarity. Congruence. Catalysis.</title>
-        <meta
-          name="description"
-          content="Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success."
-        />
+        <meta name="description" content="Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success." />
+        <link rel="canonical" href="https://success369.org/success-369" />
+        <meta property="og:title" content="The Success369 Model | Clarity. Congruence. Catalysis." />
+        <meta property="og:description" content="Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://success369.org/success-369" />
+        <meta property="og:image" content="https://success369.org/og-image.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="The Success369 Model | Clarity. Congruence. Catalysis." />
+        <meta name="twitter:description" content="Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success." />
+        <meta name="twitter:image" content="https://success369.org/og-image.png" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "The Success369 Model — Clarity. Congruence. Catalysis.",
+            "url": "https://success369.org/success-369",
+            "description": "Discover the 3–6–9 Model: three pillars, six alignments, and nine catalytic forces — a complete architecture for sustainable success.",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Success369",
+              "url": "https://success369.org"
+            }
+          })}
+        </script>
       </Helmet>
+
 
       <Navbar />
 

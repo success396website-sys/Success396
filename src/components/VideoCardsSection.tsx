@@ -6,6 +6,7 @@ import mayaVideo from "../assets/maya.mp4";
 import sarvamVideo from "../assets/sarvam.mp4";
 import shaktiVideo from "../assets/shakti.mp4";
 import CTAButton from "./CTAButton";
+import { trackViewContent } from "@/lib/pixel";
 
 interface VideoCard {
   title: string;
@@ -13,6 +14,7 @@ interface VideoCard {
   cta: string;
   videoUrl: string;
   href: string;
+  pixelName: string;
 }
 
 const videoCards: VideoCard[] = [
@@ -23,6 +25,7 @@ const videoCards: VideoCard[] = [
     cta: "Begin the MAYA Journey",
     videoUrl: mayaVideo,
     href: "/program-maya",
+    pixelName: "MAYA Program",
   },
   {
     title: "GITA-Clarity Before Action",
@@ -31,6 +34,7 @@ const videoCards: VideoCard[] = [
     cta: "Begin the GITA Journey",
     videoUrl: gitaVideo,
     href: "/program-gita",
+    pixelName: "GITA Program",
   },
   {
     title: "SARVAM-The Architecture for Sustainable Success",
@@ -39,6 +43,7 @@ const videoCards: VideoCard[] = [
     cta: "Begin the SARVAM Journey",
     videoUrl: sarvamVideo,
     href: "/program-sarvam",
+    pixelName: "SARVAM Program",
   },
   {
     title: "SHAKTI-Activating Aligned Momentum",
@@ -47,6 +52,7 @@ const videoCards: VideoCard[] = [
     cta: "Begin the SHAKTI Journey",
     videoUrl: shaktiVideo,
     href: "/program-shakti",
+    pixelName: "SHAKTI Program",
   },
 ];
 
@@ -136,11 +142,12 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                 transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               >
                 <h3 className="text-white mb-4">{activeCard.title}</h3>
-                <CTAButton 
+                <CTAButton
                   to={activeCard.href}
                   size="md"
                   variant="shimmer"
                   className="mt-4"
+                  onClick={() => trackViewContent(activeCard.pixelName)}
                 >
                   {activeCard.cta}
                 </CTAButton>
@@ -248,10 +255,11 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                   <p className="text-white/70 text-sm leading-relaxed mb-4 font-light">
                     {activeCard.description}
                   </p>
-                  <CTAButton 
+                  <CTAButton
                     to={activeCard.href}
                     size="sm"
                     variant="shimmer"
+                    onClick={() => trackViewContent(activeCard.pixelName)}
                   >
                     {activeCard.cta}
                   </CTAButton>

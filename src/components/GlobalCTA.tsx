@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import CTAButton from "./CTAButton";
 import { cn } from "@/lib/utils";
 import { submitToFormspree } from "@/lib/form-helpers";
+import { trackLead } from "@/lib/pixel";
 
 const pillars = [
   { icon: Zap, label: "Clarity" },
@@ -49,6 +50,7 @@ const GlobalCTA = ({
     if (email) {
       const success = await submitToFormspree({ email, whatsapp }, "Newsletter Signup: Global CTA");
       if (success) {
+        trackLead("Community Join");
         setSubmitted(true);
       }
     }
@@ -225,7 +227,7 @@ const GlobalCTA = ({
                         </span>
                       ))}
                     </div>
-                    <Link to="/take-a-session" className="text-primary/80 hover:text-primary font-bold transition-colors uppercase tracking-wider flex items-center gap-1">
+                    <Link to="/take-a-session" onClick={() => trackLead("Session Intent")} className="text-primary/80 hover:text-primary font-bold transition-colors uppercase tracking-wider flex items-center gap-1">
                       Take a Session <ArrowRight size={10} />
                     </Link>
                   </div>

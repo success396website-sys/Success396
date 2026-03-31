@@ -15,6 +15,7 @@ import Footer from "@/components/Footer";
 import { allEvents } from "@/data/events-list";
 import { fadeUp } from "@/lib/animations";
 import { submitToFormspree } from "@/lib/form-helpers";
+import { trackLead } from "@/lib/pixel";
 
 const registerSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -56,6 +57,7 @@ const EventRegister = () => {
     const success = await submitToFormspree({ event: event.title, ...data }, `Event Registration: ${event.title}`);
     
     if (success) {
+      trackLead("Event Registration");
       setSubmitted(true);
       toast.success("Registration successful! You'll receive a confirmation email shortly.");
     } else {

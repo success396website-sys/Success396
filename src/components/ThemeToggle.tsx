@@ -13,8 +13,7 @@ export function ThemeToggle({ className = "" }: ThemeToggleProps) {
 
   useEffect(() => {
     setMounted(true);
-    console.log("Current theme:", theme, "Resolved theme:", resolvedTheme);
-  }, [theme, resolvedTheme]);
+  }, []);
 
   if (!mounted) {
     return (
@@ -24,7 +23,6 @@ export function ThemeToggle({ className = "" }: ThemeToggleProps) {
 
   const toggleTheme = () => {
     const nextTheme = (resolvedTheme || theme) === "light" ? "dark" : "light";
-    console.log("Switching to:", nextTheme);
     setTheme(nextTheme);
   };
 

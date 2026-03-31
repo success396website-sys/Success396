@@ -1,4 +1,5 @@
 import { useCallback, useRef } from "react";
+import { trackPurchase } from "@/lib/pixel";
 
 declare global {
   interface Window {
@@ -73,15 +74,16 @@ export function useRazorpay() {
           color: options.theme?.color || "#c5a059",
         },
         handler: (response: RazorpayResponse) => {
-          console.log("✅ Payment Success!");
-          console.log("Payment ID:", response.razorpay_payment_id);
-          console.log("Order ID:", response.razorpay_order_id);
-          console.log("Signature:", response.razorpay_signature);
+          // Fire Purchase pixel event once on successful payment
+          trackPurchase(
+            options.amount / 100,
+            options.currency || "INR",
+            options.name
+          );
           options.onSuccess?.(response);
         },
         modal: {
           ondismiss: () => {
-            console.log("Payment modal dismissed by user");
             options.onFailure?.({ reason: "dismissed" });
           },
         },
@@ -90,13 +92,11 @@ export function useRazorpay() {
       const rzp = new window.Razorpay(razorpayOptions);
 
       rzp.on("payment.failed", (response: any) => {
-        console.error("❌ Payment Failed:", response.error);
         options.onFailure?.(response.error);
       });
 
       rzp.open();
     } catch (error) {
-      console.error("Razorpay error:", error);
       options.onFailure?.(error);
     } finally {
       isLoading.current = false;
