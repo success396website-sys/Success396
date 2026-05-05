@@ -10,7 +10,7 @@ import {
   BookOpen,
   Sparkles,
   Flame,
-  Infinity,
+  Infinity as InfinityIcon,
   Layout,
   Info,
   Star,
@@ -58,7 +58,7 @@ const programSections = [
   { label: "Program Overview", description: "Our transformation path", icon: Layout, href: "/programs" },
   { label: "Maya", description: "The illusion of separation", icon: Sparkles, href: "/program-maya" },
   { label: "Gita", description: "Eternal wisdom for life", icon: BookOpen, href: "/program-gita" },
-  { label: "Sarvam", description: "Universal consciousness", icon: Infinity, href: "/program-sarvam" },
+  { label: "Sarvam", description: "Universal consciousness", icon: InfinityIcon, href: "/program-sarvam" },
   { label: "Shakti", description: "Inner power and energy", icon: Flame, href: "/program-shakti" },
 ];
 

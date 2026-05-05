@@ -1,4 +1,4 @@
-export const submitToFormspree = async (data: any, subject: string = "New Form Submission") => {
+export const submitToFormspree = async (data: Record<string, unknown>, subject: string = "New Form Submission") => {
   const endpoint = "https://formspree.io/f/mdawvjlg";
   
   try {

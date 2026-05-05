@@ -3,7 +3,10 @@ import { trackPurchase } from "@/lib/pixel";
 
 declare global {
   interface Window {
-    Razorpay: any;
+    Razorpay: new (options: Record<string, unknown>) => {
+      on: (event: string, callback: (response: Record<string, unknown>) => void) => void;
+      open: () => void;
+    };
   }
 }
 
@@ -22,7 +25,7 @@ interface RazorpayOptions {
     color?: string;
   };
   onSuccess?: (response: RazorpayResponse) => void;
-  onFailure?: (error: any) => void;
+  onFailure?: (error: unknown) => void;
 }
 
 export interface RazorpayResponse {
@@ -91,7 +94,7 @@ export function useRazorpay() {
 
       const rzp = new window.Razorpay(razorpayOptions);
 
-      rzp.on("payment.failed", (response: any) => {
+      rzp.on("payment.failed", (response: Record<string, unknown>) => {
         options.onFailure?.(response.error);
       });
 

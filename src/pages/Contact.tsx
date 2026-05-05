@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
@@ -62,13 +62,13 @@ const Contact = () => {
   const [searchParams] = useSearchParams();
   const subjectParam = searchParams.get("subject");
 
-  const getInitialSubject = () => {
+  const getInitialSubject = useCallback(() => {
     if (!subjectParam) return "";
     const matched = subjects.find(s => 
       s.toLowerCase().includes(subjectParam.toLowerCase())
     );
     return matched || "";
-  };
+  }, [subjectParam]);
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -91,7 +91,7 @@ const Contact = () => {
     if (newSubject) {
       form.setValue("subject", newSubject);
     }
-  }, [subjectParam, form]);
+  }, [subjectParam, form, getInitialSubject]);
 
   const onSubmit = async (data: ContactFormValues) => {
     // Send to Formspree

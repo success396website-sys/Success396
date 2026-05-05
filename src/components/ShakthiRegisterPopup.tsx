@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Mail, CheckCircle2, ArrowRight } from "lucide-react";
 import {
   Dialog,
