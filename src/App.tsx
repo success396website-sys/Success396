@@ -42,6 +42,7 @@ const CommunityCharter = lazy(() => import("./pages/CommunityCharter"));
 const AcceptableUsePolicy = lazy(() => import("./pages/AcceptableUsePolicy"));
 const LegalNotice = lazy(() => import("./pages/LegalNotice"));
 const Disclaimer = lazy(() => import("./pages/Disclaimer"));
+const ShakthiV2 = lazy(() => import("./pages/ShakthiV2"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Basic loading fallback
@@ -74,6 +75,7 @@ const App = () => (
             <Route path="/program-maya" element={<ProgramMaya />} />
             <Route path="/program-sarvam" element={<ProgramSarvam />} />
             <Route path="/program-shakti" element={<ProgramShakti />} />
+            <Route path="/shakti-unfiltered-voice" element={<ShakthiV2 />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/book" element={<Book />} />
