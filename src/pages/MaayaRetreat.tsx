@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { 
   Sparkles, 
   Clock, 
@@ -113,7 +113,7 @@ const MaayaRetreat = () => {
     email: ""
   });
   const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
 
 
@@ -142,10 +142,10 @@ const MaayaRetreat = () => {
     
     if (success) {
       trackLead("MAAYA Retreat Application");
-      setSubmitted(true);
+      navigate("/thank-you/maaya-retreat");
     } else {
       // Fallback local mock success if network/endpoint issues
-      setSubmitted(true);
+      navigate("/thank-you/maaya-retreat");
     }
     setSubmitting(false);
   };
@@ -1000,25 +1000,6 @@ const MaayaRetreat = () => {
               </div>
 
               <div className="md:col-span-7">
-                {submitted ? (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="p-8 rounded-3xl bg-card/40 backdrop-blur-sm shadow-xl text-center"
-                  >
-                    <CheckCircle2 size={56} className="text-primary mx-auto mb-4 animate-pulse" />
-                    <h3 className="text-2xl font-bold text-foreground mb-3">Application Received</h3>
-                    <p className="text-muted-foreground text-sm leading-relaxed max-w-md mx-auto mb-6">
-                      Thank you for submitting your application. The Success369 facilitation team reviews every inquiry personally. We will reach back to you within 3 working days.
-                    </p>
-                    <button 
-                      onClick={() => setSubmitted(false)}
-                      className="text-xs text-primary font-bold hover:underline animate-pulse"
-                    >
-                      Submit another application
-                    </button>
-                  </motion.div>
-                ) : (
                   <form onSubmit={handleFormSubmit} className="p-6 sm:p-8 md:p-10 rounded-3xl bg-card border border-border/60 shadow-xl space-y-4">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-[14px]">
                       <div>
@@ -1179,7 +1160,6 @@ const MaayaRetreat = () => {
                       Applications are read personally. We reply within 3 working days.
                     </p>
                   </form>
-                )}
               </div>
             </div>
           </div>

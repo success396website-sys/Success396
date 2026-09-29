@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -88,7 +87,7 @@ const ProgramApply = () => {
   const { program } = useParams<{ program: string }>();
   const programKey = program?.toUpperCase() || "";
   const details = programDetails[programKey];
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const form = useForm<ApplyFormValues>({
     resolver: zodResolver(applySchema),
@@ -118,8 +117,7 @@ const ProgramApply = () => {
     
     if (success) {
       trackLead(`${details.name} Application`);
-      setSubmitted(true);
-      toast.success(`Application for ${details.name} submitted! We'll review and get back to you.`);
+      navigate(`/thank-you/${programKey.toLowerCase()}`);
     } else {
       toast.error("Failed to submit application. Please try again later.");
     }
@@ -220,28 +218,7 @@ const ProgramApply = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              {submitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="p-12 rounded-3xl bg-card/40 backdrop-blur-sm border border-border/30 text-center"
-                >
-                  <div className="w-20 h-20 rounded-full bg-green-500/10 border-2 border-green-500/30 flex items-center justify-center mx-auto mb-8">
-                    <CheckCircle2 size={36} className="text-green-500" />
-                  </div>
-                  <h2 className="text-2xl font-bold text-foreground mb-4">Application Submitted!</h2>
-                  <p className="text-muted-foreground text-lg mb-2">We've received your application for:</p>
-                  <p className="text-primary font-semibold text-lg mb-6">{details.fullName}</p>
-                  <p className="text-muted-foreground mb-8">Our team will review your application and reach out soon.</p>
-                  <Link
-                    to="/programs"
-                    className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
-                  >
-                    Browse All Programs
-                  </Link>
-                </motion.div>
-              ) : (
-                <div className="p-8 sm:p-10 rounded-3xl bg-card/40 backdrop-blur-sm border border-border/30">
+              <div className="p-8 sm:p-10 rounded-3xl bg-card/40 backdrop-blur-sm border border-border/30">
                   <div className="flex items-center gap-3 mb-8">
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Sparkles size={20} className="text-primary" />
@@ -335,7 +312,6 @@ const ProgramApply = () => {
                     </form>
                   </Form>
                 </div>
-              )}
             </motion.div>
           </div>
         </div>

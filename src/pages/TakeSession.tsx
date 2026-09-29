@@ -1,11 +1,11 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import { ArrowRight, Sparkles, Heart, Users, Compass, CheckCircle2, Send } from "lucide-react";
+import { ArrowRight, Sparkles, Heart, Users, Compass, Send } from "lucide-react";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -49,7 +49,7 @@ const infoSections = [
 ];
 
 const TakeSession = () => {
-  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
 
   const form = useForm<SessionFormValues>({
     resolver: zodResolver(sessionSchema),
@@ -58,10 +58,9 @@ const TakeSession = () => {
 
   const onSubmit = async (data: SessionFormValues) => {
     const success = await submitToFormspree(data, "Session Request: Take a Session");
-    
+
     if (success) {
-      setSubmitted(true);
-      toast.success("Your session request has been received! We'll be in touch soon.");
+      navigate("/thank-you/take-a-session");
     } else {
       toast.error("Failed to send request. Please try again.");
     }
@@ -178,29 +177,7 @@ const TakeSession = () => {
           >
             <div className="absolute -top-px left-8 right-8 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
-            {submitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-16 text-center"
-              >
-                <div className="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-6">
-                  <CheckCircle2 className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="mb-2">Request Received!</h3>
-                <p className="text-muted-foreground mb-6 max-w-sm">
-                  Thank you for reaching out. We'll get back to you soon.
-                </p>
-                <Button
-                  variant="outline"
-                  onClick={() => { setSubmitted(false); form.reset(); }}
-                  className="rounded-full"
-                >
-                  Submit Another Request
-                </Button>
-              </motion.div>
-            ) : (
-              <>
+            <>
                 <h3 className="mb-6">Take a Session</h3>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -291,7 +268,6 @@ const TakeSession = () => {
                   </form>
                 </Form>
               </>
-            )}
           </motion.div>
         </div>
       </section>
