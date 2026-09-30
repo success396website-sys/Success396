@@ -46,11 +46,6 @@ export const routeSeo: Record<string, RouteSeo> = {
     description:
       "GITA is an essential part of Success369. A guided clarity session for those at a decision point, designed to reveal your next direction with confidence.",
   },
-  "/program-maya": {
-    title: "Self Alignment Coaching to Discover Your True Direction — MAYA by Success369",
-    description:
-      "MAYA is the Success369 self alignment coaching journey for people who are moving forward but feel something is fundamentally off — not broken, just misaligned. Guided 1:1 or small cohort sessions with a certified facilitator.",
-  },
   "/maaya": {
     title: "Self Alignment Coaching | Identity and Purpose Coaching — MAAYA",
     description:
