@@ -5,8 +5,7 @@ import {
   Check, CreditCard, ShieldCheck,
   Package, ShoppingCart, FileText, Quote,
 } from "lucide-react";
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import { trackViewContent, trackInitiateCheckout } from "@/lib/pixel";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -63,13 +62,14 @@ const pillars = [
   },
 ];
 
+const BOOK_SHOP_URL = "https://shop.zerotosuccess.org/product/success-369/";
+
 export const bookFormats = [
   {
     id: "hardcover",
     title: "Hardcover Edition",
-    price: "₹499",
+    price: "₹599",
     originalPrice: "₹699",
-    amountInPaise: 49900,
     description: "",
     icon: BookOpen,
     features: ["High-quality print", "Bonus Worksheets", "Author's Signature (Ltd)"]
@@ -77,28 +77,9 @@ export const bookFormats = [
 ];
 
 const Book = () => {
-  const [loading, setLoading] = useState<string | null>(null);
-  const navigate = useNavigate();
-
   useEffect(() => {
     trackViewContent("Book Page");
   }, []);
-
-  const handleBuyClick = (format: typeof bookFormats[0]) => {
-    trackInitiateCheckout("Book Purchase");
-    setLoading(format.id);
-    // Navigate to /checkout with the selected format
-    navigate("/checkout", {
-      state: {
-        formatId: format.id,
-        title: format.title,
-        price: format.price,
-        amountInPaise: format.amountInPaise,
-        description: format.description,
-        features: format.features,
-      },
-    });
-  };
 
   return (
     <div className="min-h-screen bg-background text-foreground/90 selection:bg-primary/30 overflow-x-hidden">
@@ -296,25 +277,21 @@ const Book = () => {
                    ))}
                 </div>
 
-                <button
-                  disabled={loading === format.id}
-                  onClick={() => handleBuyClick(format)}
-                  className="w-full py-6 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] text-white font-bold uppercase tracking-[0.2em] relative overflow-hidden group/btn hover:shadow-[0_0_40px_rgba(197,160,89,0.4)] transition-all duration-500 flex items-center justify-center gap-4 disabled:opacity-50"
+                <a
+                  href={BOOK_SHOP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackInitiateCheckout("Book Purchase")}
+                  className="w-full py-6 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_100%] hover:bg-[position:100%_0] text-white font-bold uppercase tracking-[0.2em] relative overflow-hidden group/btn hover:shadow-[0_0_40px_rgba(197,160,89,0.4)] transition-all duration-500 flex items-center justify-center gap-4"
                 >
                   <div className="absolute inset-0 bg-white/20 translate-x-[-101%] group-hover/btn:translate-x-[101%] transition-transform duration-1000" />
-                  {loading === format.id ? (
-                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                  ) : (
-                    <>
-                      <CreditCard size={18} />
-                      Buy Now
-                    </>
-                  )}
-                </button>
+                  <CreditCard size={18} />
+                  Buy Now
+                </a>
 
                 <div className="flex items-center justify-center gap-2 mt-8 opacity-40">
                   <ShieldCheck size={14} className="text-primary" />
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-foreground">Secure Checkout by Razorpay</span>
+                  <span className="text-[10px] uppercase font-bold tracking-widest text-foreground">Secure Checkout</span>
                 </div>
               </motion.div>
             ))}
