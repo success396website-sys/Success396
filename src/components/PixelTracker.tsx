@@ -32,21 +32,29 @@ const PixelTracker = () => {
       return;
     }
     
-    if (hasConsent()) {
-      if (typeof window.fbq === "function") {
-        window.fbq("track", "PageView");
-      }
-      
-      // Manual GA4 Page View push for SPA compatibility
+    const consented = hasConsent();
+
+    // Meta Pixel stays behind cookie consent.
+    if (consented && typeof window.fbq === "function") {
+      window.fbq("track", "PageView");
+    }
+
+    // Virtual page view for GTM (SPA route changes). Always sent so
+    // conversion pages like /thank-you/* can be counted; the consent state
+    // is included so GTM tags can be gated with it. Delayed slightly so
+    // react-helmet-async has applied the new document.title first.
+    const path = location.pathname;
+    window.setTimeout(() => {
       if (typeof window.dataLayer !== "undefined") {
         window.dataLayer.push({
           event: "page_view",
-          page_path: location.pathname,
+          page_path: path,
           page_title: document.title,
-          page_location: window.location.href
+          page_location: window.location.origin + path + window.location.search,
+          consent: consented ? "granted" : "not_granted",
         });
       }
-    }
+    }, 150);
 
     // Reset scroll tracking for the new page
     scrollFiredRef.current = {};
