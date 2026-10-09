@@ -16,11 +16,12 @@ const ProgramMaya = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
-        <title>Self Alignment Coaching to Discover Your True Direction — MAYA by Success369</title>
+        <title>Self Alignment Coaching | Identity and Purpose Coaching — MAAYA</title>
         <meta
           name="description"
-          content="MAYA is the Success369 self alignment coaching journey for people who are moving forward but feel something is fundamentally off — not broken, just misaligned. Guided 1:1 or small cohort sessions with a certified facilitator."
+          content="MAAYA is Success369's self alignment coaching journey for individuals who are progressing but feel something is off. Guided 1:1 sessions with a certified Success369 facilitator."
         />
+        <link rel="canonical" href="https://success369.org/maaya" />
       </Helmet>
       <Navbar />
 
