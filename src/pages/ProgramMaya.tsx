@@ -306,6 +306,34 @@ const ProgramMaya = () => {
         ]}
       />
 
+      {/* --- CONTINUE YOUR JOURNEY — internal links --- */}
+      <section className="section bg-background relative overflow-hidden">
+        <div className="container-custom relative z-10 max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <h2 className="mb-4">Continue Your Success369 Journey</h2>
+            <p className="text-muted-foreground text-lg leading-relaxed mb-8">
+              MAYA is one destination on the Success369 path. Where are you starting from?
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
+              <CTAButton to="/programs" size="md" variant="shimmer">
+                Explore all Success369 programs
+              </CTAButton>
+              <CTAButton to="/success-369" size="md" variant="outline">
+                Understand the Success369 method
+              </CTAButton>
+              <CTAButton to="/book" size="md" variant="outline">
+                Read the Success 369 book
+              </CTAButton>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <GlobalCTA
         title={
           <h2 className="text-white">
