@@ -38,10 +38,10 @@ const thankYouDetails: Record<string, ThankYouConfig> = {
     secondaryCta: { text: "Revisit GITA", href: "/program-gita" },
   },
   maya: {
-    eyebrow: "MAYA Application Received",
-    heading: "Your MAYA application is in.",
+    eyebrow: "MAAYA Application Received",
+    heading: "Your MAAYA application is in.",
     message: "We'll follow up shortly about your self alignment coaching journey. Real alignment takes time to surface — we're glad you're starting.",
-    secondaryCta: { text: "Revisit MAYA", href: "/maaya" },
+    secondaryCta: { text: "Revisit MAAYA", href: "/maaya" },
   },
   sarvam: {
     eyebrow: "SARVAM Application Received",

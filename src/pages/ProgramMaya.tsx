@@ -51,7 +51,7 @@ const ProgramMaya = () => {
               className="mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white leading-[1.1]"
             >
               Self Alignment Coaching to{" "}
-              <span className="text-primary text-glow italic">Discover Your True Direction</span> — MAYA by Success369
+              <span className="text-primary text-glow italic">Discover Your True Direction</span> — MAAYA by Success369
             </motion.h1>
 
             <motion.p
@@ -62,7 +62,7 @@ const ProgramMaya = () => {
               className="mb-8 sm:mb-10 max-w-xl text-lg sm:text-xl text-white/90 font-light"
             >
               What is self alignment coaching? It is about making yourself in sync with your actions, choices and
-              movement. MAYA is the Success369 self alignment coaching journey for people who are moving forward but
+              movement. MAAYA is the Success369 self alignment coaching journey for people who are moving forward but
               feel something is fundamentally off — not broken, just misaligned.
             </motion.p>
 
@@ -74,7 +74,7 @@ const ProgramMaya = () => {
               className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4"
             >
               <CTAButton to="/apply/maya" size="md" variant="shimmer">
-                Begin the MAYA Journey
+                Begin the MAAYA Journey
               </CTAButton>
             </motion.div>
           </div>
@@ -124,7 +124,7 @@ const ProgramMaya = () => {
             className="max-w-3xl mx-auto text-center mt-14"
           >
             <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
-              MAYA works as identity and purpose coaching because it goes beyond surface-level goal setting. It
+              MAAYA works as identity and purpose coaching because it goes beyond surface-level goal setting. It
               addresses the deeper patterns that determine whether your actions feel coherent and purposeful or
               scattered and forced. When those patterns shift, so does everything built on top of them.
             </p>
@@ -162,7 +162,7 @@ const ProgramMaya = () => {
               Who Should Choose This Self Alignment Coaching Journey?
             </h2>
             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto">
-              MAYA is for individuals who are progressing — but feel something is off. This is for inflection
+              MAAYA is for individuals who are progressing — but feel something is off. This is for inflection
               moments, not crisis moments. It works for two kinds of people specifically:
             </p>
           </motion.div>
@@ -178,7 +178,7 @@ const ProgramMaya = () => {
               {
                 image: maya2,
                 title: "Journey Integration",
-                description: "Individuals and organisations emerging from MAYA, GITA, or SARVAM who need to translate their insights into real-world capability.",
+                description: "Individuals and organisations emerging from MAAYA, GITA, or SARVAM who need to translate their insights into real-world capability.",
                 step: "02",
               },
             ].map((card, index) => (
@@ -220,7 +220,7 @@ const ProgramMaya = () => {
         </div>
       </section>
 
-      {/* --- HOW DOES THIS MAYA WORK? --- */}
+      {/* --- HOW DOES THIS MAAYA WORK? --- */}
       <section className="section relative bg-card/10">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -232,7 +232,7 @@ const ProgramMaya = () => {
             >
               <span className="text-primary text-xs font-bold tracking-[0.2em] uppercase mb-4 block">The Journey</span>
               <h2 className="mb-8">
-                How does this MAYA —{" "}
+                How does this MAAYA —{" "}
                 <span className="text-primary italic">Self Alignment Coaching work?</span>
               </h2>
 
@@ -252,7 +252,7 @@ const ProgramMaya = () => {
               </div>
 
               <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Each MAYA session is structured around your specific misalignment, not a generic curriculum. This is
+                Each MAAYA session is structured around your specific misalignment, not a generic curriculum. This is
                 identity and purpose coaching that adapts to where you are, not where a programme assumes you should
                 be. Sessions run as guided 1:1 or small cohort journeys, facilitated by a certified Success369
                 facilitator.
@@ -285,23 +285,23 @@ const ProgramMaya = () => {
 
       {/* --- FAQ --- */}
       <FAQSection
-        title="Frequently Asked Questions About MAYA Self Alignment Coaching"
+        title="Frequently Asked Questions About MAAYA Self Alignment Coaching"
         items={[
           {
             question: "What is self alignment coaching?",
             answer: "Self alignment coaching is an organized way of determining the discrepancy that exists between your true nature and the manner in which you project yourself in all your activities and relations. This is different from performance coaching, which is based on production since self alignment coaching works at the level of identity — so that results become a natural consequence of coherence, not just effort."
           },
           {
-            question: "How is MAYA different from other life coaching?",
-            answer: "Most forms of coaching involve goal setting, habitual practices, and accountability. MAYA is identity coaching and involves deeper work that addresses unseen patterns and misalignments that make progress seem more difficult than it needs to be. If you have gone through traditional coaching but there is still an issue that you know is unresolved, MAYA is tailored for you."
+            question: "How is MAAYA different from other life coaching?",
+            answer: "Most forms of coaching involve goal setting, habitual practices, and accountability. MAAYA is identity coaching and involves deeper work that addresses unseen patterns and misalignments that make progress seem more difficult than it needs to be. If you have gone through traditional coaching but there is still an issue that you know is unresolved, MAAYA is tailored for you."
           },
           {
-            question: "What is the duration of the MAYA self alignment coaching journey?",
-            answer: "MAYA is a 24 hours guided realignment journey, for people running in a busy schedule we customize the program accordingly. It is structured across sessions with a certified Success369 facilitator in 1:1 or small cohort format. The timeline is intentional. Real alignment takes more than a single session to surface, understand, and integrate into how you actually show up day to day."
+            question: "What is the duration of the MAAYA self alignment coaching journey?",
+            answer: "MAAYA is a 24 hours guided realignment journey, for people running in a busy schedule we customize the program accordingly. It is structured across sessions with a certified Success369 facilitator in 1:1 or small cohort format. The timeline is intentional. Real alignment takes more than a single session to surface, understand, and integrate into how you actually show up day to day."
           },
           {
-            question: "Do I need prior coaching experience to join MAYA?",
-            answer: "None at all. MAYA is designed for people who feel ready to move but are not sure what is holding them back. Whether you have tried other programs before or this is your first time working with a coach or facilitator, the process starts from where you are, not where it assumes you should be."
+            question: "Do I need prior coaching experience to join MAAYA?",
+            answer: "None at all. MAAYA is designed for people who feel ready to move but are not sure what is holding them back. Whether you have tried other programs before or this is your first time working with a coach or facilitator, the process starts from where you are, not where it assumes you should be."
           },
         ]}
       />
@@ -317,7 +317,7 @@ const ProgramMaya = () => {
           >
             <h2 className="mb-4">Continue Your Success369 Journey</h2>
             <p className="text-muted-foreground text-lg leading-relaxed mb-8">
-              MAYA is one destination on the Success369 path. Where are you starting from?
+              MAAYA is one destination on the Success369 path. Where are you starting from?
             </p>
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
               <CTAButton to="/programs" size="md" variant="shimmer">
@@ -341,7 +341,7 @@ const ProgramMaya = () => {
           </h2>
         }
         description="Take the first step toward closing the gap between who you are and how you show up."
-        ctaText="Begin the MAYA Journey"
+        ctaText="Begin the MAAYA Journey"
         ctaHref="/apply/maya"
         showPillars={false}
       />
