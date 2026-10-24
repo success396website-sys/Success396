@@ -14,7 +14,11 @@ type FilterType = "All" | BlogCategory;
 const Blog = () => {
   const [filter, setFilter] = useState<FilterType>("All");
   const [search, setSearch] = useState("");
-  const featuredList = blogPosts;
+  // Hero slider shows only the 3 newest posts (by date), so a new post
+  // automatically replaces the oldest one.
+  const featuredList = [...blogPosts]
+    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date))
+    .slice(0, 3);
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
