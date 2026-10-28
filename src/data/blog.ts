@@ -77,7 +77,7 @@ export const blogPosts: BlogPost[] = [
     date: "Oct 24, 2026",
     readTime: "4 min read",
     author: "Success369 Team",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=800",
+    image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800",
     category: "Leadership",
     featured: false,
     headings: [
