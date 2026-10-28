@@ -1,103 +1,163 @@
 /**
- * Post-build step: bakes the correct <title>/<meta description>/canonical/
- * OG/Twitter tags into a real static HTML file for each route.
+ * Post-build step: static site generation.
  *
- * Why: this site is a client-only React SPA (no SSR). Vite's build only
- * produces one dist/index.html, and every route's real title/description
- * is set afterward by react-helmet-async, purely in JavaScript. Any tool
- * that reads raw HTML without executing JS — curl, "View Source", most
- * SEO checkers, social link-preview bots, and search-engine crawlers on
- * their first pass — only ever sees the one generic index.html, no matter
- * which page it's actually looking at.
+ * The site is a React SPA, so `vite build` only produces one empty
+ * dist/index.html and every page's content is drawn in the browser by
+ * JavaScript. Crawlers that do not run JavaScript (ChatGPT, Perplexity,
+ * Claude, most SEO checkers, link-preview bots, "View Source") therefore
+ * see an empty page.
  *
- * This script runs after `vite build` and writes dist/<route>/index.html
- * for every route in routeSeo (plus every blog post), each a copy of the
- * built index.html with just its <head> SEO tags swapped to that route's
- * values. Vercel's filesystem routing serves a matching static file
- * before falling back to the SPA rewrite (already proven on this project
- * by /robots.txt and /sitemap.xml working correctly), so this makes the
- * correct tags visible immediately to non-JS clients, while real visitors
- * still get the exact same interactive SPA (same JS bundle, same <div
- * id="root">) — react-helmet-async just re-applies the same values once
- * React mounts.
+ * `npm run build` now also builds src/entry-server.tsx (vite --ssr, into
+ * dist-ssr). This script loads that bundle, server-renders every
+ * prerenderable route to HTML and writes dist/<route>/index.html with:
+ *   - the full page markup inside <div id="root">
+ *   - the page's <title>, meta tags, canonical and JSON-LD (from the same
+ *     react-helmet-async <Helmet> blocks the page already uses)
+ *
+ * The route list is not hand-maintained: it comes from src/routes.tsx, and
+ * blog posts / events are expanded from their data files. Adding a blog
+ * post or a page and rebuilding is all it takes.
+ *
+ * Vercel serves a real static file before applying the rewrite in
+ * vercel.json, so these files are served as-is. Routes that are not
+ * prerendered (checkout, forms, thank-you pages, redirects, 404) fall
+ * through to dist/spa.html, the untouched client-only shell. In the
+ * browser, main.tsx hydrates the prerendered markup.
  */
-import { readFileSync, writeFileSync, mkdirSync } from "fs";
+import { existsSync, copyFileSync, readFileSync, writeFileSync, mkdirSync } from "fs";
 import { dirname, join } from "path";
-import { fileURLToPath } from "url";
-import { routeSeo, siteUrl, type RouteSeo } from "../src/data/seo";
-import { blogPosts } from "../src/data/blog";
+import { fileURLToPath, pathToFileURL } from "url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const distDir = join(__dirname, "..", "dist");
+const root = join(__dirname, "..");
+const distDir = join(root, "dist");
 const indexPath = join(distDir, "index.html");
+const spaPath = join(distDir, "spa.html");
+const serverEntry = join(root, "dist-ssr", "entry-server.js");
 
-function escapeHtml(s: string): string {
-  return s.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const siteUrl = "https://success369.org";
+
+interface HelmetTags {
+  title: string;
+  meta: string;
+  link: string;
+  script: string;
 }
 
-function buildHtmlFor(baseHtml: string, route: string, seo: RouteSeo): string {
-  const title = escapeHtml(seo.title);
-  const description = escapeHtml(seo.description);
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** `name="x"` / `property="x"` key of a <meta> tag, or `rel="x"` of a <link>. */
+function tagKey(tag: string, attrs: string[]): string | null {
+  for (const attr of attrs) {
+    const m = tag.match(new RegExp(`\\s${attr}="([^"]*)"`));
+    if (m) return `${attr}:${m[1]}`;
+  }
+  return null;
+}
+
+function removeTemplateMeta(html: string, key: string): string {
+  const [attr, value] = [key.slice(0, key.indexOf(":")), key.slice(key.indexOf(":") + 1)];
+  return html.replace(new RegExp(`[ \\t]*<meta\\s+${attr}="${escapeRegExp(value)}"[^>]*>[ \\t]*\\r?\\n?`, "g"), "");
+}
+
+function buildHtml(template: string, route: string, appHtml: string, helmet: HelmetTags): string {
+  const metaTags = helmet.meta.match(/<meta\b[^>]*>/g) ?? [];
+  const linkTags = helmet.link.match(/<link\b[^>]*>/g) ?? [];
+  const metaKeys = new Set(metaTags.map((t) => tagKey(t, ["name", "property"])).filter(Boolean) as string[]);
+  const hasCanonical = linkTags.some((t) => tagKey(t, ["rel"]) === "rel:canonical");
+
+  const titleText = (helmet.title.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.[1] ??
+    template.match(/<title>([\s\S]*?)<\/title>/)?.[1] ??
+    "Success369").trim();
+  const descText =
+    metaTags
+      .find((t) => tagKey(t, ["name"]) === "name:description")
+      ?.match(/\scontent="([^"]*)"/)?.[1] ??
+    template.match(/<meta name="description" content="([^"]*)"/)?.[1] ??
+    "";
   const url = `${siteUrl}${route === "/" ? "" : route}`;
 
-  let html = baseHtml;
+  // Tags the page's Helmet block did not set are derived from its title,
+  // description and URL, so every page has consistent og:/twitter:/canonical.
+  const derived: string[] = [];
+  const derive = (key: string, tag: string) => {
+    if (!metaKeys.has(key)) derived.push(tag);
+  };
+  if (!hasCanonical) derived.push(`<link rel="canonical" href="${url}" />`);
+  derive("property:og:url", `<meta property="og:url" content="${url}" />`);
+  derive("property:og:title", `<meta property="og:title" content="${titleText}" />`);
+  derive("property:og:description", `<meta property="og:description" content="${descText}" />`);
+  derive("name:twitter:title", `<meta name="twitter:title" content="${titleText}" />`);
+  derive("name:twitter:description", `<meta name="twitter:description" content="${descText}" />`);
 
-  // <title>
-  html = html.replace(/<title>[^<]*<\/title>/, `<title>${title}</title>`);
+  let html = template;
 
-  // meta description
-  html = html.replace(
-    /<meta name="description" content="[^"]*"\s*\/>/,
-    `<meta name="description" content="${description}" />`
-  );
+  // Drop the template defaults that this page overrides.
+  html = html.replace(/[ \t]*<title>[\s\S]*?<\/title>[ \t]*\r?\n?/, "");
+  const overridden = new Set<string>(metaKeys);
+  for (const tag of derived) {
+    const k = tagKey(tag, ["name", "property"]);
+    if (k) overridden.add(k);
+  }
+  overridden.add("name:description");
+  for (const key of overridden) html = removeTemplateMeta(html, key);
+  if (metaKeys.has("property:og:image")) {
+    // The default 1200x630 size no longer describes a page-specific image.
+    html = removeTemplateMeta(html, "property:og:image:width");
+    html = removeTemplateMeta(html, "property:og:image:height");
+    if (!metaKeys.has("name:twitter:image")) {
+      const ogImage = metaTags
+        .find((t) => tagKey(t, ["property"]) === "property:og:image")
+        ?.match(/\scontent="([^"]*)"/)?.[1];
+      if (ogImage) {
+        html = removeTemplateMeta(html, "name:twitter:image");
+        derived.push(`<meta name="twitter:image" content="${ogImage}" />`);
+      }
+    }
+  }
 
-  // OG tags
-  html = html.replace(/<meta property="og:url" content="[^"]*"\s*\/>/, `<meta property="og:url" content="${url}" />`);
-  html = html.replace(/<meta property="og:title" content="[^"]*"\s*\/>/, `<meta property="og:title" content="${title}" />`);
-  html = html.replace(
-    /<meta property="og:description" content="[^"]*"\s*\/>/,
-    `<meta property="og:description" content="${description}" />`
-  );
+  const description = metaKeys.has("name:description")
+    ? ""
+    : `<meta name="description" content="${descText}" />`;
 
-  // Twitter tags
-  html = html.replace(/<meta name="twitter:title" content="[^"]*"\s*\/>/, `<meta name="twitter:title" content="${title}" />`);
-  html = html.replace(
-    /<meta name="twitter:description" content="[^"]*"\s*\/>/,
-    `<meta name="twitter:description" content="${description}" />`
-  );
+  const headTags = [helmet.title, helmet.meta, helmet.link, description, ...derived, helmet.script]
+    .filter(Boolean)
+    .join("\n    ");
+  html = html.replace("</head>", `    ${headTags}\n  </head>`);
 
-  // canonical link — add right after <title> (base index.html has none)
-  html = html.replace(/(<title>[^<]*<\/title>)/, `$1\n    <link rel="canonical" href="${url}" />`);
-
+  // Page markup.
+  html = html.replace('<div id="root"></div>', () => `<div id="root">${appHtml}</div>`);
   return html;
 }
 
-function writeRoute(baseHtml: string, route: string, seo: RouteSeo) {
-  const html = buildHtmlFor(baseHtml, route, seo);
-  const outPath = route === "/" ? indexPath : join(distDir, route.replace(/^\//, ""), "index.html");
-  mkdirSync(dirname(outPath), { recursive: true });
-  writeFileSync(outPath, html, "utf-8");
-  console.log(`  prerendered ${route} -> ${outPath.replace(distDir, "dist")}`);
-}
-
-function main() {
-  const baseHtml = readFileSync(indexPath, "utf-8");
-
-  console.log(`Prerendering ${Object.keys(routeSeo).length} static routes...`);
-  for (const [route, seo] of Object.entries(routeSeo)) {
-    writeRoute(baseHtml, route, seo);
+async function main() {
+  if (!existsSync(indexPath)) throw new Error("dist/index.html not found — run `vite build` first.");
+  if (!existsSync(serverEntry)) {
+    throw new Error("dist-ssr/entry-server.js not found — run `vite build --ssr src/entry-server.tsx --outDir dist-ssr` first.");
   }
 
-  console.log(`Prerendering ${blogPosts.length} blog posts...`);
-  for (const post of blogPosts) {
-    const seo: RouteSeo = {
-      title: post.metaTitle || `${post.title} — Success369 Insights`,
-      description: post.metaDescription || post.excerpt || post.content[0]?.slice(0, 160) || "",
-    };
-    writeRoute(baseHtml, `/blog/${post.slug}`, seo);
+  // Keep the untouched client-only shell for non-prerendered routes. If this
+  // script is re-run on an already processed dist/, reuse the saved shell.
+  if (!existsSync(spaPath)) copyFileSync(indexPath, spaPath);
+  const template = readFileSync(spaPath, "utf-8");
+
+  const { render, getPrerenderPaths } = await import(pathToFileURL(serverEntry).href);
+  const paths: string[] = getPrerenderPaths();
+
+  console.log(`Prerendering ${paths.length} routes...`);
+  for (const route of paths) {
+    const { html: appHtml, helmet } = await render(route);
+    const html = buildHtml(template, route, appHtml, helmet);
+    const outPath = route === "/" ? indexPath : join(distDir, route.replace(/^\//, ""), "index.html");
+    mkdirSync(dirname(outPath), { recursive: true });
+    writeFileSync(outPath, html, "utf-8");
+    console.log(`  ${route} -> ${outPath.replace(distDir, "dist")} (${(html.length / 1024).toFixed(0)} KB)`);
   }
 
   console.log("Prerender complete.");
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

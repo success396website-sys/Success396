@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import CTAButton from "./CTAButton";
@@ -97,6 +98,20 @@ const FAQSection = ({
 
   return (
     <section id="faq" className="py-20 px-4 sm:px-6 bg-background relative overflow-hidden">
+      {/* The answers are collapsed in the UI, so expose them to crawlers as FAQPage schema. */}
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: items.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: { "@type": "Answer", text: faq.answer },
+            })),
+          })}
+        </script>
+      </Helmet>
       {/* Ambient glow */}
       <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 

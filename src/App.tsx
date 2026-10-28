@@ -1,53 +1,15 @@
-import { lazy, Suspense } from "react";
+import { Suspense } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import PixelTracker from "./components/PixelTracker";
 import CookieConsent from "./components/CookieConsent";
-
-
-// Lazy load pages for performance
-const Index = lazy(() => import("./pages/Index"));
-const Programs = lazy(() => import("./pages/Programs"));
-const ProgramGita = lazy(() => import("./pages/ProgramGita"));
-const ProgramMaya = lazy(() => import("./pages/ProgramMaya"));
-const ProgramSarvam = lazy(() => import("./pages/ProgramSarvam"));
-const ProgramShakti = lazy(() => import("./pages/ProgramShakti"));
-const Blog = lazy(() => import("./pages/Blog"));
-const BlogPost = lazy(() => import("./pages/BlogPost"));
-const Book = lazy(() => import("./pages/Book"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Events = lazy(() => import("./pages/Events"));
-const EventDetail = lazy(() => import("./pages/EventDetail"));
-const TakeSession = lazy(() => import("./pages/TakeSession"));
-const Podcast = lazy(() => import("./pages/Podcast"));
-const RoundTables = lazy(() => import("./pages/RoundTables"));
-const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
-const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
-const ShippingPolicy = lazy(() => import("./pages/ShippingPolicy"));
-const TermsConditions = lazy(() => import("./pages/TermsConditions"));
-const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
-const Success369 = lazy(() => import("./pages/Success369"));
-const AboutUs = lazy(() => import("./pages/AboutUs"));
-const Checkout = lazy(() => import("./pages/Checkout"));
-const EventRegister = lazy(() => import("./pages/EventRegister"));
-const ProgramApply = lazy(() => import("./pages/ProgramApply"));
-const MentorApply = lazy(() => import("./pages/MentorApply"));
-const CommunityCharter = lazy(() => import("./pages/CommunityCharter"));
-const AcceptableUsePolicy = lazy(() => import("./pages/AcceptableUsePolicy"));
-const LegalNotice = lazy(() => import("./pages/LegalNotice"));
-const Disclaimer = lazy(() => import("./pages/Disclaimer"));
-const ShakthiNew = lazy(() => import("./pages/ShakthiNew"));
-const Authors = lazy(() => import("./pages/Authors"));
-const ThankYou = lazy(() => import("./pages/ThankYou"));
-const ThankYouShakthi = lazy(() => import("./pages/ThankYouShakthi"));
-const ThankYouPage = lazy(() => import("./pages/ThankYouPage"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+import { routes } from "./routes";
 
 // Basic loading fallback
 const LoadingFallback = () => (
@@ -58,65 +20,37 @@ const LoadingFallback = () => (
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <HelmetProvider>
+/**
+ * Everything that lives inside the router. Shared by the browser entry
+ * (BrowserRouter, below) and the build-time prerender (StaticRouter, see
+ * src/entry-server.tsx), so both produce the same markup.
+ */
+export const AppContent = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} storageKey="vite-ui-theme">
       <TooltipProvider>
         <Toaster />
-      <Sonner />
-      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <Sonner />
         <ScrollToTop />
         <PixelTracker />
         <Suspense fallback={<LoadingFallback />}>
-
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/success-369" element={<Success369 />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/programs" element={<Programs />} />
-            <Route path="/program-gita" element={<ProgramGita />} />
-            <Route path="/program-maya" element={<Navigate to="/maaya" replace />} />
-            <Route path="/maaya" element={<ProgramMaya />} />
-            <Route path="/program-sarvam" element={<ProgramSarvam />} />
-            <Route path="/program-shakti" element={<ProgramShakti />} />
-            <Route path="/shakti-unfiltered-voice" element={<ShakthiNew />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/what-is-the-369-method" element={<Navigate to="/blog/what-is-the-369-method" replace />} />
-            <Route path="/book" element={<Book />} />
-            <Route path="/authors" element={<Authors />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/events/:slug" element={<EventDetail />} />
-            <Route path="/take-a-session" element={<TakeSession />} />
-            <Route path="/podcast" element={<Podcast />} />
-            <Route path="/round-tables" element={<RoundTables />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/refund-policy" element={<RefundPolicy />} />
-            <Route path="/shipping-policy" element={<ShippingPolicy />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            <Route path="/terms-conditions" element={<TermsConditions />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/register/:slug" element={<EventRegister />} />
-            <Route path="/apply/mentor" element={<MentorApply />} />
-            <Route path="/apply/:program" element={<ProgramApply />} />
-            <Route path="/community-charter" element={<CommunityCharter />} />
-            <Route path="/acceptable-use" element={<AcceptableUsePolicy />} />
-            <Route path="/legal-notice" element={<LegalNotice />} />
-            <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/thank-you" element={<ThankYou />} />
-            <Route path="/thank-you-shakthi" element={<ThankYouShakthi />} />
-            <Route path="/thank-you/:type" element={<ThankYouPage />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+            {routes.map(({ path, element }) => (
+              <Route key={path} path={path} element={element} />
+            ))}
           </Routes>
         </Suspense>
         <CookieConsent />
-      </BrowserRouter>
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
+);
+
+const App = () => (
+  <HelmetProvider>
+    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+      <AppContent />
+    </BrowserRouter>
   </HelmetProvider>
 );
 

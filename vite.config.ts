@@ -12,6 +12,11 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
+  // Used by the build-time prerender (src/entry-server.tsx). Packages that
+  // Node cannot import directly as ESM are bundled into the server build.
+  ssr: {
+    noExternal: ["react-helmet-async"],
+  },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {

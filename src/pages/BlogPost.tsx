@@ -113,6 +113,24 @@ const BlogPost = () => {
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="canonical" href={`https://success369.org/blog/${post.slug}`} />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.metaDescription || post.excerpt,
+            image: post.image,
+            datePublished: new Date(`${post.date} UTC`).toISOString().slice(0, 10),
+            author: { "@type": "Organization", name: post.author },
+            publisher: {
+              "@type": "Organization",
+              name: "Success369",
+              logo: { "@type": "ImageObject", url: "https://success369.org/favicon.png" },
+            },
+            mainEntityOfPage: `https://success369.org/blog/${post.slug}`,
+            articleSection: post.category,
+          })}
+        </script>
       </Helmet>
       <Navbar />
 
