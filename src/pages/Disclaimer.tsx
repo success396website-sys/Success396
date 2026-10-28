@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import PageSeo from "@/components/PageSeo";
 import Footer from "@/components/Footer";
 
 const fadeUp = {
@@ -101,6 +102,7 @@ const sections = [
 const Disclaimer = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSeo title="Disclaimer | Success369" description="Important disclaimers about the information, programs and outcomes described on the Success369 website." path="/disclaimer" />
       <Navbar />
 
       <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">

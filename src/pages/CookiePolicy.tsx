@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import PageSeo from "@/components/PageSeo";
 import Footer from "@/components/Footer";
 import { Cookie } from "lucide-react";
 
@@ -76,6 +77,7 @@ const sections = [
 const CookiePolicy = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSeo title="Cookie Policy | Success369" description="How Success369 uses cookies and similar technologies, and how you can manage your cookie preferences." path="/cookie-policy" />
       <Navbar />
 
       <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">

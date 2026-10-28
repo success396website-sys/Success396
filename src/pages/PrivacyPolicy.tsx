@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import PageSeo from "@/components/PageSeo";
 import Footer from "@/components/Footer";
 import { Shield } from "lucide-react";
 
@@ -109,6 +110,7 @@ const sections = [
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSeo title="Privacy Policy | Success369" description="How Success369 collects, uses and protects your personal information when you use our website, programs and services." path="/privacy-policy" />
       <Navbar />
 
       <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import PageSeo from "@/components/PageSeo";
 import Footer from "@/components/Footer";
 import { Truck } from "lucide-react";
 
@@ -45,6 +46,7 @@ const sections = [
 const ShippingPolicy = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSeo title="Shipping Policy | Success369" description="Shipping and delivery information for products purchased from Success369." path="/shipping-policy" />
       <Navbar />
 
       <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">

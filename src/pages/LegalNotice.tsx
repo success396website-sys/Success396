@@ -87,6 +87,7 @@ const LegalNotice = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Helmet>
         <title>Legal Notice | Success369</title>
+        <meta name="description" content="Legal notice and company information for Success369." />
         <meta name="robots" content="noindex" />
       </Helmet>
       <Navbar />

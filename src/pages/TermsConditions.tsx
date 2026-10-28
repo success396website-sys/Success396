@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import PageSeo from "@/components/PageSeo";
 import Footer from "@/components/Footer";
 import { FileText } from "lucide-react";
 
@@ -122,6 +123,7 @@ const sections = [
 const TermsConditions = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSeo title="Terms and Conditions | Success369" description="The terms and conditions that apply to using the Success369 website, programs, events and services." path="/terms-conditions" />
       <Navbar />
 
       <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">

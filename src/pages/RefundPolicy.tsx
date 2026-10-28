@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import PageSeo from "@/components/PageSeo";
 import Footer from "@/components/Footer";
 import { RotateCcw } from "lucide-react";
 
@@ -139,6 +140,7 @@ const sections = [
 const RefundPolicy = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSeo title="Refund Policy | Success369" description="Refund and cancellation terms for Success369 programs, events and purchases." path="/refund-policy" />
       <Navbar />
 
       <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">

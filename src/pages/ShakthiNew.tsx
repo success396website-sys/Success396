@@ -147,7 +147,7 @@ const ShakthiNew = () => {
           name="description"
           content="Shakthi by Success369: a focused communication skill-development programme for ambitious individuals. 3 HR × 2 sessions. Cohorts of 15–25. ₹3,000 all inclusive. Harvard ManageMentor content included."
         />
-        <link rel="canonical" href="https://success369.org/shakti-new" />
+        <link rel="canonical" href="https://success369.org/shakti-unfiltered-voice" />
       </Helmet>
 
       <Navbar />

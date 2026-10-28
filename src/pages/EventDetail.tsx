@@ -14,6 +14,7 @@ import {
   Play,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import PageSeo from "@/components/PageSeo";
 import Footer from "@/components/Footer";
 import { allEvents } from "@/data/events-list";
 
@@ -54,6 +55,7 @@ const EventDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <PageSeo title={`${event.title} | Success369 Events`} description={event.description} path={`/events/${event.slug}`} />
       <Navbar />
 
       {/* Hero */}

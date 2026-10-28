@@ -66,9 +66,9 @@ function buildHtml(template: string, route: string, appHtml: string, helmet: Hel
   const metaKeys = new Set(metaTags.map((t) => tagKey(t, ["name", "property"])).filter(Boolean) as string[]);
   const hasCanonical = linkTags.some((t) => tagKey(t, ["rel"]) === "rel:canonical");
 
-  const titleText = (helmet.title.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.[1] ??
-    template.match(/<title>([\s\S]*?)<\/title>/)?.[1] ??
-    "Success369").trim();
+  // Helmet emits an empty <title> when a page sets none; treat that as missing.
+  const pageTitle = helmet.title.match(/<title[^>]*>([\s\S]*?)<\/title>/)?.[1]?.trim();
+  const titleText = pageTitle || template.match(/<title>([\s\S]*?)<\/title>/)?.[1]?.trim() || "Success369";
   const descText =
     metaTags
       .find((t) => tagKey(t, ["name"]) === "name:description")
@@ -120,7 +120,16 @@ function buildHtml(template: string, route: string, appHtml: string, helmet: Hel
     ? ""
     : `<meta name="description" content="${descText}" />`;
 
-  const headTags = [helmet.title, helmet.meta, helmet.link, description, ...derived, helmet.script]
+  const missing = [
+    !pageTitle && "title",
+    !metaKeys.has("name:description") && "description",
+  ].filter(Boolean);
+  // A missing canonical is not listed: it is derived from the route below.
+  if (missing.length) {
+    console.warn(`  [warn] ${route} sets no ${missing.join(", ")} of its own — add a <Helmet> / <PageSeo> to the page`);
+  }
+
+  const headTags = [pageTitle ? helmet.title : `<title>${titleText}</title>`, helmet.meta, helmet.link, description, ...derived, helmet.script]
     .filter(Boolean)
     .join("\n    ");
   html = html.replace("</head>", `    ${headTags}\n  </head>`);

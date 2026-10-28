@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import PageSeo from "@/components/PageSeo";
 import Footer from "@/components/Footer";
 
 const fadeUp = {
@@ -79,6 +80,7 @@ const sections = [
 const CommunityCharter = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <PageSeo title="Community Charter | Success369" description="The principles and expectations that guide how members of the Success369 community engage with one another." path="/community-charter" />
       <Navbar />
 
       <section className="relative pt-32 pb-16 sm:pt-40 sm:pb-20 overflow-hidden">
