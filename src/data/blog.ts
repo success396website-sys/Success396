@@ -20,6 +20,42 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "success-369-method-steps-personal-growth",
+    title: "Success 369 Method Steps: A Practical Daily System for Personal Growth",
+    metaTitle: "Success 369 Method Steps: A Daily System for Personal Growth",
+    metaDescription: "Discover the Success 369 method steps and learn how to build a simple daily routine for personal growth, goal setting, self-discipline, and consistent progress.",
+    excerpt: "Discover the Success 369 method steps and learn how to build a simple daily routine for personal growth, goal setting, self-discipline, and consistent progress.",
+    content: [
+      "The Success 369 methodology will work because it creates a process to ensure your goals, values and daily actions are aligned. It doesn’t rely on positive affirmations or luck, instead it focuses on building consistency through small guided actions. The methodology is based around 369 days.",
+      "The Success 369 is a personal development framework developed by Dr. Ajayya Kumar and Praveen Parameswar. The whole system is detailed within the Success 369 book. Most people try to achieve success by focusing on strategy and effort, but real progress is created when your mind, beliefs and actions are aligned.",
+      "The number system gives a clarity about the structure of the system. The 3 points at clarity before action, the 6 means aligning your mindset, values and decisions. Finally, 9 stands for consistent action that produces tangible results. This together produces the sequence of - Clarity, Alignment and Action.",
+      "It depends on what version of the methodology you’re referring to. The most common version of Success 369 on social media, is to write out a positive affirmation 3 times in the morning, 6 times during the afternoon and 9 times in the evening. There is no real scientific evidence to suggest that doing this will bring wealth, healthy relationships and opportunities into your life. The numbers themselves have no real power.",
+      "However, there is power in the process. So, if you ask “<a href=\"/success-369\" class=\"text-primary underline hover:text-primary/80 transition-colors\">does the 369-method work</a>?”, the answer is clear. By focusing on one clear goal, reflecting on it often and taking action, you will become much more consistent and aware of opportunities. The Success 369 methodology brings this process together and creates structure and consistency. Just writing out your goal won’t change your life, but knowing why your goal matters, ensuring your decisions align to it and taking action everyday can.",
+      "Below is an overview of how the three pillars can be used as a process you can begin today. The full methodology can be found within the book, but take this as a starting point.",
+      "<h3 class=\"text-xl font-bold font-display text-foreground mt-6 mb-3 text-glow\">1. Clarity (Morning – 10mins)</h3>Write out answers to the following questions;<br/><br/>Who am I? What do I really want? Why does it matter? Be concise and honest with your answers. Once you’ve answered these questions, decide on one thing to focus on today. This is a great way to set your focus for the day.",
+      "<h3 class=\"text-xl font-bold font-display text-foreground mt-6 mb-3 text-glow\">2. Congruence (Midday)</h3>Stop for a little whilst in the middle of your day. Ask yourself if your decisions so far have aligned with what you said mattered. If you feel like you’re being pulled away from your goal by something (task, habit or commitment) make one small adjustment. This could be saying no to something, moving a tough conversation to an earlier time in your day or making sure you have an hour to focus on your goal. The book calls this a micro alignment and it’s not about perfection. It’s just about becoming aware that there is a disconnect and correcting it is the way forward.",
+      "<h3 class=\"text-xl font-bold font-display text-foreground mt-6 mb-3 text-glow\">3. Catalysis (Take action & End of day reflection)</h3>Take action towards your goal. Write out 3 things you did, what worked and what you’ll change tomorrow. Becoming consistent with small adjustments will create momentum in a more reliable way. If you can’t see what you’ve done, you can’t improve it. Keep this short and specific.",
+      "Change takes time. The whole idea of going from <a href=\"/success-369\" class=\"text-primary underline hover:text-primary/80 transition-colors\">zero to success in 369 days</a> isn’t about instant results. It’s about consistently creating a pathway to create a consistent, meaningful and sustainable life.",
+      "The time frame allows you to really get to know, practise and develop each pillar of success. We start with clarity, without clarity it can be hard to create congruence, and catalysis lasts when your actions match the values.",
+      "Not being clear - Often people jump straight into taking action and can end up putting in a lot of effort towards goals that aren’t actually theirs.<br/><br/>Ritualising - If you’re just repeating the numbers without taking action, you’re not getting any alignment.<br/><br/>Giving up - Real change will often be subtle. Give the methodology a few weeks to be consistent with and then decide if it works for you.<br/><br/>Only focused on outcomes - Keep track of your consistency with taking action every day. This is a better indicator.",
+      "Start off by taking the daily process for one week. Notice how your decisions change. To go deeper, read the Success 369 book, try out the Success 369 programmes or get in touch with the Success369 team for a session. Everything about the methodology, authors and journeys can be found at success369.org. Success rarely happens in big jumps. It happens through one clear aligned day repeated again and again."
+    ],
+    date: "Nov 12, 2026",
+    readTime: "4 min read",
+    author: "Success369 Team",
+    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=800",
+    category: "Clarity",
+    featured: false,
+    headings: [
+      { index: 1, label: "What is the Success 369 Methodology?" },
+      { index: 3, label: "Does the 369 Methodology Work?" },
+      { index: 5, label: "The 3 Pillars of Success 369" },
+      { index: 9, label: "Why 369 Days?" },
+      { index: 11, label: "Common Mistakes to Avoid" },
+      { index: 12, label: "Getting Started" }
+    ]
+  },
+  {
     slug: "why-emotional-intelligence-matters-more-than-iq-for-leaders",
     title: "Why Emotional Intelligence Matters More Than IQ for Leaders — And How to Actually Build It",
     metaTitle: "Why Emotional Intelligence Matters More Than IQ for Leaders | Success369",
