@@ -8,6 +8,7 @@ import CTAButton from "./CTAButton";
 import { cn } from "@/lib/utils";
 import { submitToFormspree } from "@/lib/form-helpers";
 import { trackLead } from "@/lib/pixel";
+import LazyVideo from "@/components/LazyVideo";
 
 const pillars = [
   { icon: Zap, label: "Clarity" },
@@ -69,13 +70,12 @@ const GlobalCTA = ({
     <section id={id} className={cn("relative py-12 md:py-16 overflow-hidden bg-black", className)}>
       {/* Background video */}
       <div className="absolute inset-0">
-        <video
+        <LazyVideo
           src="https://videos.pexels.com/video-files/3571264/3571264-hd_1920_1080_30fps.mp4"
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
           className="h-full w-full object-cover opacity-60 transition-opacity duration-1000"
           onCanPlay={(e) => (e.currentTarget.className = "h-full w-full object-cover opacity-100 transition-opacity duration-1000")}
         />

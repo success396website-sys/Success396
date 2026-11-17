@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, ArrowRight } from "lucide-react";
 import gitaVideo from "../assets/gita.mp4";
@@ -6,6 +6,7 @@ import mayaVideo from "../assets/maya.mp4";
 import sarvamVideo from "../assets/sarvam.mp4";
 import shaktiVideo from "../assets/shakti.mp4";
 import CTAButton from "./CTAButton";
+import LazyVideo from "./LazyVideo";
 import { trackViewContent } from "@/lib/pixel";
 
 interface VideoCard {
@@ -58,14 +59,6 @@ const videoCards: VideoCard[] = [
 
 const VideoCardsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.load();
-      videoRef.current.play();
-    }
-  }, [activeIndex]);
 
   const handleCardHover = (index: number) => {
     if (index !== activeIndex) {
@@ -116,8 +109,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
               transition={{ duration: 0.6 }}
               className="absolute inset-0"
             >
-              <video
-                ref={videoRef}
+              <LazyVideo
                 src={activeCard.videoUrl}
                 muted
                 loop
@@ -174,7 +166,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                 >
                   <div className="flex items-center gap-3 p-3">
                     <div className="relative h-12 w-16 shrink-0 rounded overflow-hidden">
-                      <video
+                      <LazyVideo
                         src={card.videoUrl}
                         muted
                         playsInline
@@ -225,7 +217,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
                 transition={{ duration: 0.6 }}
                 className="absolute inset-0"
               >
-                <video
+                <LazyVideo
                   src={activeCard.videoUrl}
                   muted
                   loop
@@ -286,7 +278,7 @@ Success369 offers flexible, stand-alone journeys rooted in clarity, alignment, a
               >
                 {/* Thumbnail strip */}
                 <div className="relative h-24 w-full overflow-hidden">
-                  <video
+                  <LazyVideo
                     src={card.videoUrl}
                     muted
                     playsInline

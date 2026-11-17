@@ -6,10 +6,15 @@ import journey from "@/assets/Journey op 1.mp4";
 import event from "@/assets/Events Video.mp4";
 import book from "@/assets/Book.mp4";
 import success369video from "@/assets/Success 369.mp4";
+import model369Poster from "@/assets/posters/model369.webp";
+import journeyPoster from "@/assets/posters/journey.webp";
+import bookPoster from "@/assets/posters/book.webp";
+import success369Poster from "@/assets/posters/success369.webp";
 import CTAButton from "./CTAButton";
 
 interface Slide {
   video?: string;
+  poster?: string;
   youtubeId?: string;
   tag: string;
   title: string;
@@ -22,6 +27,7 @@ interface Slide {
 const slides: Slide[] = [
   {
     video: model369,
+    poster: model369Poster,
     tag: "Foundation",
     title: "Become your most aligned self to achieve your highest aspirations.",
     subtitle:
@@ -32,6 +38,7 @@ const slides: Slide[] = [
   },
   {
     video: success369video,
+    poster: success369Poster,
     tag: "Success 369",
     title: "Clarity for Individuals. Direction for Leaders. Alignment for Organisations.",
     subtitle:
@@ -42,6 +49,7 @@ const slides: Slide[] = [
   },
   {
     video: journey,
+    poster: journeyPoster,
     tag: "Programs",
     title: "Distinct Journeys. One Shared Philosophy.",
     subtitle:
@@ -52,6 +60,7 @@ const slides: Slide[] = [
   },
   {
     video: book,
+    poster: bookPoster,
     tag: "The Book",
     title: "The Book – Your Companion for Sustainable Success",
     subtitle: "You don't attend to follow the crowd. You show up for the conversation that meets you where you are.",
@@ -76,6 +85,16 @@ const HeroSlider = () => {
   const [current, setCurrent] = useState(0);
   const [progress, setProgress] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  // The first video is large, so it only starts downloading once the page
+  // has loaded; until then the poster image above it is what is shown.
+  const [videoReady, setVideoReady] = useState(false);
+
+  useEffect(() => {
+    const start = () => setTimeout(() => setVideoReady(true), 200);
+    if (document.readyState === "complete") start();
+    else window.addEventListener("load", start, { once: true });
+    return () => window.removeEventListener("load", start);
+  }, []);
 
   const next = useCallback(() => {
     setCurrent((prev) => (prev + 1) % slides.length);
@@ -116,7 +135,7 @@ const HeroSlider = () => {
       onMouseLeave={() => setIsPaused(false)}
     >
       {/* Background images with Ken Burns */}
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={current}
           initial={{ opacity: 0 }}
@@ -135,14 +154,25 @@ const HeroSlider = () => {
               />
             </div>
           ) : (
-            <video
-              src={slide.video}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="h-full w-full object-cover"
-            />
+            <>
+              {slide.poster && (
+                <img
+                  src={slide.poster}
+                  alt=""
+                  decoding="async"
+                  {...{ fetchpriority: "high" }}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              )}
+              <video
+                src={videoReady ? slide.video : undefined}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="relative h-full w-full object-cover"
+              />
+            </>
           )}
         </motion.div>
       </AnimatePresence>
@@ -153,7 +183,10 @@ const HeroSlider = () => {
       {/* Content */}
       <div className="absolute inset-0 flex items-end">
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 pb-28 sm:pb-32">
-          <AnimatePresence mode="wait">
+          {/* initial={false}: the first slide's text is visible straight away (it is
+              also what search engines and the largest-paint measurement see); the
+              entrance animation plays when the slide changes. */}
+          <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={current}
               initial={{ opacity: 0, y: 40 }}
