@@ -6,6 +6,8 @@ import journey from "@/assets/Journey op 1.mp4";
 import event from "@/assets/Events Video.mp4";
 import book from "@/assets/Book.mp4";
 import success369video from "@/assets/Success 369.mp4";
+import maayaVideo from "@/assets/maaya/hero-loop.mp4";
+import maayaPoster from "@/assets/maaya/hero-poster.webp";
 import model369Poster from "@/assets/posters/model369.webp";
 import journeyPoster from "@/assets/posters/journey.webp";
 import bookPoster from "@/assets/posters/book.webp";
@@ -57,6 +59,15 @@ const slides: Slide[] = [
     cta: "Explore Programs",
     ctaSecondary: "Learn More",
     ctaHref: "/programs",
+  },
+  {
+    video: maayaVideo,
+    poster: maayaPoster,
+    tag: "MAAYA",
+    title: "Not broken. Just misaligned.",
+    subtitle: "A guided retreat to bring who you are and how you act back into sync.",
+    cta: "Begin the MAAYA Journey",
+    ctaHref: "/maaya",
   },
   {
     video: book,
@@ -273,10 +284,10 @@ const HeroSlider = () => {
       </div>
 
       {/* Progress indicators */}
-      <div className="absolute bottom-10 sm:bottom-12 left-4 sm:left-6 right-16 sm:right-6 z-20">
-        <div className="flex max-w-md items-center gap-2 sm:gap-3">
+      <div className="absolute bottom-10 sm:bottom-12 sm:mb-6 left-4 sm:left-6 right-16 sm:right-6 z-20">
+        <div className="flex max-w-md items-start gap-2 sm:gap-3">
           {slides.map((_, index) => (
-            <button key={index} onClick={() => goTo(index)} className="group relative flex-1">
+            <button key={index} onClick={() => goTo(index)} aria-label={`Go to slide ${index + 1}: ${slides[index].tag}`} className="group relative flex-1 before:absolute before:inset-x-0 before:-inset-y-3">
               <div className="slider-progress h-1">
                 <motion.div
                   className="slider-progress-fill"
@@ -287,7 +298,7 @@ const HeroSlider = () => {
                   transition={{ duration: 0.05, ease: "linear" }}
                 />
               </div>
-              <span className="mt-2 hidden sm:block text-xs font-medium text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="pointer-events-none absolute left-0 top-full mt-2 hidden whitespace-nowrap text-xs font-medium text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:block">
                 {slides[index].tag}
               </span>
             </button>

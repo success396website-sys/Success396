@@ -185,10 +185,10 @@ const Blog = () => {
         </div>
 
         {/* Progress indicators */}
-        <div className="absolute bottom-10 sm:bottom-12 left-4 sm:left-6 right-16 sm:right-6 z-20">
-          <div className="flex max-w-md items-center gap-2 sm:gap-3">
+        <div className="absolute bottom-10 sm:bottom-12 sm:mb-6 left-4 sm:left-6 right-16 sm:right-6 z-20">
+          <div className="flex max-w-md items-start gap-2 sm:gap-3">
             {featuredList.map((post, index) => (
-              <button key={post.slug} onClick={() => goToSlide(index)} className="group relative flex-1">
+              <button key={post.slug} onClick={() => goToSlide(index)} aria-label={`Go to article ${index + 1}`} className="group relative flex-1 before:absolute before:inset-x-0 before:-inset-y-3">
                 <div className="slider-progress h-1">
                   <motion.div
                     className="slider-progress-fill"
@@ -199,7 +199,7 @@ const Blog = () => {
                     transition={{ duration: 0.05, ease: "linear" }}
                   />
                 </div>
-                <span className="mt-2 hidden sm:block text-xs font-medium text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 truncate max-w-[100px]">
+                <span className="pointer-events-none absolute left-0 top-full mt-2 hidden max-w-[100px] truncate text-xs font-medium text-white/70 opacity-0 transition-opacity duration-300 group-hover:opacity-100 sm:block">
                   {post.category}
                 </span>
               </button>

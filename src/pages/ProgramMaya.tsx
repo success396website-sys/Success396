@@ -5,6 +5,7 @@ import { Sparkles, Fingerprint, Compass, RefreshCw, Clock, Users, Award, ArrowRi
 import CTAButton from "@/components/CTAButton";
 import GlobalCTA from "@/components/GlobalCTA";
 import FAQSection from "@/components/FAQSection";
+import TurningPointsSection from "@/components/TurningPointsSection";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import mayaVideo from "@/assets/maya.mp4";
@@ -282,6 +283,9 @@ const ProgramMaya = () => {
           </div>
         </div>
       </section>
+
+      {/* --- TURNING POINTS: participant review videos --- */}
+      <TurningPointsSection />
 
       {/* --- FAQ --- */}
       <FAQSection
