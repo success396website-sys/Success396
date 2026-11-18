@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Play } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import helga169 from "@/assets/maaya/review-helga-169.mp4";
 import helga916 from "@/assets/maaya/review-helga-916.mp4";
 import helgaPoster169 from "@/assets/maaya/poster-helga-169.webp";
@@ -68,11 +69,11 @@ const reviews: Review[] = [
 ];
 
 // Phones get the vertical (9:16) cut, everything else the 16:9 cut. Only the
-// one that is needed is ever downloaded, and only after the visitor clicks play.
+// one that is needed is ever downloaded, and only after the visitor clicks a card.
 const isMobile = () => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches;
 
 const TurningPointsSection = () => {
-  const [playing, setPlaying] = useState<{ id: string; src: string } | null>(null);
+  const [playing, setPlaying] = useState<{ review: Review; src: string } | null>(null);
 
   return (
     <section className="section relative bg-background overflow-hidden pb-28 sm:pb-36">
@@ -101,9 +102,7 @@ const TurningPointsSection = () => {
         </motion.div>
 
         <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-4">
-          {reviews.map((review, index) => {
-            const isPlaying = playing?.id === review.id;
-            return (
+          {reviews.map((review, index) => (
               <motion.figure
                 key={review.id}
                 initial={{ opacity: 0, y: 30 }}
@@ -113,49 +112,60 @@ const TurningPointsSection = () => {
                 className="w-[68vw] max-w-[280px] shrink-0 snap-center md:w-auto md:max-w-none"
               >
                 <div className="relative aspect-[9/16] overflow-hidden rounded-2xl border border-border/40 bg-black md:aspect-video">
-                  {isPlaying ? (
-                    <video
-                      src={playing.src}
-                      controls
-                      autoPlay
-                      playsInline
-                      preload="auto"
-                      onEnded={() => setPlaying(null)}
-                      className="h-full w-full object-cover"
-                    />
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => setPlaying({ id: review.id, src: isMobile() ? review.video916 : review.video169 })}
-                      aria-label={`Play ${review.name}'s MAAYA review`}
-                      className="group absolute inset-0 block h-full w-full"
-                    >
-                      <picture>
-                        <source media="(max-width: 767px)" srcSet={review.poster916} />
-                        <img
-                          src={review.poster169}
-                          alt={`${review.name}, MAAYA Retreat participant`}
-                          loading="lazy"
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                      </picture>
-                      <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/10">
-                        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/90 text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
-                          <Play className="ml-0.5 h-6 w-6" fill="currentColor" />
-                        </span>
+                  <button
+                    type="button"
+                    onClick={() => setPlaying({ review, src: isMobile() ? review.video916 : review.video169 })}
+                    aria-label={`Play ${review.name}'s MAAYA review`}
+                    className="group absolute inset-0 block h-full w-full"
+                  >
+                    <picture>
+                      <source media="(max-width: 767px)" srcSet={review.poster916} />
+                      <img
+                        src={review.poster169}
+                        alt={`${review.name}, MAAYA Retreat participant`}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </picture>
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/20 transition-colors group-hover:bg-black/10">
+                      <span className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/90 text-white shadow-lg transition-transform duration-300 group-hover:scale-110">
+                        <Play className="ml-0.5 h-6 w-6" fill="currentColor" />
                       </span>
-                    </button>
-                  )}
+                    </span>
+                  </button>
                 </div>
                 <figcaption className="mt-4">
                   <p className="font-display text-base font-semibold text-foreground">{review.name}</p>
                   <p className="mt-1 text-sm leading-snug text-muted-foreground">{review.title}</p>
                 </figcaption>
               </motion.figure>
-            );
-          })}
+          ))}
         </div>
       </div>
+
+      {/* Pop-up player: opens when a review is clicked, closes with X, Esc or a click outside */}
+      <Dialog open={playing !== null} onOpenChange={(open) => !open && setPlaying(null)}>
+        <DialogContent className="w-[94vw] max-w-4xl gap-0 overflow-hidden border-border/40 bg-card p-0 sm:rounded-2xl">
+          {playing && (
+            <>
+              <div className="px-5 py-4 pr-14">
+                <DialogTitle className="mb-0 font-display text-lg font-semibold leading-snug text-foreground">{playing.review.name}</DialogTitle>
+                <DialogDescription className="mt-1 text-sm text-muted-foreground">{playing.review.title}</DialogDescription>
+              </div>
+              <div className="bg-black">
+                <video
+                  key={playing.src}
+                  src={playing.src}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="mx-auto block max-h-[75vh] w-full"
+                />
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
