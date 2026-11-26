@@ -20,6 +20,44 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: "what-is-a-success-catalyst-how-to-become-one",
+    title: "What Is a Success Catalyst - And How Do You Become One?",
+    metaTitle: "What Is a Success Catalyst & How Do You Become One?",
+    metaDescription: "A success catalyst helps people and teams grow faster. Learn what a success catalyst does, the skills it takes, and practical steps to become one.",
+    excerpt: "A success catalyst helps people and teams grow faster. Learn what a success catalyst does, the skills it takes, and practical steps to become one.",
+    content: [
+      "A Success Catalyst is someone who creates conditions for meaningful progress, and helps to clear up the confusion, alignment and intention to help create positive progress. It's not about pushing harder but rather understanding what is important and acting accordingly to help create positive progress. This can be a great way to create sustainable success in a fast-paced world. Success will be more sustainable when your inner direction and external actions are working together. This is very similar and closely connected to the idea of alignment-based success.",
+      "A catalyst is something that creates movement without necessarily being a part of it. When it comes to personal growth, a Success Catalyst is someone who enables positive change in their life, in others life or in an organisation. This can be your leader enabling your team to move forward, a professional making an important career transition, creating intentional growth as an entrepreneur or simply trying to make better decisions.",
+      "Instead of asking “How can I achieve more?” They ask:",
+      "<ul class=\"list-disc pl-5 space-y-2 my-2\"><li>What am I really trying to achieve?</li><li>Why does it matter to me?</li><li>Are my decisions aligned to my beliefs?</li><li>What needs to change before I can make meaningful progress?</li></ul>",
+      "At Success369 we believe <a href=\"/success-369\" class=\"text-primary underline hover:text-primary/80 transition-colors\">Clarity, Congruence &amp; Catalysis</a> should be at the core of your success. They can be seen as three stages or building blocks which help in creating meaningful progress.",
+      "<h3 class=\"text-xl font-bold font-display text-foreground mt-6 mb-3 text-glow\">1. Clarity – Know What You Want</h3>Clarity is knowing what you want, what matters to you and knowing what direction you want to take. Without clarity you may find your actions are reactive to what you're doing. You may be extremely busy but with lots of conflicting priorities, expectations and opportunities.",
+      "You don't necessarily need to have everything planned out for the future. But knowing what the next meaningful direction is and why you're taking that path is necessary. This acts as a kickstart for becoming a Success Catalyst. You need to ensure you have enough clarity to know your direction so you can influence others.",
+      "<h3 class=\"text-xl font-bold font-display text-foreground mt-6 mb-3 text-glow\">2. Congruence – Align Your Actions to Your Values</h3>Having clarity doesn't create change. Ensuring your internal direction is aligned with the external actions is the key towards success. If your beliefs, values, decisions and behaviours are in line then progress will feel much more aligned. If they aren't then you may find it hard to sustain external success.",
+      "Maybe you value meaningful work but keep making decisions based on external validation. Another one may value balance but build a lifestyle that depends on constant availability. By becoming more congruent you'll become aware of where you're out of alignment and make necessary adjustments for keeping things in order. This is where <a href=\"/success-369\" class=\"text-primary underline hover:text-primary/80 transition-colors\">alignment based success</a> becomes practical. Instead of just asking if something will create results, you should also ask if it's worth doing in the way you're doing it.",
+      "<h3 class=\"text-xl font-bold font-display text-foreground mt-6 mb-3 text-glow\">3. Catalysis – Create Momentum</h3>This is where clarity and congruence starts to create momentum. Once you understand your direction and have aligned your actions to your direction, the next step is to take action. Catalysis isn't about forcing change but creating the right conditions to make intentional progress.",
+      "This could be making a decision you've been putting off, changing an unproductive pattern/ behaviour, being clearer with communication, taking responsibility or helping others to move forward. Here you will notice an important aspect, that is, action comes from greater awareness rather than from pressure or coercion.",
+      "Becoming a Success Catalyst is something you can work on continuously. Take some time to identify where you are now, where are you confused, conflicted or stuck? Don't try to push for solutions straight away but take time to understand the issue. As a next step, identify if your actions are aligned to your priorities. Where are you aligned and where are you out, clarity first and the rest is next in this method.",
+      "Finally take action. Pick one meaningful step to take. You can categorize this progression as clarity, congruence and catalysis, that is, understand, align and move.",
+      "Someone can have amazing results but still not feel like they're doing what they really want. Just because you have external success doesn't mean you're aligned internally. A more sustainable approach will consider both the destination and the way towards it, because both are not mutually exclusive and instead complement each other.",
+      "This means becoming a Success Catalyst is less about becoming someone who is always motivated and more about becoming someone who is mindful. It involves understanding your decisions, identifying where you're out of alignment and creating meaningful momentum.",
+      "You don't need to have all the answers to be a Success Catalyst. All you need is the ability to create clarity, identify where you're out of alignment and create intentional actions based on those assessments. When you know what matters to you, are acting in line with it and creating momentum from it, success becomes a way of progressing that feels aligned. If you'd like to learn about this approach, visit Success369 to discover more about our philosophy, journeys and sessions around clarity, alignment and sustainable success."
+    ],
+    date: "Nov 26, 2026",
+    readTime: "4 min read",
+    author: "Success369 Team",
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800",
+    category: "Catalysis",
+    featured: false,
+    headings: [
+      { index: 1, label: "What Is a Success Catalyst?" },
+      { index: 4, label: "The 3 Elements of Catalytic Success" },
+      { index: 11, label: "How Can You Become A Success Catalyst?" },
+      { index: 13, label: "Why Is This Important?" },
+      { index: 15, label: "Becoming The Person That Creates Meaningful Progress" }
+    ]
+  },
+  {
     slug: "success-369-method-steps-personal-growth",
     title: "Success 369 Method Steps: A Practical Daily System for Personal Growth",
     metaTitle: "Success 369 Method Steps: A Daily System for Personal Growth",
